@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | MarineTech Studio</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚓</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; color: #2C3E50; }
+        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+        .bg-navy { background-color: #0A3A52; }
+        .text-teal { color: #1FA878; }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <!-- Header Simple -->
+    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur shadow-sm py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-navy text-white flex items-center justify-center rounded-sm">
+                    <span class="font-bold text-xl font-serif">M</span>
+                </div>
+                <span class="font-bold text-navy text-lg font-serif">MarineTech</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="index.html" data-translate-key="nav_home" class="text-sm font-medium hover:text-teal">Inicio</a>
+                <a href="faq.html" data-translate-key="nav_faq" class="text-sm font-medium hover:text-teal">FAQ</a>
+                <div class="flex items-center gap-2 border-l pl-4 border-slate-200">
+                    <button class="lang-toggle text-xs font-bold" data-lang="en">EN</button>
+                    <button class="lang-toggle text-xs font-bold" data-lang="es">ES</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-20">
+        <div class="container mx-auto px-6">
+            <h1 data-translate-key="port_page_title" class="text-4xl md:text-5xl font-bold text-navy text-center mb-12 font-serif">Casos de Éxito</h1>
+            
+            <!-- Filtros -->
+            <div class="flex flex-wrap justify-center gap-4 mb-16">
+                <button class="filter-btn bg-navy text-white border-transparent px-6 py-2 rounded-full text-sm font-medium shadow-md transition" data-filter="all" data-translate-key="port_filter_all">Todos</button>
+                <button class="filter-btn bg-white text-navy border border-navy/20 hover:bg-slate-100 px-6 py-2 rounded-full text-sm font-medium shadow-sm transition" data-filter="shipyard" data-translate-key="port_filter_ship">Astilleros</button>
+                <button class="filter-btn bg-white text-navy border border-navy/20 hover:bg-slate-100 px-6 py-2 rounded-full text-sm font-medium shadow-sm transition" data-filter="charter" data-translate-key="port_filter_charter">Charters</button>
+                <button class="filter-btn bg-white text-navy border border-navy/20 hover:bg-slate-100 px-6 py-2 rounded-full text-sm font-medium shadow-sm transition" data-filter="repair" data-translate-key="port_filter_repair">Reparación</button>
+            </div>
+
+            <!-- Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Willis (Shipyard) -->
+                <div class="project-item group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500" data-category="shipyard">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="images/proyecto (3).png" alt="Willis" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-navy/20 group-hover:bg-transparent transition"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-teal uppercase mb-2 block">Shipyard</span>
+                        <h3 class="text-xl font-bold text-navy mb-2 font-serif">Willis Custom Yachts</h3>
+                        <p class="text-sm text-slate-600 mb-4">Web corporativa de lujo enfocada en ingeniería.</p>
+                        <a href="https://williscustomyachts.com/" target="_blank" class="text-navy font-bold text-sm border-b-2 border-teal pb-1" data-translate-key="view_site">Ver Sitio &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- TechDiving (Charter/Education) -->
+                <div class="project-item group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500" data-category="charter">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="images/proyecto (2).png" alt="TechDiving" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                         <div class="absolute inset-0 bg-navy/20 group-hover:bg-transparent transition"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-teal uppercase mb-2 block">Education & Services</span>
+                        <h3 class="text-xl font-bold text-navy mb-2 font-serif">TechDiving Institute</h3>
+                        <p class="text-sm text-slate-600 mb-4">Plataforma educativa y comercial para buzos.</p>
+                        <a href="https://institutodebuceocomercial.lat/" target="_blank" class="text-navy font-bold text-sm border-b-2 border-teal pb-1" data-translate-key="view_site">Ver Sitio &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Chesapeake (Shipyard) -->
+                <div class="project-item group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500" data-category="shipyard">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="images/proyecto (4).png" alt="Chesapeake" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                         <div class="absolute inset-0 bg-navy/20 group-hover:bg-transparent transition"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-teal uppercase mb-2 block">Commercial Shipyard</span>
+                        <h3 class="text-xl font-bold text-navy mb-2 font-serif">Chesapeake Shipbuilding</h3>
+                        <p class="text-sm text-slate-600 mb-4">Portal corporativo de gran escala.</p>
+                        <a href="https://www.chesapeakeshipbuilding.com/" target="_blank" class="text-navy font-bold text-sm border-b-2 border-teal pb-1" data-translate-key="view_site">Ver Sitio &rarr;</a>
+                    </div>
+                </div>
+
+                 <!-- Scarano (Repair/Build) -->
+                 <div class="project-item group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500" data-category="repair">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="images/proyecto (6).png" alt="Scarano" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                         <div class="absolute inset-0 bg-navy/20 group-hover:bg-transparent transition"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-teal uppercase mb-2 block">Custom Build</span>
+                        <h3 class="text-xl font-bold text-navy mb-2 font-serif">Scarano Boat Building</h3>
+                        <p class="text-sm text-slate-600 mb-4">Showcase de herencia y tradición naval.</p>
+                        <a href="https://www.scaranoboat.com/" target="_blank" class="text-navy font-bold text-sm border-b-2 border-teal pb-1" data-translate-key="view_site">Ver Sitio &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- TBailey (Repair) -->
+                <div class="project-item group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500" data-category="repair">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="images/proyecto (7).png" alt="TBailey" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                         <div class="absolute inset-0 bg-navy/20 group-hover:bg-transparent transition"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-teal uppercase mb-2 block">Heavy Fabrication</span>
+                        <h3 class="text-xl font-bold text-navy mb-2 font-serif">TBailey LLC</h3>
+                        <p class="text-sm text-slate-600 mb-4">Web industrial para fabricación pesada.</p>
+                        <a href="https://tbailey.com/" target="_blank" class="text-navy font-bold text-sm border-b-2 border-teal pb-1" data-translate-key="view_site">Ver Sitio &rarr;</a>
+                    </div>
+                </div>
+
+                 <!-- Devlin (Shipyard) -->
+                 <div class="project-item group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500" data-category="shipyard">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="images/proyecto (1).png" alt="Devlin" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                         <div class="absolute inset-0 bg-navy/20 group-hover:bg-transparent transition"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-teal uppercase mb-2 block">Design & Build</span>
+                        <h3 class="text-xl font-bold text-navy mb-2 font-serif">Devlin Designing</h3>
+                        <p class="text-sm text-slate-600 mb-4">Catálogo digital de planos y tienda.</p>
+                        <a href="https://devlinboat.com/" target="_blank" class="text-navy font-bold text-sm border-b-2 border-teal pb-1" data-translate-key="view_site">Ver Sitio &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-navy text-slate-400 py-8 text-center text-sm">
+        <p>&copy; 2025 MarineTech Studio.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

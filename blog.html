@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights | MarineTech Studio</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚓</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; color: #2C3E50; }
+        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+        .bg-navy { background-color: #0A3A52; }
+        .text-teal { color: #1FA878; }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur shadow-sm py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-navy text-white flex items-center justify-center rounded-sm">
+                    <span class="font-bold text-xl font-serif">M</span>
+                </div>
+                <span class="font-bold text-navy text-lg font-serif">MarineTech</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="index.html" data-translate-key="nav_home" class="text-sm font-medium hover:text-teal">Inicio</a>
+                <a href="index.html#contacto" class="bg-navy text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-teal transition">Contacto</a>
+                <div class="flex items-center gap-2 border-l pl-4 border-slate-200">
+                    <button class="lang-toggle text-xs font-bold" data-lang="en">EN</button>
+                    <button class="lang-toggle text-xs font-bold" data-lang="es">ES</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-20">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h1 data-translate-key="blog_page_title" class="text-4xl font-bold text-navy mb-4 font-serif">Estrategia Digital Marina: Tendencias y Tips</h1>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Post 1 -->
+                <article class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-md transition">
+                    <div class="h-48 bg-slate-200 flex items-center justify-center text-4xl">🚢</div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-teal uppercase">Marketing</span>
+                        <h3 class="text-lg font-bold text-navy mt-2 mb-3 font-serif">Marketing para Astilleros</h3>
+                        <p class="text-sm text-slate-600 mb-4">Por qué tu Astillero necesita más que un folleto PDF. Cierra ventas con interactividad.</p>
+                        <div class="flex justify-between items-center text-xs text-slate-400 border-t pt-4">
+                            <span>Frank Mercado</span>
+                            <span>5 <span data-translate-key="min_read">min lectura</span></span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 2 -->
+                <article class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-md transition">
+                    <div class="h-48 bg-slate-200 flex items-center justify-center text-4xl">📊</div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-teal uppercase">Tech</span>
+                        <h3 class="text-lg font-bold text-navy mt-2 mb-3 font-serif">Automatizando Reservas</h3>
+                        <p class="text-sm text-slate-600 mb-4">El fin de las llamadas perdidas. Sistemas de booking para charters modernos.</p>
+                        <div class="flex justify-between items-center text-xs text-slate-400 border-t pt-4">
+                            <span>Frank Mercado</span>
+                            <span>4 <span data-translate-key="min_read">min lectura</span></span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 3 -->
+                <article class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-md transition">
+                    <div class="h-48 bg-slate-200 flex items-center justify-center text-4xl">🔎</div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-teal uppercase">SEO</span>
+                        <h3 class="text-lg font-bold text-navy mt-2 mb-3 font-serif">SEO Local Marítimo</h3>
+                        <p class="text-sm text-slate-600 mb-4">Cómo aparecer primero cuando buscan servicios en tu puerto.</p>
+                        <div class="flex justify-between items-center text-xs text-slate-400 border-t pt-4">
+                            <span>Frank Mercado</span>
+                            <span>6 <span data-translate-key="min_read">min lectura</span></span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+    
+    <script src="scripts.js"></script>
+</body>
+</html>
