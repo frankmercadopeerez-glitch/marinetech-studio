@@ -1,349 +1,490 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MarineTech Studio | Estrategia Digital Marítima</title>
-    <meta name="description" content="Consultoría digital especializada para astilleros, charters y empresas marítimas. Diseño web, SEO y estrategia a medida.">
+    
+    <!-- SEO & Metadata (English Focused) -->
+    <title>MarineTech Studio | Maritime Digital Marketing Agency</title>
+    <meta name="description" content="Digital strategy, web engineering, and SEO specialized for shipyards, charters, and the naval industry. Boosting maritime businesses globally.">
+    
+    <!-- Favicon Anchor -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚓</text></svg>">
+    
+    <!-- Tailwind & Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Fuentes Premium: Playfair (Títulos) + Outfit (Textos) -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] },
+                    colors: { navy: { 900: '#020c12', 800: '#051d29' }, teal: { 400: '#2dd4bf', 500: '#14b8a6' } },
+                    backgroundImage: { 'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2314b8a6' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E\")" }
+                }
+            }
+        }
+    </script>
+
     <style>
-        body { font-family: 'Outfit', sans-serif; color: #2C3E50; }
-        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
-        .bg-navy { background-color: #0A3A52; }
-        .text-navy { color: #0A3A52; }
-        .bg-teal { background-color: #1FA878; }
-        .text-teal { color: #1FA878; }
-        .border-teal { border-color: #1FA878; }
-        .gradient-hero { background: linear-gradient(135deg, #0A3A52 0%, #0f5373 100%); }
-        .gradient-cta { background: linear-gradient(135deg, #1FA878 0%, #0A3A52 100%); }
+        /* CURSOR FIX: Hide default cursor */
+        * { cursor: none !important; }
         
-        /* Preloader */
-        #preloader { transition: opacity 0.5s ease; }
+        body { background-color: #020c12; color: #e2e8f0; overflow-x: hidden; }
         
-        /* Ocultar scrollbar en slider */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        /* Neon Cursor */
+        .custom-cursor { 
+            width: 20px; height: 20px; 
+            border: 1px solid #00f0ff; border-radius: 50%; 
+            position: fixed; pointer-events: none; z-index: 9999; 
+            transform: translate(-50%, -50%); 
+            transition: width 0.3s, height 0.3s, background 0.3s; 
+            mix-blend-mode: difference; 
+        }
+        .custom-cursor.hovered { 
+            width: 50px; height: 50px; 
+            background-color: rgba(0, 240, 255, 0.2); border-color: transparent; 
+        }
+
+        /* Animations */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .glass { background: rgba(5, 29, 41, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-card { background: linear-gradient(145deg, rgba(10, 46, 64, 0.4) 0%, rgba(5, 29, 41, 0.6) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.03); transition: all 0.4s ease; }
+        .glass-card:hover { border-color: rgba(0, 240, 255, 0.3); transform: translateY(-5px); box-shadow: 0 10px 40px -10px rgba(0, 240, 255, 0.1); }
+        .text-gradient { background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Infinite Marquee */
+        .marquee-container { mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
+        .animate-marquee { animation: marquee 40s linear infinite; }
+        .animate-marquee:hover { animation-play-state: paused; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* FAQ Details */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] summary ~ * { animation: sweep .5s ease-in-out; }
+        @keyframes sweep { 0% {opacity: 0; transform: translateY(-10px)} 100% {opacity: 1; transform: translateY(0)} }
     </style>
 </head>
-<body class="bg-slate-50 antialiased">
+<body class="selection:bg-teal-500 selection:text-white">
 
-    <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 z-[9999] bg-navy flex items-center justify-center">
-        <div class="text-center text-white">
-            <div class="text-6xl animate-bounce mb-6">⚓</div>
-            <h2 class="text-xl tracking-[0.3em] font-light uppercase font-serif">MarineTech Studio</h2>
+    <div class="custom-cursor hidden md:block" id="cursor"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 py-4" id="navbar">
+        <div class="container mx-auto px-6">
+            <div class="glass rounded-full px-6 py-3 flex justify-between items-center shadow-lg shadow-teal-900/10">
+                <a href="index.html" class="flex items-center gap-2 group hover-trigger">
+                    <div class="w-8 h-8 bg-gradient-to-br from-teal-400 to-blue-600 rounded flex items-center justify-center text-white font-display font-bold text-lg group-hover:rotate-12 transition-transform">M</div>
+                    <span class="font-display font-bold text-lg tracking-wide">Marine<span class="text-teal-400">Tech</span></span>
+                </a>
+                
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="portfolio.html" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger" data-key="nav_port">Portfolio</a>
+                    <a href="blog.html" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger" data-key="nav_blog">Insights</a>
+                    <a href="#faq" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger" data-key="nav_faq">FAQ</a>
+                    <a href="#contact" class="px-5 py-2 rounded-full bg-white text-navy-900 text-sm font-bold hover:bg-teal-400 transition hover:scale-105 duration-300 hover-trigger" data-key="nav_contact">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white hover-trigger" id="mobile-menu-btn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-navy-900/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 flex items-center justify-center">
+        <button id="close-menu" class="absolute top-8 right-8 text-white p-2 hover-trigger">✕</button>
+        <div class="flex flex-col gap-8 text-center text-2xl font-display font-bold">
+            <a href="portfolio.html" class="hover:text-teal-400 transition hover-trigger" data-key="nav_port">Portfolio</a>
+            <a href="blog.html" class="hover:text-teal-400 transition hover-trigger" data-key="nav_blog">Insights</a>
+            <a href="#faq" class="hover:text-teal-400 transition hover-trigger" onclick="toggleMenu()" data-key="nav_faq">FAQ</a>
+            <a href="#contact" class="hover:text-teal-400 transition hover-trigger" onclick="toggleMenu()" data-key="nav_contact">Contact</a>
         </div>
     </div>
 
-    <!-- Header -->
-    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur shadow-sm transition-all py-4">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2">
-                <div class="w-10 h-10 bg-navy text-white flex items-center justify-center rounded-sm shadow-lg">
-                    <span class="font-bold text-xl font-serif">M</span>
-                </div>
-                <div class="flex flex-col">
-                    <span class="text-lg font-bold leading-none text-navy font-serif">MarineTech</span>
-                    <span class="text-xs tracking-widest uppercase text-slate-500">Studio</span>
-                </div>
-            </a>
-
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="how-it-works.html" data-translate-key="nav_how" class="text-sm font-medium hover:text-teal transition">Cómo Funciona</a>
-                <a href="portfolio.html" data-translate-key="nav_portfolio" class="text-sm font-medium hover:text-teal transition">Portafolio</a>
-                <a href="blog.html" data-translate-key="nav_blog" class="text-sm font-medium hover:text-teal transition">Blog</a>
-                <a href="faq.html" data-translate-key="nav_faq" class="text-sm font-medium hover:text-teal transition">Preguntas</a>
-                
-                <!-- Toggle Idioma -->
-                <div class="flex items-center gap-2 border-l pl-6 border-slate-200">
-                    <button class="lang-toggle text-sm font-medium transition" data-lang="en">EN</button>
-                    <span class="text-slate-300">/</span>
-                    <button class="lang-toggle text-sm font-medium transition" data-lang="es">ES</button>
-                </div>
-
-                <a href="#contacto" data-translate-key="nav_contact" class="bg-navy text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-teal transition shadow-lg transform hover:-translate-y-0.5">
-                    Contacto
-                </a>
-            </nav>
-
-            <button id="menu-btn" class="md:hidden text-navy focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-grid-pattern">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-teal-500/20 rounded-full blur-[120px] -z-10 animate-pulse"></div>
+        <div class="container mx-auto px-6 text-center z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 reveal">
+                <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                <span class="text-xs font-medium tracking-widest uppercase text-teal-200" data-key="hero_badge">Maritime Digital Agency</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-8 leading-tight reveal" style="transition-delay: 100ms;">
+                <span class="text-gradient" data-key="hero_title1">Digital Strategy</span><br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 italic" data-key="hero_title2">For the Sea.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-12 font-light reveal" style="transition-delay: 200ms;" data-key="hero_desc">
+                Web engineering and SEO positioning designed exclusively for shipyards, charters, and global naval services.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 reveal" style="transition-delay: 300ms;">
+                <a href="#contact" class="px-8 py-4 bg-teal-500 text-navy-900 font-bold rounded-full hover:bg-teal-400 transition hover-trigger" data-key="hero_cta1">Free Consultation</a>
+                <a href="portfolio.html" class="px-8 py-4 bg-transparent border border-white/20 text-white font-medium rounded-full hover:bg-white/5 hover:border-white/40 transition hover-trigger" data-key="hero_cta2">View Full Portfolio</a>
+            </div>
         </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 pt-24 px-6 flex flex-col space-y-6 shadow-2xl">
-        <a href="how-it-works.html" data-translate-key="nav_how" class="text-xl font-serif text-navy">Cómo Funciona</a>
-        <a href="portfolio.html" data-translate-key="nav_portfolio" class="text-xl font-serif text-navy">Portafolio</a>
-        <a href="blog.html" data-translate-key="nav_blog" class="text-xl font-serif text-navy">Blog</a>
-        <a href="faq.html" data-translate-key="nav_faq" class="text-xl font-serif text-navy">FAQ</a>
-        <hr class="border-slate-100">
-        <div class="flex gap-4">
-            <button class="lang-toggle text-lg" data-lang="es">Español</button>
-            <button class="lang-toggle text-lg" data-lang="en">English</button>
+    <!-- Client Marquee -->
+    <div class="py-10 border-y border-white/5 bg-navy-800/50 backdrop-blur-sm overflow-hidden marquee-container">
+        <div class="relative flex overflow-x-hidden group">
+            <div class="py-2 animate-marquee whitespace-nowrap flex gap-16 md:gap-32 px-10 items-center opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                <span class="text-2xl font-display font-bold">WILLIS YACHTS</span>
+                <span class="text-2xl font-display font-bold">CHESAPEAKE</span>
+                <span class="text-2xl font-display font-bold">TECHDIVING</span>
+                <span class="text-2xl font-display font-bold">SCARANO</span>
+                <span class="text-2xl font-display font-bold">TBAILEY</span>
+                <span class="text-2xl font-display font-bold">GENOA</span>
+                <span class="text-2xl font-display font-bold">WILLIS YACHTS</span>
+                <span class="text-2xl font-display font-bold">CHESAPEAKE</span>
+                <span class="text-2xl font-display font-bold">TECHDIVING</span>
+                <span class="text-2xl font-display font-bold">SCARANO</span>
+            </div>
         </div>
     </div>
 
-    <!-- Hero -->
-    <section class="pt-32 pb-20 gradient-hero text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-20 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); mix-blend-mode: overlay;"></div>
+    <!-- Problems -->
+    <section class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8 reveal">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-4"><span data-key="prob_title">Navigating the</span><br><span class="text-teal-400" data-key="prob_title_h">Digital Storm</span></h2>
+                    <p class="text-slate-400 max-w-md" data-key="prob_desc">The most common challenges preventing maritime business growth.</p>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-card p-8 rounded-2xl reveal hover-trigger">
+                    <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center text-2xl mb-6 text-teal-400">📉</div>
+                    <h3 class="text-xl font-bold font-display mb-3" data-key="prob1_t">Invisible Presence</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-key="prob1_d">Your competition appears first on Google when searching for "ship repair" or "charter".</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl reveal hover-trigger" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center text-2xl mb-6 text-teal-400">🕸️</div>
+                    <h3 class="text-xl font-bold font-display mb-3" data-key="prob2_t">Obsolete Web</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-key="prob2_d">Slow sites with poor mobile design that don't reflect your fleet's engineering quality.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl reveal hover-trigger" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center text-2xl mb-6 text-teal-400">🗣️</div>
+                    <h3 class="text-xl font-bold font-display mb-3" data-key="prob3_t">Wrong Jargon</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-key="prob3_d">Generalist agencies that don't distinguish between a hull and a keel. We do.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Cases (Static Grid) -->
+    <section id="portfolio-preview" class="py-32">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-4" data-key="port_title">Featured Cases</h2>
+                <p class="text-slate-400" data-key="port_desc">Digital engineering in action.</p>
+            </div>
+
+            <!-- Static Grid -->
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Card 1 -->
+                <a href="https://williscustomyachts.com/" target="_blank" class="glass-card rounded-2xl overflow-hidden group hover-trigger block reveal">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition z-10 flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 transition duration-300 bg-teal-500 text-navy-900 font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0" data-key="btn_visit">Visit Site</span>
+                        </div>
+                        <img src="images/proyecto (3).png" alt="Willis Custom Yachts" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="p-8">
+                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2 block" data-key="cat_shipyard">Shipyards</span>
+                        <h3 class="text-2xl font-display font-bold mb-3 group-hover:text-teal-400 transition">Willis Custom Yachts</h3>
+                        <p class="text-slate-400 text-sm" data-key="proj1_d">Complete web experience redesign for one of the most prestigious shipyards.</p>
+                    </div>
+                </a>
+
+                 <!-- Card 2 -->
+                 <a href="https://institutodebuceocomercial.lat/" target="_blank" class="glass-card rounded-2xl overflow-hidden group hover-trigger block reveal" style="transition-delay: 100ms;">
+                    <div class="h-64 overflow-hidden relative">
+                         <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition z-10 flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 transition duration-300 bg-teal-500 text-navy-900 font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0" data-key="btn_visit">Visit Site</span>
+                         </div>
+                        <img src="images/proyecto (2).png" alt="TechDiving" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="p-8">
+                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2 block" data-key="cat_charter">Charter & Diving</span>
+                        <h3 class="text-2xl font-display font-bold mb-3 group-hover:text-teal-400 transition">TechDiving Institute</h3>
+                        <p class="text-slate-400 text-sm" data-key="proj2_d">Educational platform and booking system for commercial diving school.</p>
+                    </div>
+                </a>
+
+                 <!-- Card 3 -->
+                 <a href="https://tbailey.com/" target="_blank" class="glass-card rounded-2xl overflow-hidden group hover-trigger block reveal" style="transition-delay: 200ms;">
+                    <div class="h-64 overflow-hidden relative">
+                         <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition z-10 flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 transition duration-300 bg-teal-500 text-navy-900 font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0" data-key="btn_visit">Visit Site</span>
+                         </div>
+                        <img src="images/proyecto (7).png" alt="TBailey" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="p-8">
+                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2 block" data-key="cat_industrial">Heavy Industry</span>
+                        <h3 class="text-2xl font-display font-bold mb-3 group-hover:text-teal-400 transition">TBailey LLC</h3>
+                        <p class="text-slate-400 text-sm" data-key="proj3_d">Corporate website focused on tenders and marine structure fabrication.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="text-center reveal">
+                <a href="portfolio.html" class="px-8 py-4 bg-transparent border border-teal-500 text-teal-400 font-bold rounded-full hover:bg-teal-500 hover:text-navy-900 transition hover-trigger inline-block" data-key="hero_cta2">
+                    View Full Portfolio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Carousel -->
+    <section class="py-32 bg-navy-800/30 overflow-hidden">
+        <div class="container mx-auto px-6 mb-12 text-center reveal">
+            <h2 class="text-4xl md:text-5xl font-display font-bold" data-key="rev_title">Captain's Log</h2>
+            <p class="text-slate-400 mt-4" data-key="rev_desc">What industry leaders say.</p>
+        </div>
         
-        <div class="container mx-auto px-6 relative z-10 text-center">
-            <span data-translate-key="hero_badge" class="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-sm font-medium mb-6 backdrop-blur-sm">Agencia Digital Marítima Especializada</span>
-            <h1 data-translate-key="hero_title" class="text-4xl md:text-6xl font-bold leading-tight mb-6 font-serif">Estrategia Digital Profesional para <span class="text-teal-400 italic">Empresas Marítimas</span></h1>
-            <p data-translate-key="hero_subtitle" class="text-xl text-blue-50 max-w-2xl mx-auto mb-10">Posicionamiento en Google y diseño web especializado para astilleros, charters y servicios marinos.</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#contacto" data-translate-key="hero_cta" class="bg-teal hover:bg-teal-600 text-white px-8 py-4 rounded-lg font-bold shadow-lg transition transform hover:-translate-y-1">Consultoría Gratuita</a>
-                <a href="portfolio.html" data-translate-key="hero_cta_secondary" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white px-8 py-4 rounded-lg font-medium backdrop-blur-sm transition">Ver Portafolio</a>
+        <div class="relative w-full marquee-container">
+            <div class="flex w-max gap-8 animate-marquee">
+                <!-- Original Reviews Block -->
+                <div class="w-[400px] glass-card p-8 rounded-2xl hover-trigger flex-shrink-0">
+                    <div class="flex text-teal-400 mb-4 text-sm">★★★★★</div>
+                    <p class="text-slate-300 italic mb-6" data-key="rev1_t">"They understand the technical difference between displacement and planing hulls. Impeccable result."</p>
+                    <h4 class="font-bold text-white">James Willis</h4>
+                    <span class="text-xs text-slate-500 uppercase">CEO, Willis Custom Yachts</span>
+                </div>
+                <div class="w-[400px] glass-card p-8 rounded-2xl hover-trigger flex-shrink-0">
+                    <div class="flex text-teal-400 mb-4 text-sm">★★★★★</div>
+                    <p class="text-slate-300 italic mb-6" data-key="rev2_t">"Our charter bookings increased by 40% with the new booking platform."</p>
+                    <h4 class="font-bold text-white">Sarah Jenkins</h4>
+                    <span class="text-xs text-slate-500 uppercase">Director, TechDiving</span>
+                </div>
+                <div class="w-[400px] glass-card p-8 rounded-2xl hover-trigger flex-shrink-0">
+                    <div class="flex text-teal-400 mb-4 text-sm">★★★★★</div>
+                    <p class="text-slate-300 italic mb-6" data-key="rev3_t">"They handled our heavy fabrication portfolio with the corporate seriousness it deserves."</p>
+                    <h4 class="font-bold text-white">Michael T.</h4>
+                    <span class="text-xs text-slate-500 uppercase">Ops Manager, TBailey</span>
+                </div>
+                <!-- Duplicates for Loop -->
+                <div class="w-[400px] glass-card p-8 rounded-2xl hover-trigger flex-shrink-0">
+                    <div class="flex text-teal-400 mb-4 text-sm">★★★★★</div>
+                    <p class="text-slate-300 italic mb-6" data-key="rev1_t">"They understand the technical difference between displacement and planing hulls. Impeccable result."</p>
+                    <h4 class="font-bold text-white">James Willis</h4>
+                    <span class="text-xs text-slate-500 uppercase">CEO, Willis Custom Yachts</span>
+                </div>
+                <div class="w-[400px] glass-card p-8 rounded-2xl hover-trigger flex-shrink-0">
+                    <div class="flex text-teal-400 mb-4 text-sm">★★★★★</div>
+                    <p class="text-slate-300 italic mb-6" data-key="rev2_t">"Our charter bookings increased by 40% with the new booking platform."</p>
+                    <h4 class="font-bold text-white">Sarah Jenkins</h4>
+                    <span class="text-xs text-slate-500 uppercase">Director, TechDiving</span>
+                </div>
+                <div class="w-[400px] glass-card p-8 rounded-2xl hover-trigger flex-shrink-0">
+                    <div class="flex text-teal-400 mb-4 text-sm">★★★★★</div>
+                    <p class="text-slate-300 italic mb-6" data-key="rev3_t">"They handled our heavy fabrication portfolio with the corporate seriousness it deserves."</p>
+                    <h4 class="font-bold text-white">Michael T.</h4>
+                    <span class="text-xs text-slate-500 uppercase">Ops Manager, TBailey</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Problema -->
-    <section class="py-20 bg-slate-50">
-        <div class="container mx-auto px-6">
-            <h2 data-translate-key="prob_title" class="text-3xl font-serif font-bold text-center text-navy mb-16">Navegando Desafíos Digitales</h2>
-            <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
-                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition animate-on-scroll">
-                    <div class="text-teal text-3xl mb-4">📉</div>
-                    <h3 data-translate-key="prob_1_title" class="font-bold text-navy mb-2">Presencia Débil</h3>
-                    <p data-translate-key="prob_1_desc" class="text-sm text-slate-600">Tus clientes no pueden encontrarte.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition animate-on-scroll" style="transition-delay: 100ms">
-                    <div class="text-teal text-3xl mb-4">👻</div>
-                    <h3 data-translate-key="prob_2_title" class="font-bold text-navy mb-2">Competencia Invisible</h3>
-                    <p data-translate-key="prob_2_desc" class="text-sm text-slate-600">Perdiendo mercado ante rivales digitales.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition animate-on-scroll" style="transition-delay: 200ms">
-                    <div class="text-teal text-3xl mb-4">💸</div>
-                    <h3 data-translate-key="prob_3_title" class="font-bold text-navy mb-2">Inversión Sin ROI</h3>
-                    <p data-translate-key="prob_3_desc" class="text-sm text-slate-600">Webs bonitas que no venden.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition animate-on-scroll" style="transition-delay: 300ms">
-                    <div class="text-teal text-3xl mb-4">❓</div>
-                    <h3 data-translate-key="prob_4_title" class="font-bold text-navy mb-2">Desconexión Técnica</h3>
-                    <p data-translate-key="prob_4_desc" class="text-sm text-slate-600">Tu web dice 'somos calidad' pero no explica por qué tu ingeniería naval es superior.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition animate-on-scroll" style="transition-delay: 400ms">
-                    <div class="text-teal text-3xl mb-4">⚓</div>
-                    <h3 data-translate-key="prob_5_title" class="font-bold text-navy mb-2">Oportunidades Perdidas</h3>
-                    <p data-translate-key="prob_5_desc" class="text-sm text-slate-600">Contratos de refit escapando.</p>
-                </div>
+    <!-- FAQ Section -->
+    <section id="faq" class="py-32 relative">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-6"><span data-key="faq_t1">Frequently Asked</span> <span class="text-teal-400" data-key="faq_t2">Questions</span></h2>
+                <p class="text-slate-400 text-lg" data-key="faq_sub">Solving your doubts about maritime digitalization.</p>
+            </div>
+
+            <div class="space-y-4 reveal">
+                <!-- Q1 -->
+                <details class="glass-card rounded-xl group hover-trigger">
+                    <summary class="flex justify-between items-center p-6 cursor-none font-display font-bold text-lg text-white hover:text-teal-400 transition">
+                        <span data-key="q1">Why doesn't my shipyard appear on Google?</span>
+                        <span class="text-teal-400 text-2xl group-open:rotate-45 transition-transform">+</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 leading-relaxed" data-key="a1">
+                        Usually due to a lack of technical and local SEO. We optimize your site for keywords like "ship repair", "refit", and specific terms for your port so captains and owners find you first.
+                    </div>
+                </details>
+
+                <!-- Q2 -->
+                <details class="glass-card rounded-xl group hover-trigger">
+                    <summary class="flex justify-between items-center p-6 cursor-none font-display font-bold text-lg text-white hover:text-teal-400 transition">
+                        <span data-key="q2">How long does a web design project take?</span>
+                        <span class="text-teal-400 text-2xl group-open:rotate-45 transition-transform">+</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 leading-relaxed" data-key="a2">
+                        A high-impact corporate site takes between 4 and 6 weeks. We include discovery, prototyping design, technical development, and SEO optimization phases before launch.
+                    </div>
+                </details>
+
+                <!-- Q3 -->
+                <details class="glass-card rounded-xl group hover-trigger">
+                    <summary class="flex justify-between items-center p-6 cursor-none font-display font-bold text-lg text-white hover:text-teal-400 transition">
+                        <span data-key="q3">Does a website help sell luxury charters?</span>
+                        <span class="text-teal-400 text-2xl group-open:rotate-45 transition-transform">+</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 leading-relaxed" data-key="a3">
+                        Absolutely. We integrate booking systems and immersive galleries that increase client trust. Our clients report a 40% increase in qualified leads after the redesign.
+                    </div>
+                </details>
+
+                <!-- Q4 -->
+                <details class="glass-card rounded-xl group hover-trigger">
+                    <summary class="flex justify-between items-center p-6 cursor-none font-display font-bold text-lg text-white hover:text-teal-400 transition">
+                        <span data-key="q4">What does the Free Consultation include?</span>
+                        <span class="text-teal-400 text-2xl group-open:rotate-45 transition-transform">+</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 leading-relaxed" data-key="a4">
+                        We evaluate your current online presence, analyze your direct competitors, and provide a roadmap with 3 immediate actions to improve your positioning, with no cost or obligation.
+                    </div>
+                </details>
             </div>
         </div>
     </section>
 
-    <!-- Solución -->
-    <section class="py-20 bg-white">
+    <!-- Contact Form -->
+    <section id="contact" class="py-32">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2 animate-on-scroll">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Digital Strategy" class="rounded-2xl shadow-2xl">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="reveal">
+                    <h2 class="text-5xl md:text-6xl font-display font-bold mb-8"><span data-key="contact_t1">Let's Talk About</span> <br><span class="text-teal-400" data-key="contact_t2">Your Project</span></h2>
+                    <p class="text-xl text-slate-400 mb-12" data-key="contact_sub">Schedule a free 15-minute consultation to assess your situation.</p>
+                    <div class="space-y-6 text-lg">
+                        <a href="mailto:info@marinetechstudio.com" class="flex items-center gap-4 hover:text-teal-400 transition hover-trigger">
+                            <span class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center">✉</span> info@marinetechstudio.com
+                        </a>
+                        <a href="tel:+573044301112" class="flex items-center gap-4 hover:text-teal-400 transition hover-trigger">
+                            <span class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center">📱</span> +57 304 430 1112
+                        </a>
+                    </div>
                 </div>
-                <div class="md:w-1/2">
-                    <h2 data-translate-key="sol_title" class="text-3xl font-serif font-bold text-navy mb-10">Nuestro Enfoque Estratégico</h2>
-                    <div class="space-y-8">
-                        <div class="flex gap-4 animate-on-scroll">
-                            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-teal font-bold text-xl flex-shrink-0">1</div>
-                            <div>
-                                <h3 data-translate-key="sol_step1" class="font-bold text-lg text-navy">Evaluación Profunda</h3>
-                                <p data-translate-key="sol_desc1" class="text-slate-600">Analizamos tu situación específica, flota y objetivos.</p>
-                            </div>
+                <form class="glass-card p-8 md:p-10 rounded-3xl space-y-6 reveal" style="transition-delay: 200ms;">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2" data-key="form_name">Name</label>
+                            <input type="text" class="w-full bg-navy-900/50 border border-white/10 rounded-lg p-4 text-white focus:border-teal-400 focus:outline-none transition">
                         </div>
-                        <div class="flex gap-4 animate-on-scroll" style="transition-delay: 100ms">
-                            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-teal font-bold text-xl flex-shrink-0">2</div>
-                            <div>
-                                <h3 data-translate-key="sol_step2" class="font-bold text-lg text-navy">Estrategia Personalizada</h3>
-                                <p data-translate-key="sol_desc2" class="text-slate-600">Diseñamos una solución adaptada estrictamente a tu negocio.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4 animate-on-scroll" style="transition-delay: 200ms">
-                            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-teal font-bold text-xl flex-shrink-0">3</div>
-                            <div>
-                                <h3 data-translate-key="sol_step3" class="font-bold text-lg text-navy">Implementación y Seguimiento</h3>
-                                <p data-translate-key="sol_desc3" class="text-slate-600">Ejecutamos la estrategia y monitoreamos resultados.</p>
-                            </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2" data-key="form_company">Company</label>
+                            <input type="text" class="w-full bg-navy-900/50 border border-white/10 rounded-lg p-4 text-white focus:border-teal-400 focus:outline-none transition">
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Por Qué Elegirnos -->
-    <section class="py-20 bg-navy text-white">
-        <div class="container mx-auto px-6">
-            <h2 data-translate-key="why_title" class="text-3xl font-serif font-bold text-center mb-16">¿Por Qué MarineTech?</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center animate-on-scroll">
-                    <div class="w-16 h-16 mx-auto bg-white/10 rounded-full flex items-center justify-center text-2xl mb-4">🌊</div>
-                    <h3 data-translate-key="why_1" class="font-bold text-lg mb-2">Especialistas</h3>
-                    <p data-translate-key="why_1_d" class="text-slate-300 text-sm">Hablamos tu idioma.</p>
-                </div>
-                <div class="text-center animate-on-scroll" style="transition-delay: 100ms">
-                    <div class="w-16 h-16 mx-auto bg-white/10 rounded-full flex items-center justify-center text-2xl mb-4">📏</div>
-                    <h3 data-translate-key="why_2" class="font-bold text-lg mb-2">A Medida</h3>
-                    <p data-translate-key="why_2_d" class="text-slate-300 text-sm">Sin plantillas genéricas.</p>
-                </div>
-                <div class="text-center animate-on-scroll" style="transition-delay: 200ms">
-                    <div class="w-16 h-16 mx-auto bg-white/10 rounded-full flex items-center justify-center text-2xl mb-4">🤝</div>
-                    <h3 data-translate-key="why_3" class="font-bold text-lg mb-2">Transparencia</h3>
-                    <p data-translate-key="why_3_d" class="text-slate-300 text-sm">Comunicación clara.</p>
-                </div>
-                <div class="text-center animate-on-scroll" style="transition-delay: 300ms">
-                    <div class="w-16 h-16 mx-auto bg-white/10 rounded-full flex items-center justify-center text-2xl mb-4">📈</div>
-                    <h3 data-translate-key="why_4" class="font-bold text-lg mb-2">Resultados</h3>
-                    <p data-translate-key="why_4_d" class="text-slate-300 text-sm">Enfoque en ingresos.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mini Portfolio -->
-    <section class="py-20 bg-slate-50">
-        <div class="container mx-auto px-6 text-center">
-            <h2 data-translate-key="port_mini_title" class="text-3xl font-serif font-bold text-navy mb-12">Empresas Marinas Que Confían en Nosotros</h2>
-            <div class="flex flex-wrap justify-center gap-8 mb-12 opacity-70">
-                <div class="text-2xl font-serif font-bold text-slate-400">WILLIS YACHTS</div>
-                <div class="text-2xl font-serif font-bold text-slate-400">CHESAPEAKE</div>
-                <div class="text-2xl font-serif font-bold text-slate-400">TECHDIVING</div>
-                <div class="text-2xl font-serif font-bold text-slate-400">SCARANO</div>
-            </div>
-            <a href="portfolio.html" data-translate-key="port_view_all" class="text-teal font-bold hover:underline text-lg">Ver Todos los Casos &rarr;</a>
-        </div>
-    </section>
-
-    <!-- Inversión -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto bg-slate-50 border border-slate-200 rounded-2xl p-10 text-center shadow-lg animate-on-scroll">
-                <h2 data-translate-key="inv_title" class="text-3xl font-serif font-bold text-navy mb-2">Inversión en Tu Presencia Digital</h2>
-                <p data-translate-key="inv_subtitle" class="text-xl text-teal font-bold mb-8">Presupuestos Personalizados - A Partir de $400 USD</p>
-                
-                <div class="text-left max-w-2xl mx-auto bg-white p-8 rounded-xl border border-slate-100 mb-8">
-                    <p data-translate-key="inv_desc_p1" class="mb-4 text-slate-700">La inversión varía según la complejidad del proyecto, los servicios incluidos, el tiempo de implementación y las necesidades específicas.</p>
-                    <p data-translate-key="inv_desc_p2" class="text-slate-700">Cada proyecto es evaluado individualmente. Ofrecemos soluciones desde $400 USD para proyectos pequeños, hasta inversiones mayores para estrategias integrales.</p>
-                </div>
-                
-                <a href="#contacto" data-translate-key="inv_cta" class="inline-block bg-navy text-white px-8 py-4 rounded-lg font-medium hover:bg-teal transition">Solicitar Propuesta Personalizada</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonios Slider -->
-    <section class="py-20 bg-navy text-white overflow-hidden">
-        <div class="container mx-auto px-6">
-            <h2 data-translate-key="test_title" class="text-3xl font-serif font-bold text-center mb-16">Bitácora del Capitán</h2>
-            <!-- Slider Container -->
-            <div id="reviews-slider" class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar pb-8 gap-6">
-                <!-- JS fills this -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Contacto -->
-    <section id="contacto" class="py-20 gradient-cta text-white">
-        <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto text-center mb-12">
-                <h2 data-translate-key="final_title" class="text-3xl md:text-4xl font-serif font-bold mb-4">¿Listo para Transformar Tu Presencia Digital?</h2>
-            </div>
-            
-            <!-- EMAIL ACTUALIZADO -->
-            <form action="mailto:info@marinetechstudio.com" method="POST" enctype="text/plain" class="max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-2xl text-slate-800">
-                <div class="grid md:grid-cols-2 gap-6 mb-6">
                     <div>
-                        <label data-translate-key="form_name" class="block text-sm font-bold text-navy mb-2">Nombre</label>
-                        <input type="text" required class="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:outline-none focus:border-teal">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2" data-key="form_email">Work Email</label>
+                        <input type="email" class="w-full bg-navy-900/50 border border-white/10 rounded-lg p-4 text-white focus:border-teal-400 focus:outline-none transition">
                     </div>
                     <div>
-                        <label data-translate-key="form_company" class="block text-sm font-bold text-navy mb-2">Empresa</label>
-                        <input type="text" required class="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:outline-none focus:border-teal">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2" data-key="form_msg">Message</label>
+                        <textarea rows="4" class="w-full bg-navy-900/50 border border-white/10 rounded-lg p-4 text-white focus:border-teal-400 focus:outline-none transition"></textarea>
                     </div>
-                </div>
-                <div class="grid md:grid-cols-2 gap-6 mb-6">
-                    <div>
-                        <label data-translate-key="form_email" class="block text-sm font-bold text-navy mb-2">Email</label>
-                        <input type="email" required class="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:outline-none focus:border-teal">
-                    </div>
-                    <div>
-                        <label data-translate-key="form_phone" class="block text-sm font-bold text-navy mb-2">Teléfono / WhatsApp</label>
-                        <input type="tel" required class="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:outline-none focus:border-teal">
-                    </div>
-                </div>
-                <div class="mb-6">
-                    <label data-translate-key="form_service_label" class="block text-sm font-bold text-navy mb-2">Servicio de Interés</label>
-                    <select class="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:outline-none focus:border-teal">
-                        <option data-translate-key="opt_seo">Posicionamiento en Google</option>
-                        <option data-translate-key="opt_web">Diseño Web</option>
-                        <option data-translate-key="opt_strat">Estrategia Digital</option>
-                        <option data-translate-key="opt_consult">Consultoría</option>
-                        <option data-translate-key="opt_other">Otro</option>
-                    </select>
-                </div>
-                <div class="mb-8">
-                    <label data-translate-key="form_msg" class="block text-sm font-bold text-navy mb-2">Cuéntanos sobre tu proyecto</label>
-                    <textarea rows="4" class="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:outline-none focus:border-teal"></textarea>
-                </div>
-                <button type="submit" data-translate-key="form_btn" class="w-full bg-navy text-white font-bold py-4 rounded hover:bg-teal transition shadow-lg">Solicitar Consultoría Gratuita</button>
-            </form>
+                    <button type="submit" class="w-full bg-teal-500 text-navy-900 font-bold py-5 rounded-lg hover:bg-teal-400 transition hover:shadow-lg uppercase tracking-wide hover-trigger" data-key="form_btn">Send Request</button>
+                </form>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-navy text-slate-400 py-16 border-t border-white/10">
-        <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12">
-            <div>
-                <div class="flex items-center gap-2 mb-4">
-                    <div class="w-8 h-8 bg-teal text-white flex items-center justify-center rounded-sm">
-                        <span class="font-bold font-serif">M</span>
-                    </div>
-                    <span class="text-white font-bold text-lg font-serif">MarineTech</span>
-                </div>
-                <p data-translate-key="footer_desc" class="text-sm mb-6">Soluciones digitales estratégicas para la industria marítima.</p>
-                <div class="flex gap-4">
-                    <a href="#" class="hover:text-teal transition">IG</a>
-                    <a href="#" class="hover:text-teal transition">FB</a>
-                    <a href="#" class="hover:text-teal transition">X</a>
-                </div>
+    <footer class="border-t border-white/10 py-12 bg-navy-900">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-teal-500 rounded-sm"></div>
+                <span class="font-display font-bold text-xl">MarineTech</span>
             </div>
-            <div>
-                <h4 data-translate-key="footer_links" class="text-white font-bold mb-4">Enlaces</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="how-it-works.html" class="hover:text-teal">Cómo Funciona</a></li>
-                    <li><a href="portfolio.html" class="hover:text-teal">Portafolio</a></li>
-                    <li><a href="blog.html" class="hover:text-teal">Blog</a></li>
-                    <li><a href="faq.html" class="hover:text-teal">FAQ</a></li>
-                </ul>
+            <div class="flex gap-8 text-sm text-slate-500">
+                <a href="#" class="hover:text-white transition hover-trigger">Instagram</a>
+                <a href="#" class="hover:text-white transition hover-trigger">LinkedIn</a>
+                <a href="privacy.html" class="hover:text-white transition hover-trigger" data-key="nav_priv">Privacy</a>
             </div>
-            <div>
-                <h4 data-translate-key="footer_contact" class="text-white font-bold mb-4">Contacto</h4>
-                <ul class="space-y-2 text-sm">
-                    <!-- EMAIL ACTUALIZADO -->
-                    <li>info@marinetechstudio.com</li>
-                    <li>+57 304 430 1112</li>
-                    <li>Cartagena, Colombia</li>
-                </ul>
-            </div>
-            <div>
-                <h4 data-translate-key="footer_news_title" class="text-white font-bold mb-4">Tips Digitales</h4>
-                <p data-translate-key="footer_news_desc" class="text-sm mb-4">Recibe consejos de estrategia digital.</p>
-                <div class="flex">
-                    <input type="email" placeholder="Email" class="bg-slate-800 border-none rounded-l px-3 py-2 w-full text-sm">
-                    <button class="bg-teal text-white px-3 py-2 rounded-r font-bold">OK</button>
-                </div>
-            </div>
-        </div>
-        <div class="container mx-auto px-6 mt-12 pt-8 border-t border-white/5 text-center text-xs">
-            <p>&copy; 2025 MarineTech Studio. <span data-translate-key="footer_rights">Todos los derechos reservados.</span></p>
+            <p class="text-sm text-slate-600">© 2025 MarineTech Studio</p>
         </div>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script>
+        // --- AUTOMATIC TRANSLATION SYSTEM ---
+        // Default is English (Hardcoded in HTML). This dictionary applies only if Spanish is detected.
+        const translations = {
+            es: {
+                nav_port: "Portafolio", nav_blog: "Blog & Insights", nav_faq: "FAQ", nav_contact: "Contacto", nav_priv: "Privacidad",
+                hero_badge: "Agencia Digital Marítima",
+                hero_title1: "Estrategia Digital", hero_title2: "Para el Mar.",
+                hero_desc: "Ingeniería web y posicionamiento SEO diseñado exclusivamente para astilleros, charters y servicios navales globales.",
+                hero_cta1: "Consultoría Gratuita", hero_cta2: "Ver Portafolio Completo",
+                prob_title: "Navegando en la", prob_title_h: "Tormenta Digital", prob_desc: "Los desafíos más comunes que impiden el crecimiento de empresas marítimas.",
+                prob1_t: "Presencia Invisible", prob1_d: "Tu competencia aparece primero en Google cuando buscan \"reparación naval\" o \"charter\".",
+                prob2_t: "Web Obsoleta", prob2_d: "Sitios lentos y sin diseño móvil que no reflejan la calidad de ingeniería de tu flota.",
+                prob3_t: "Jerga Incorrecta", prob3_d: "Agencias generalistas que no distinguen entre un casco y una quilla. Nosotros sí.",
+                port_title: "Casos Destacados", port_desc: "Ingeniería digital en acción.",
+                cat_shipyard: "Astilleros", cat_charter: "Charter & Buceo", cat_industrial: "Industria Pesada",
+                btn_visit: "Visitar Sitio",
+                proj1_d: "Rediseño completo de la experiencia web para uno de los astilleros más prestigiosos.",
+                proj2_d: "Plataforma educativa y sistema de reservas para escuela de buceo comercial.",
+                proj3_d: "Sitio web corporativo enfocado en licitaciones y fabricación de estructuras marinas.",
+                rev_title: "Bitácora del Capitán", rev_desc: "Lo que dicen los líderes de la industria.",
+                rev1_t: "\"Entienden la diferencia técnica entre un casco de desplazamiento y uno de planeo. Resultado impecable.\"",
+                rev2_t: "\"Nuestras reservas de charter aumentaron un 40% con la nueva plataforma de booking.\"",
+                rev3_t: "\"Manejaron nuestro portafolio de fabricación pesada con la seriedad corporativa que merece.\"",
+                faq_t1: "Preguntas", faq_t2: "Frecuentes", faq_sub: "Resolvemos tus dudas sobre digitalización marítima.",
+                q1: "¿Por qué mi astillero no aparece en Google?", a1: "Generalmente se debe a falta de SEO técnico y local. Optimizamos tu sitio para palabras clave como \"reparación naval\", \"refit\" y términos específicos de tu puerto.",
+                q2: "¿Cuánto tarda un diseño web para una empresa marítima?", a2: "Un sitio corporativo de alto impacto toma entre 4 y 6 semanas. Incluimos fase de descubrimiento, diseño y desarrollo.",
+                q3: "¿Sirve una web para vender charters de lujo?", a3: "Absolutamente. Integramos sistemas de reserva y galerías inmersivas que aumentan la confianza del cliente. Nuestros clientes reportan un aumento del 40% en leads.",
+                q4: "¿Qué incluye la Consultoría Gratuita?", a4: "Evaluamos tu presencia actual, analizamos a tus competidores directos y te entregamos una hoja de ruta con 3 acciones inmediatas.",
+                contact_t1: "Hablemos de", contact_t2: "Tu Proyecto", contact_sub: "Agenda una consultoría gratuita de 15 minutos para evaluar tu situación.",
+                form_name: "Nombre", form_company: "Empresa", form_email: "Email Corporativo", form_msg: "Mensaje", form_btn: "Enviar Solicitud"
+            }
+        };
+
+        function detectAndApplyLanguage() {
+            // Detect browser language
+            const userLang = navigator.language || navigator.userLanguage; 
+            // If starts with 'es' (es-ES, es-MX, etc), switch to Spanish. Otherwise stay in English.
+            const langCode = userLang.startsWith('es') ? 'es' : 'en';
+            
+            if (langCode === 'es') {
+                document.querySelectorAll('[data-key]').forEach(el => {
+                    const key = el.getAttribute('data-key');
+                    if (translations.es[key]) {
+                        el.innerText = translations.es[key];
+                    }
+                });
+                document.documentElement.lang = 'es';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            detectAndApplyLanguage();
+            
+            // Neon Cursor Logic
+            const cursor = document.getElementById('cursor');
+            const hoverTriggers = document.querySelectorAll('.hover-trigger');
+            document.addEventListener('mousemove', (e) => { 
+                cursor.style.left = e.clientX + 'px'; 
+                cursor.style.top = e.clientY + 'px'; 
+            });
+            hoverTriggers.forEach(trigger => { 
+                trigger.addEventListener('mouseenter', () => cursor.classList.add('hovered')); 
+                trigger.addEventListener('mouseleave', () => cursor.classList.remove('hovered')); 
+            });
+            
+            // Reveal Animations
+            const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            
+            // Mobile Menu
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const closeMenu = document.getElementById('close-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+            function toggleMenu() { mobileMenu.classList.toggle('translate-x-full'); }
+            menuBtn.addEventListener('click', toggleMenu);
+            closeMenu.addEventListener('click', toggleMenu);
+            
+            // Navbar Scroll Effect
+            window.addEventListener('scroll', () => { const nav = document.getElementById('navbar'); window.scrollY > 50 ? nav.classList.add('py-2') : nav.classList.remove('py-2'); });
+        });
+    </script>
 </body>
 </html>

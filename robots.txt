@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap reference
+Sitemap: https://tech.frankmercado.com/sitemap.xml
+
+# Crawl-delay can be uncommented if you want to limit the crawl rate
+# Crawl-delay: 10
+
+# Disallow any admin or staging paths if present
+# Disallow: /admin/
+# Disallow: /staging/

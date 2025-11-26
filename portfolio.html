@@ -4,146 +4,218 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio | MarineTech Studio</title>
+    <meta name="description" content="Nuestros casos de éxito en diseño web y marketing para la industria marítima. Astilleros, charters y más.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚓</text></svg>">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] },
+                    colors: { navy: { 900: '#020c12', 800: '#051d29' }, teal: { 400: '#2dd4bf', 500: '#14b8a6' } },
+                    backgroundImage: { 'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2314b8a6' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E\")" }
+                }
+            }
+        }
+    </script>
     <style>
-        body { font-family: 'Outfit', sans-serif; color: #2C3E50; }
-        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
-        .bg-navy { background-color: #0A3A52; }
-        .text-teal { color: #1FA878; }
+        /* CURSOR FIX: Forzamos ocultar el cursor del sistema en TODO */
+        * { cursor: none !important; }
+        
+        body { background-color: #020c12; color: #e2e8f0; }
+        
+        .custom-cursor { width: 20px; height: 20px; border: 1px solid #00f0ff; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s; mix-blend-mode: difference; }
+        .custom-cursor.hovered { width: 50px; height: 50px; background-color: rgba(0, 240, 255, 0.2); border-color: transparent; }
+        
+        .glass-card { background: linear-gradient(145deg, rgba(10, 46, 64, 0.4) 0%, rgba(5, 29, 41, 0.6) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.03); transition: all 0.4s ease; }
+        .glass-card:hover { border-color: rgba(0, 240, 255, 0.3); transform: translateY(-5px); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body class="bg-slate-50">
+<body class="selection:bg-teal-500 selection:text-white">
 
-    <!-- Header Simple -->
-    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur shadow-sm py-4">
+    <div class="custom-cursor hidden md:block" id="cursor"></div>
+
+    <nav class="fixed w-full z-50 top-0 py-6 bg-navy-900/90 backdrop-blur-md border-b border-white/5">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-navy text-white flex items-center justify-center rounded-sm">
-                    <span class="font-bold text-xl font-serif">M</span>
-                </div>
-                <span class="font-bold text-navy text-lg font-serif">MarineTech</span>
+            <a href="index.html" class="flex items-center gap-2 group hover-trigger">
+                <div class="w-8 h-8 bg-gradient-to-br from-teal-400 to-blue-600 rounded flex items-center justify-center text-white font-display font-bold text-lg">M</div>
+                <span class="font-display font-bold text-lg text-white">Marine<span class="text-teal-400">Tech</span></span>
             </a>
-            <nav class="hidden md:flex items-center space-x-6">
-                <a href="index.html" data-translate-key="nav_home" class="text-sm font-medium hover:text-teal">Inicio</a>
-                <a href="faq.html" data-translate-key="nav_faq" class="text-sm font-medium hover:text-teal">FAQ</a>
-                <div class="flex items-center gap-2 border-l pl-4 border-slate-200">
-                    <button class="lang-toggle text-xs font-bold" data-lang="en">EN</button>
-                    <button class="lang-toggle text-xs font-bold" data-lang="es">ES</button>
-                </div>
-            </nav>
+            <a href="index.html" class="text-sm font-bold text-teal-400 hover:text-white transition hover-trigger">← Volver al Inicio</a>
         </div>
-    </header>
+    </nav>
 
     <main class="pt-32 pb-20">
         <div class="container mx-auto px-6">
-            <h1 data-translate-key="port_page_title" class="text-4xl md:text-5xl font-bold text-navy text-center mb-12 font-serif">Casos de Éxito</h1>
-            
-            <!-- Filtros -->
-            <div class="flex flex-wrap justify-center gap-4 mb-16">
-                <button class="filter-btn bg-navy text-white border-transparent px-6 py-2 rounded-full text-sm font-medium shadow-md transition" data-filter="all" data-translate-key="port_filter_all">Todos</button>
-                <button class="filter-btn bg-white text-navy border border-navy/20 hover:bg-slate-100 px-6 py-2 rounded-full text-sm font-medium shadow-sm transition" data-filter="shipyard" data-translate-key="port_filter_ship">Astilleros</button>
-                <button class="filter-btn bg-white text-navy border border-navy/20 hover:bg-slate-100 px-6 py-2 rounded-full text-sm font-medium shadow-sm transition" data-filter="charter" data-translate-key="port_filter_charter">Charters</button>
-                <button class="filter-btn bg-white text-navy border border-navy/20 hover:bg-slate-100 px-6 py-2 rounded-full text-sm font-medium shadow-sm transition" data-filter="repair" data-translate-key="port_filter_repair">Reparación</button>
+            <div class="text-center mb-16 reveal">
+                <h1 class="text-5xl md:text-7xl font-display font-bold mb-6">Nuestros <span class="text-teal-400">Casos</span></h1>
+                <p class="text-slate-400 text-lg max-w-2xl mx-auto">Explora cómo hemos transformado la presencia digital de líderes en la industria marítima.</p>
             </div>
 
-            <!-- Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Filtros -->
+            <div class="flex flex-wrap justify-center gap-4 mb-16 reveal">
+                <button class="filter-btn active px-6 py-2 rounded-full border border-teal-500 bg-teal-500 text-navy-900 font-bold hover-trigger" data-filter="all">Todos</button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-white/20 text-white hover:border-teal-400 hover:text-teal-400 transition hover-trigger" data-filter="shipyard">Astilleros</button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-white/20 text-white hover:border-teal-400 hover:text-teal-400 transition hover-trigger" data-filter="charter">Charters</button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-white/20 text-white hover:border-teal-400 hover:text-teal-400 transition hover-trigger" data-filter="industrial">Industrial</button>
+            </div>
+
+            <!-- Grid de Proyectos -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
                 
-                <!-- Willis (Shipyard) -->
-                <div class="project-item group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500" data-category="shipyard">
-                    <div class="relative overflow-hidden h-64">
-                        <img src="images/proyecto (3).png" alt="Willis" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
-                        <div class="absolute inset-0 bg-navy/20 group-hover:bg-transparent transition"></div>
+                <!-- Proyecto 1: Devlin -->
+                <a href="https://devlinboat.com/" target="_blank" class="project-card group glass-card rounded-2xl overflow-hidden reveal hover-trigger block" data-cat="shipyard">
+                    <div class="h-64 overflow-hidden relative">
+                         <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition z-10 flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 transition duration-300 bg-teal-500 text-navy-900 font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0">Visitar Sitio ↗</span>
+                         </div>
+                        <img src="images/proyecto (1).png" alt="Devlin Designing" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
                     </div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-teal uppercase mb-2 block">Shipyard</span>
-                        <h3 class="text-xl font-bold text-navy mb-2 font-serif">Willis Custom Yachts</h3>
-                        <p class="text-sm text-slate-600 mb-4">Web corporativa de lujo enfocada en ingeniería.</p>
-                        <a href="https://williscustomyachts.com/" target="_blank" class="text-navy font-bold text-sm border-b-2 border-teal pb-1" data-translate-key="view_site">Ver Sitio &rarr;</a>
+                    <div class="p-8">
+                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2 block">Astilleros</span>
+                        <h3 class="text-2xl font-display font-bold text-white mb-2">Devlin Designing</h3>
+                        <p class="text-slate-400 text-sm">Diseño de catálogo digital para constructores de barcos custom.</p>
                     </div>
-                </div>
+                </a>
 
-                <!-- TechDiving (Charter/Education) -->
-                <div class="project-item group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500" data-category="charter">
-                    <div class="relative overflow-hidden h-64">
-                        <img src="images/proyecto (2).png" alt="TechDiving" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
-                         <div class="absolute inset-0 bg-navy/20 group-hover:bg-transparent transition"></div>
+                <!-- Proyecto 2: TechDiving -->
+                <a href="https://institutodebuceocomercial.lat/" target="_blank" class="project-card group glass-card rounded-2xl overflow-hidden reveal hover-trigger block" data-cat="charter">
+                    <div class="h-64 overflow-hidden relative">
+                         <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition z-10 flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 transition duration-300 bg-teal-500 text-navy-900 font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0">Visitar Sitio ↗</span>
+                         </div>
+                        <img src="images/proyecto (2).png" alt="TechDiving" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
                     </div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-teal uppercase mb-2 block">Education & Services</span>
-                        <h3 class="text-xl font-bold text-navy mb-2 font-serif">TechDiving Institute</h3>
-                        <p class="text-sm text-slate-600 mb-4">Plataforma educativa y comercial para buzos.</p>
-                        <a href="https://institutodebuceocomercial.lat/" target="_blank" class="text-navy font-bold text-sm border-b-2 border-teal pb-1" data-translate-key="view_site">Ver Sitio &rarr;</a>
+                    <div class="p-8">
+                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2 block">Charter & Educación</span>
+                        <h3 class="text-2xl font-display font-bold text-white mb-2">TechDiving Institute</h3>
+                        <p class="text-slate-400 text-sm">Plataforma educativa y comercial para buceo profesional.</p>
                     </div>
-                </div>
+                </a>
 
-                <!-- Chesapeake (Shipyard) -->
-                <div class="project-item group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500" data-category="shipyard">
-                    <div class="relative overflow-hidden h-64">
-                        <img src="images/proyecto (4).png" alt="Chesapeake" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
-                         <div class="absolute inset-0 bg-navy/20 group-hover:bg-transparent transition"></div>
+                <!-- Proyecto 3: Willis -->
+                <a href="https://williscustomyachts.com/" target="_blank" class="project-card group glass-card rounded-2xl overflow-hidden reveal hover-trigger block" data-cat="shipyard">
+                    <div class="h-64 overflow-hidden relative">
+                         <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition z-10 flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 transition duration-300 bg-teal-500 text-navy-900 font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0">Visitar Sitio ↗</span>
+                         </div>
+                        <img src="images/proyecto (3).png" alt="Willis Custom Yachts" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
                     </div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-teal uppercase mb-2 block">Commercial Shipyard</span>
-                        <h3 class="text-xl font-bold text-navy mb-2 font-serif">Chesapeake Shipbuilding</h3>
-                        <p class="text-sm text-slate-600 mb-4">Portal corporativo de gran escala.</p>
-                        <a href="https://www.chesapeakeshipbuilding.com/" target="_blank" class="text-navy font-bold text-sm border-b-2 border-teal pb-1" data-translate-key="view_site">Ver Sitio &rarr;</a>
+                    <div class="p-8">
+                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2 block">Astilleros</span>
+                        <h3 class="text-2xl font-display font-bold text-white mb-2">Willis Custom Yachts</h3>
+                        <p class="text-slate-400 text-sm">Sitio web corporativo de alto rendimiento para yates de lujo.</p>
                     </div>
-                </div>
+                </a>
 
-                 <!-- Scarano (Repair/Build) -->
-                 <div class="project-item group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500" data-category="repair">
-                    <div class="relative overflow-hidden h-64">
-                        <img src="images/proyecto (6).png" alt="Scarano" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
-                         <div class="absolute inset-0 bg-navy/20 group-hover:bg-transparent transition"></div>
+                <!-- Proyecto 4: Chesapeake -->
+                <a href="https://www.chesapeakeshipbuilding.com/" target="_blank" class="project-card group glass-card rounded-2xl overflow-hidden reveal hover-trigger block" data-cat="industrial">
+                    <div class="h-64 overflow-hidden relative">
+                         <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition z-10 flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 transition duration-300 bg-teal-500 text-navy-900 font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0">Visitar Sitio ↗</span>
+                         </div>
+                        <img src="images/proyecto (4).png" alt="Chesapeake" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
                     </div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-teal uppercase mb-2 block">Custom Build</span>
-                        <h3 class="text-xl font-bold text-navy mb-2 font-serif">Scarano Boat Building</h3>
-                        <p class="text-sm text-slate-600 mb-4">Showcase de herencia y tradición naval.</p>
-                        <a href="https://www.scaranoboat.com/" target="_blank" class="text-navy font-bold text-sm border-b-2 border-teal pb-1" data-translate-key="view_site">Ver Sitio &rarr;</a>
+                    <div class="p-8">
+                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2 block">Industrial</span>
+                        <h3 class="text-2xl font-display font-bold text-white mb-2">Chesapeake Shipbuilding</h3>
+                        <p class="text-slate-400 text-sm">Portal corporativo para construcción naval comercial.</p>
                     </div>
-                </div>
+                </a>
 
-                <!-- TBailey (Repair) -->
-                <div class="project-item group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500" data-category="repair">
-                    <div class="relative overflow-hidden h-64">
-                        <img src="images/proyecto (7).png" alt="TBailey" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
-                         <div class="absolute inset-0 bg-navy/20 group-hover:bg-transparent transition"></div>
+                <!-- Proyecto 5: Genoa -->
+                <a href="#" class="project-card group glass-card rounded-2xl overflow-hidden reveal hover-trigger block" data-cat="industrial">
+                    <div class="h-64 overflow-hidden relative">
+                         <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition z-10 flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 transition duration-300 bg-teal-500 text-navy-900 font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0">Visitar Sitio ↗</span>
+                         </div>
+                        <img src="images/proyecto (5).png" alt="Genoa Design" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
                     </div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-teal uppercase mb-2 block">Heavy Fabrication</span>
-                        <h3 class="text-xl font-bold text-navy mb-2 font-serif">TBailey LLC</h3>
-                        <p class="text-sm text-slate-600 mb-4">Web industrial para fabricación pesada.</p>
-                        <a href="https://tbailey.com/" target="_blank" class="text-navy font-bold text-sm border-b-2 border-teal pb-1" data-translate-key="view_site">Ver Sitio &rarr;</a>
+                    <div class="p-8">
+                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2 block">Diseño & Ingeniería</span>
+                        <h3 class="text-2xl font-display font-bold text-white mb-2">Genoa Design</h3>
+                        <p class="text-slate-400 text-sm">Showcase de servicios de diseño de producción 3D.</p>
                     </div>
-                </div>
+                </a>
 
-                 <!-- Devlin (Shipyard) -->
-                 <div class="project-item group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500" data-category="shipyard">
-                    <div class="relative overflow-hidden h-64">
-                        <img src="images/proyecto (1).png" alt="Devlin" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
-                         <div class="absolute inset-0 bg-navy/20 group-hover:bg-transparent transition"></div>
+                <!-- Proyecto 6: Scarano -->
+                <a href="https://www.scaranoboat.com/" target="_blank" class="project-card group glass-card rounded-2xl overflow-hidden reveal hover-trigger block" data-cat="shipyard">
+                    <div class="h-64 overflow-hidden relative">
+                         <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition z-10 flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 transition duration-300 bg-teal-500 text-navy-900 font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0">Visitar Sitio ↗</span>
+                         </div>
+                        <img src="images/proyecto (6).png" alt="Scarano Boat" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
                     </div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-teal uppercase mb-2 block">Design & Build</span>
-                        <h3 class="text-xl font-bold text-navy mb-2 font-serif">Devlin Designing</h3>
-                        <p class="text-sm text-slate-600 mb-4">Catálogo digital de planos y tienda.</p>
-                        <a href="https://devlinboat.com/" target="_blank" class="text-navy font-bold text-sm border-b-2 border-teal pb-1" data-translate-key="view_site">Ver Sitio &rarr;</a>
+                    <div class="p-8">
+                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2 block">Astilleros</span>
+                        <h3 class="text-2xl font-display font-bold text-white mb-2">Scarano Boat Building</h3>
+                        <p class="text-slate-400 text-sm">Sitio web enfocado en la herencia y tradición naval.</p>
                     </div>
-                </div>
+                </a>
+
+                <!-- Proyecto 7: TBailey -->
+                <a href="https://tbailey.com/" target="_blank" class="project-card group glass-card rounded-2xl overflow-hidden reveal hover-trigger block" data-cat="industrial">
+                    <div class="h-64 overflow-hidden relative">
+                         <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition z-10 flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 transition duration-300 bg-teal-500 text-navy-900 font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0">Visitar Sitio ↗</span>
+                         </div>
+                        <img src="images/proyecto (7).png" alt="TBailey" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="p-8">
+                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2 block">Fabricación Pesada</span>
+                        <h3 class="text-2xl font-display font-bold text-white mb-2">TBailey LLC</h3>
+                        <p class="text-slate-400 text-sm">Web industrial para fabricación de estructuras marinas.</p>
+                    </div>
+                </a>
             </div>
         </div>
     </main>
 
-    <footer class="bg-navy text-slate-400 py-8 text-center text-sm">
-        <p>&copy; 2025 MarineTech Studio.</p>
+    <footer class="border-t border-white/10 py-12 bg-navy-900 text-center text-slate-600 text-sm">
+        <p>© 2025 MarineTech Studio. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script>
+        // Lógica de Filtros
+        const buttons = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.project-card');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Estilos de botones
+                buttons.forEach(b => {
+                    b.classList.remove('bg-teal-500', 'text-navy-900', 'font-bold');
+                    b.classList.add('text-white', 'border-white/20');
+                });
+                btn.classList.add('bg-teal-500', 'text-navy-900', 'font-bold');
+                btn.classList.remove('text-white', 'border-white/20');
+
+                // Filtrado
+                const filter = btn.dataset.filter;
+                cards.forEach(card => {
+                    if (filter === 'all' || card.dataset.cat === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => card.style.opacity = '1', 50);
+                    } else {
+                        card.style.opacity = '0';
+                        setTimeout(() => card.style.display = 'none', 300);
+                    }
+                });
+            });
+        });
+
+        // Animaciones y Cursor
+        const cursor = document.getElementById('cursor');
+        const hoverTriggers = document.querySelectorAll('.hover-trigger');
+        document.addEventListener('mousemove', (e) => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
+        hoverTriggers.forEach(trigger => { trigger.addEventListener('mouseenter', () => cursor.classList.add('hovered')); trigger.addEventListener('mouseleave', () => cursor.classList.remove('hovered')); });
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
