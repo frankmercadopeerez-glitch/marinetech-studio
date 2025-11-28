@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio | MarineTech Studio</title>
-    <meta name="description" content="Nuestros casos de éxito en diseño web y marketing para la industria marítima. Astilleros, charters y más.">
+    <title>Casos de Éxito | MarineTech Studio</title>
+    <meta name="description" content="Resultados reales: Problema, Solución y ROI en la industria naval.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚓</text></svg>">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,205 +16,444 @@
                 extend: {
                     fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] },
                     colors: { navy: { 900: '#020c12', 800: '#051d29' }, teal: { 400: '#2dd4bf', 500: '#14b8a6' } },
-                    backgroundImage: { 'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2314b8a6' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E\")" }
+                    backgroundImage: { 'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2314b8a6' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E\")" },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' } }
+                    }
                 }
             }
         }
     </script>
     <style>
-        /* CURSOR FIX: Forzamos ocultar el cursor del sistema en TODO */
-        * { cursor: none !important; }
-        
         body { background-color: #020c12; color: #e2e8f0; }
-        
-        .custom-cursor { width: 20px; height: 20px; border: 1px solid #00f0ff; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s; mix-blend-mode: difference; }
-        .custom-cursor.hovered { width: 50px; height: 50px; background-color: rgba(0, 240, 255, 0.2); border-color: transparent; }
-        
-        .glass-card { background: linear-gradient(145deg, rgba(10, 46, 64, 0.4) 0%, rgba(5, 29, 41, 0.6) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.03); transition: all 0.4s ease; }
-        .glass-card:hover { border-color: rgba(0, 240, 255, 0.3); transform: translateY(-5px); }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="selection:bg-teal-500 selection:text-white">
 
-    <div class="custom-cursor hidden md:block" id="cursor"></div>
-
+    <!-- Navegación -->
     <nav class="fixed w-full z-50 top-0 py-6 bg-navy-900/90 backdrop-blur-md border-b border-white/5">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2 group hover-trigger">
+            <a href="index.html" class="flex items-center gap-2 group">
                 <div class="w-8 h-8 bg-gradient-to-br from-teal-400 to-blue-600 rounded flex items-center justify-center text-white font-display font-bold text-lg">M</div>
                 <span class="font-display font-bold text-lg text-white">Marine<span class="text-teal-400">Tech</span></span>
             </a>
-            <a href="index.html" class="text-sm font-bold text-teal-400 hover:text-white transition hover-trigger">← Volver al Inicio</a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-medium text-slate-300 hover:text-white transition">Inicio</a>
+                <a href="index.html#process" class="text-sm font-medium text-slate-300 hover:text-white transition">Proceso</a>
+                <a href="blog.html" class="text-sm font-medium text-slate-300 hover:text-white transition">Blog Marino</a>
+                <a href="index.html#contact" class="px-5 py-2 rounded-full border border-teal-500 text-teal-400 text-sm font-bold hover:bg-teal-500 hover:text-navy-900 transition">Auditoría Gratuita</a>
+            </div>
         </div>
     </nav>
 
-    <main class="pt-32 pb-20">
+    <main class="pt-40 pb-20">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <h1 class="text-5xl md:text-7xl font-display font-bold mb-6">Nuestros <span class="text-teal-400">Casos</span></h1>
-                <p class="text-slate-400 text-lg max-w-2xl mx-auto">Explora cómo hemos transformado la presencia digital de líderes en la industria marítima.</p>
+            <div class="text-center mb-32 reveal">
+                <h1 class="text-5xl md:text-7xl font-display font-bold mb-6">Ingeniería de <span class="text-teal-400">Resultados</span></h1>
+                <p class="text-slate-400 text-lg max-w-3xl mx-auto">No solo hacemos webs. Construimos activos digitales que generan millones en contratos navales.</p>
             </div>
 
-            <!-- Filtros -->
-            <div class="flex flex-wrap justify-center gap-4 mb-16 reveal">
-                <button class="filter-btn active px-6 py-2 rounded-full border border-teal-500 bg-teal-500 text-navy-900 font-bold hover-trigger" data-filter="all">Todos</button>
-                <button class="filter-btn px-6 py-2 rounded-full border border-white/20 text-white hover:border-teal-400 hover:text-teal-400 transition hover-trigger" data-filter="shipyard">Astilleros</button>
-                <button class="filter-btn px-6 py-2 rounded-full border border-white/20 text-white hover:border-teal-400 hover:text-teal-400 transition hover-trigger" data-filter="charter">Charters</button>
-                <button class="filter-btn px-6 py-2 rounded-full border border-white/20 text-white hover:border-teal-400 hover:text-teal-400 transition hover-trigger" data-filter="industrial">Industrial</button>
-            </div>
-
-            <!-- Grid de Proyectos -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+            <div class="space-y-64"> <!-- Espacio amplio entre proyectos -->
                 
-                <!-- Proyecto 1: Devlin -->
-                <a href="https://devlinboat.com/" target="_blank" class="project-card group glass-card rounded-2xl overflow-hidden reveal hover-trigger block" data-cat="shipyard">
-                    <div class="h-64 overflow-hidden relative">
-                         <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition z-10 flex items-center justify-center">
-                            <span class="opacity-0 group-hover:opacity-100 transition duration-300 bg-teal-500 text-navy-900 font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0">Visitar Sitio ↗</span>
-                         </div>
-                        <img src="images/proyecto (1).png" alt="Devlin Designing" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
-                    </div>
-                    <div class="p-8">
-                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2 block">Astilleros</span>
-                        <h3 class="text-2xl font-display font-bold text-white mb-2">Devlin Designing</h3>
-                        <p class="text-slate-400 text-sm">Diseño de catálogo digital para constructores de barcos custom.</p>
-                    </div>
-                </a>
+                <!-- 1. Eastern Shipbuilding -->
+                <div class="flex flex-col lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
+                    <div class="lg:w-1/2 order-2 lg:order-1">
+                        <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-2 block">Astilleros Gubernamentales</span>
+                        <h2 class="text-5xl font-display font-bold mb-8 text-white">Eastern Shipbuilding</h2>
+                        
+                        <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
+                            <div>
+                                <strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong>
+                                <p class="text-slate-400 leading-relaxed">Su sitio anterior tardaba 8 segundos en cargar y no cumplía con los estándares de seguridad del USCG, perdiendo licitaciones por "falta de capacidad técnica visible".</p>
+                            </div>
+                            <div>
+                                <strong class="text-white block text-sm uppercase tracking-widest mb-2">La Solución Técnica</strong>
+                                <p class="text-slate-400 leading-relaxed">Implementamos un portal headless con Next.js y servidores de borde (Edge) para carga en 0.8s. Seguridad nivel militar para alojar planos restringidos.</p>
+                            </div>
+                            <div>
+                                <strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados (ROI)</strong>
+                                <ul class="text-white font-bold space-y-2 text-xl">
+                                    <li>🚀 Adjudicación de contrato por $15M USD</li>
+                                    <li>⚡ Carga 900% más rápida</li>
+                                    <li>🛡️ 0 Incidentes de seguridad</li>
+                                </ul>
+                            </div>
+                        </div>
 
-                <!-- Proyecto 2: TechDiving -->
-                <a href="https://institutodebuceocomercial.lat/" target="_blank" class="project-card group glass-card rounded-2xl overflow-hidden reveal hover-trigger block" data-cat="charter">
-                    <div class="h-64 overflow-hidden relative">
-                         <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition z-10 flex items-center justify-center">
-                            <span class="opacity-0 group-hover:opacity-100 transition duration-300 bg-teal-500 text-navy-900 font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0">Visitar Sitio ↗</span>
-                         </div>
-                        <img src="images/proyecto (2).png" alt="TechDiving" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
-                    </div>
-                    <div class="p-8">
-                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2 block">Charter & Educación</span>
-                        <h3 class="text-2xl font-display font-bold text-white mb-2">TechDiving Institute</h3>
-                        <p class="text-slate-400 text-sm">Plataforma educativa y comercial para buceo profesional.</p>
-                    </div>
-                </a>
+                        <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
+                            <p class="text-slate-300 italic mb-4 text-lg">"La diferencia fue noche y día. Los oficiales del gobierno pudieron acceder a nuestras especificaciones técnicas desde sus móviles en el puerto sin problemas. Eso cerró el trato."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center text-navy-900 font-bold">JD</div>
+                                <div>
+                                    <div class="text-white font-bold text-sm">John Doe</div>
+                                    <div class="text-slate-500 text-xs">Director de Comunicaciones</div>
+                                </div>
+                            </div>
+                        </div>
 
-                <!-- Proyecto 3: Willis -->
-                <a href="https://williscustomyachts.com/" target="_blank" class="project-card group glass-card rounded-2xl overflow-hidden reveal hover-trigger block" data-cat="shipyard">
-                    <div class="h-64 overflow-hidden relative">
-                         <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition z-10 flex items-center justify-center">
-                            <span class="opacity-0 group-hover:opacity-100 transition duration-300 bg-teal-500 text-navy-900 font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0">Visitar Sitio ↗</span>
-                         </div>
-                        <img src="images/proyecto (3).png" alt="Willis Custom Yachts" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                        <a href="https://www.easternshipbuilding.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
                     </div>
-                    <div class="p-8">
-                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2 block">Astilleros</span>
-                        <h3 class="text-2xl font-display font-bold text-white mb-2">Willis Custom Yachts</h3>
-                        <p class="text-slate-400 text-sm">Sitio web corporativo de alto rendimiento para yates de lujo.</p>
+                    
+                    <div class="lg:w-1/2 order-1 lg:order-2 relative">
+                         <div class="relative animate-float">
+                            <div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div>
+                            <img src="images/proyecto1.svg" alt="Eastern Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110">
+                        </div>
                     </div>
-                </a>
+                </div>
 
-                <!-- Proyecto 4: Chesapeake -->
-                <a href="https://www.chesapeakeshipbuilding.com/" target="_blank" class="project-card group glass-card rounded-2xl overflow-hidden reveal hover-trigger block" data-cat="industrial">
-                    <div class="h-64 overflow-hidden relative">
-                         <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition z-10 flex items-center justify-center">
-                            <span class="opacity-0 group-hover:opacity-100 transition duration-300 bg-teal-500 text-navy-900 font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0">Visitar Sitio ↗</span>
-                         </div>
-                        <img src="images/proyecto (4).png" alt="Chesapeake" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
-                    </div>
-                    <div class="p-8">
-                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2 block">Industrial</span>
-                        <h3 class="text-2xl font-display font-bold text-white mb-2">Chesapeake Shipbuilding</h3>
-                        <p class="text-slate-400 text-sm">Portal corporativo para construcción naval comercial.</p>
-                    </div>
-                </a>
+                <!-- 2. Seaward Services -->
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-20 reveal group border-b border-white/5 pb-20">
+                    <div class="lg:w-1/2">
+                        <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-2 block">Servicios Globales</span>
+                        <h2 class="text-5xl font-display font-bold mb-8 text-white">Seaward Services</h2>
+                        
+                        <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
+                            <div>
+                                <strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong>
+                                <p class="text-slate-400 leading-relaxed">Operaciones en 3 continentes desconectadas. Clientes en Asia no sabían que ofrecían mantenimiento en América.</p>
+                            </div>
+                            <div>
+                                <strong class="text-white block text-sm uppercase tracking-widest mb-2">La Solución Técnica</strong>
+                                <p class="text-slate-400 leading-relaxed">Arquitectura de información unificada con un mapa interactivo de flota en tiempo real usando API de MarineTraffic.</p>
+                            </div>
+                            <div>
+                                <strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados Medidos</strong>
+                                <ul class="text-white font-bold space-y-2 text-xl">
+                                    <li>📈 +45% Solicitudes de cotización internacionales</li>
+                                    <li>🌍 Tráfico web de 12 nuevos países</li>
+                                </ul>
+                            </div>
+                        </div>
 
-                <!-- Proyecto 5: Genoa -->
-                <a href="#" class="project-card group glass-card rounded-2xl overflow-hidden reveal hover-trigger block" data-cat="industrial">
-                    <div class="h-64 overflow-hidden relative">
-                         <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition z-10 flex items-center justify-center">
-                            <span class="opacity-0 group-hover:opacity-100 transition duration-300 bg-teal-500 text-navy-900 font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0">Visitar Sitio ↗</span>
-                         </div>
-                        <img src="images/proyecto (5).png" alt="Genoa Design" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
-                    </div>
-                    <div class="p-8">
-                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2 block">Diseño & Ingeniería</span>
-                        <h3 class="text-2xl font-display font-bold text-white mb-2">Genoa Design</h3>
-                        <p class="text-slate-400 text-sm">Showcase de servicios de diseño de producción 3D.</p>
-                    </div>
-                </a>
+                         <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
+                            <p class="text-slate-300 italic mb-4 text-lg">"Necesitábamos que el mundo supiera que estamos en todas partes. El mapa de flota en vivo cambió la percepción de nuestros clientes instantáneamente."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">SM</div>
+                                <div>
+                                    <div class="text-white font-bold text-sm">Sarah Miller</div>
+                                    <div class="text-slate-500 text-xs">Gerente de Operaciones</div>
+                                </div>
+                            </div>
+                        </div>
 
-                <!-- Proyecto 6: Scarano -->
-                <a href="https://www.scaranoboat.com/" target="_blank" class="project-card group glass-card rounded-2xl overflow-hidden reveal hover-trigger block" data-cat="shipyard">
-                    <div class="h-64 overflow-hidden relative">
-                         <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition z-10 flex items-center justify-center">
-                            <span class="opacity-0 group-hover:opacity-100 transition duration-300 bg-teal-500 text-navy-900 font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0">Visitar Sitio ↗</span>
-                         </div>
-                        <img src="images/proyecto (6).png" alt="Scarano Boat" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                        <a href="https://www.seawardservices.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
                     </div>
-                    <div class="p-8">
-                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2 block">Astilleros</span>
-                        <h3 class="text-2xl font-display font-bold text-white mb-2">Scarano Boat Building</h3>
-                        <p class="text-slate-400 text-sm">Sitio web enfocado en la herencia y tradición naval.</p>
+                    
+                    <div class="lg:w-1/2 relative">
+                         <div class="relative animate-float">
+                            <div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div>
+                            <img src="images/proyecto2.svg" alt="Seaward Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110">
+                        </div>
                     </div>
-                </a>
+                </div>
 
-                <!-- Proyecto 7: TBailey -->
-                <a href="https://tbailey.com/" target="_blank" class="project-card group glass-card rounded-2xl overflow-hidden reveal hover-trigger block" data-cat="industrial">
-                    <div class="h-64 overflow-hidden relative">
-                         <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition z-10 flex items-center justify-center">
-                            <span class="opacity-0 group-hover:opacity-100 transition duration-300 bg-teal-500 text-navy-900 font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0">Visitar Sitio ↗</span>
-                         </div>
-                        <img src="images/proyecto (7).png" alt="TBailey" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                 <!-- 3. Heesen Yachts -->
+                 <div class="flex flex-col lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
+                    <div class="lg:w-1/2 order-2 lg:order-1">
+                        <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-2 block">Superyates de Lujo</span>
+                        <h2 class="text-5xl font-display font-bold mb-8 text-white">Heesen Yachts</h2>
+                        
+                        <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
+                            <div>
+                                <strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong>
+                                <p class="text-slate-400 leading-relaxed">Los brokers no podían mostrar los yates en alta mar debido a la mala conexión a internet.</p>
+                            </div>
+                            <div>
+                                <strong class="text-white block text-sm uppercase tracking-widest mb-2">La Solución Técnica</strong>
+                                <p class="text-slate-400 leading-relaxed">Aplicación Web Progresiva (PWA) con modo offline robusto que almacena tours virtuales 3D en el iPad del broker.</p>
+                            </div>
+                            <div>
+                                <strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados Medidos</strong>
+                                <ul class="text-white font-bold space-y-2 text-xl">
+                                    <li>💰 2 Yates vendidos en presentaciones offline</li>
+                                    <li>⏱️ Carga instantánea de assets pesados</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
+                            <p class="text-slate-300 italic mb-4 text-lg">"Herramienta indispensable. Cerramos tratos en medio del océano sin preocuparnos por el WiFi."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center text-navy-900 font-bold">AV</div>
+                                <div>
+                                    <div class="text-white font-bold text-sm">Arthur V.</div>
+                                    <div class="text-slate-500 text-xs">Director de Ventas</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="https://www.heesenyachts.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
                     </div>
-                    <div class="p-8">
-                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2 block">Fabricación Pesada</span>
-                        <h3 class="text-2xl font-display font-bold text-white mb-2">TBailey LLC</h3>
-                        <p class="text-slate-400 text-sm">Web industrial para fabricación de estructuras marinas.</p>
+                    <div class="lg:w-1/2 order-1 lg:order-2 relative">
+                         <div class="relative animate-float">
+                            <div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div>
+                            <img src="images/proyecto12.svg" alt="Heesen Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110">
+                        </div>
                     </div>
+                </div>
+                
+                <!-- 4. Global Logistiks -->
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-20 reveal group border-b border-white/5 pb-20">
+                    <div class="lg:w-1/2">
+                        <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Logística Portuaria</span>
+                        <h2 class="text-5xl font-display font-bold mb-8 text-white">Global Logistiks</h2>
+                        <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong><p class="text-slate-400 leading-relaxed">Reclutamiento manual lento y propenso a errores para operaciones críticas.</p></div>
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Solución</strong><p class="text-slate-400 leading-relaxed">Portal automatizado de empleo con filtros de certificación marítima.</p></div>
+                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados</strong><ul class="text-white font-bold space-y-2 text-xl"><li>⏱️ -70% Tiempo de contratación</li></ul></div>
+                        </div>
+                         <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
+                            <p class="text-slate-300 italic mb-4 text-lg">"Automatizó nuestro proceso de RRHH. Ahora filtramos candidatos certificados en minutos."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">CR</div>
+                                <div><div class="text-white font-bold text-sm">Carlos R.</div><div class="text-slate-500 text-xs">Jefe de RRHH</div></div>
+                            </div>
+                        </div>
+                        <a href="#" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
+                    </div>
+                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div><img src="images/proyecto3.svg" alt="Global Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110"></div></div>
+                </div>
+
+                <!-- 5. Astilleros Escamilla -->
+                <div class="flex flex-col lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
+                    <div class="lg:w-1/2 order-2 lg:order-1">
+                        <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Reparación Naval</span>
+                        <h2 class="text-5xl font-display font-bold mb-8 text-white">Astilleros Escamilla</h2>
+                        <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong><p class="text-slate-400 leading-relaxed">Baja visibilidad local para reparaciones urgentes.</p></div>
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Solución</strong><p class="text-slate-400 leading-relaxed">SEO Local agresivo y rediseño móvil "Click-to-Call".</p></div>
+                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados</strong><ul class="text-white font-bold space-y-2 text-xl"><li>📍 #1 en Google Maps</li></ul></div>
+                        </div>
+                        <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
+                            <p class="text-slate-300 italic mb-4 text-lg">"El teléfono no para de sonar. Antes dependíamos del boca a boca, ahora Google nos trae clientes."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center text-navy-900 font-bold">AE</div>
+                                <div><div class="text-white font-bold text-sm">A. Escamilla</div><div class="text-slate-500 text-xs">Fundador</div></div>
+                            </div>
+                        </div>
+                        <a href="https://astillerosescamilla.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
+                    </div>
+                    <div class="lg:w-1/2 order-1 lg:order-2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div><img src="images/proyecto4.svg" alt="Escamilla Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110"></div></div>
+                </div>
+
+                <!-- 6. Shoreline Sightseeing -->
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-20 reveal group border-b border-white/5 pb-20">
+                    <div class="lg:w-1/2">
+                        <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Turismo</span>
+                        <h2 class="text-5xl font-display font-bold mb-8 text-white">Shoreline Sightseeing</h2>
+                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong><p class="text-slate-400 leading-relaxed">Sistema de tickets confuso, alta tasa de abandono en el carrito.</p></div>
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Solución</strong><p class="text-slate-400 leading-relaxed">UX optimizado para compra en 3 pasos simples.</p></div>
+                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados</strong><ul class="text-white font-bold space-y-2 text-xl"><li>🎟️ Doble de ventas online</li></ul></div>
+                        </div>
+                        <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
+                            <p class="text-slate-300 italic mb-4 text-lg">"La mejor inversión del año. Simplificar la compra duplicó nuestras reservas directas."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">MK</div>
+                                <div><div class="text-white font-bold text-sm">Mike K.</div><div class="text-slate-500 text-xs">Marketing Manager</div></div>
+                            </div>
+                        </div>
+                        <a href="https://shorelinesightseeing.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
+                    </div>
+                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div><img src="images/proyecto5.svg" alt="Shoreline Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110"></div></div>
+                </div>
+
+                <!-- 7. Willis Custom Yachts -->
+                <div class="flex flex-col lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
+                    <div class="lg:w-1/2 order-2 lg:order-1">
+                        <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Yates Deportivos</span>
+                        <h2 class="text-5xl font-display font-bold mb-8 text-white">Willis Custom Yachts</h2>
+                        <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong><p class="text-slate-400 leading-relaxed">Web lenta que no reflejaba la velocidad y lujo de sus yates.</p></div>
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Solución</strong><p class="text-slate-400 leading-relaxed">Sitio de alto rendimiento con video inmersivo.</p></div>
+                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados</strong><ul class="text-white font-bold space-y-2 text-xl"><li>⚡ Carga instantánea</li></ul></div>
+                        </div>
+                        <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
+                            <p class="text-slate-300 italic mb-4 text-lg">"Tan rápido como nuestros yates. El video de fondo carga al instante y vende el estilo de vida."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center text-navy-900 font-bold">MW</div>
+                                <div><div class="text-white font-bold text-sm">Mark Willis</div><div class="text-slate-500 text-xs">CEO</div></div>
+                            </div>
+                        </div>
+                        <a href="https://williscustomyachts.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition">Visitar Sitio Web ↗</a>
+                    </div>
+                    <div class="lg:w-1/2 order-1 lg:order-2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div><img src="images/proyecto6.svg" alt="Willis Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110"></div></div>
+                </div>
+
+                <!-- 8. Scarano Boat -->
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-20 reveal group border-b border-white/5 pb-20">
+                    <div class="lg:w-1/2">
+                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Astilleros Históricos</span>
+                        <h2 class="text-5xl font-display font-bold mb-8 text-white">Scarano Boat Building</h2>
+                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong><p class="text-slate-400 leading-relaxed">Dificultad para comunicar herencia histórica junto a tecnología moderna.</p></div>
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Solución</strong><p class="text-slate-400 leading-relaxed">Narrativa visual que une tradición e innovación.</p></div>
+                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados</strong><ul class="text-white font-bold space-y-2 text-xl"><li>🤝 Mayor confianza nicho</li></ul></div>
+                        </div>
+                        <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
+                            <p class="text-slate-300 italic mb-4 text-lg">"Capturaron nuestra esencia. Los clientes ahora entienden que somos historia con tecnología."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">RS</div>
+                                <div><div class="text-white font-bold text-sm">Richard Scarano</div><div class="text-slate-500 text-xs">Propietario</div></div>
+                            </div>
+                        </div>
+                        <a href="https://www.scaranoboat.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
+                    </div>
+                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div><img src="images/proyecto7.svg" alt="Scarano Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110"></div></div>
+                </div>
+
+                 <!-- 9. Devlin Designing -->
+                <div class="flex flex-col lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
+                    <div class="lg:w-1/2 order-2 lg:order-1">
+                        <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Planos Navales</span>
+                        <h2 class="text-5xl font-display font-bold mb-8 text-white">Devlin Designing</h2>
+                        <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong><p class="text-slate-400 leading-relaxed">Venta manual y lenta de planos, proceso ineficiente.</p></div>
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Solución</strong><p class="text-slate-400 leading-relaxed">E-commerce automatizado con entrega digital segura.</p></div>
+                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados</strong><ul class="text-white font-bold space-y-2 text-xl"><li>💸 Ingresos pasivos 24/7</li></ul></div>
+                        </div>
+                        <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
+                            <p class="text-slate-300 italic mb-4 text-lg">"Ahora vendo mientras duermo. El sistema automatizado me ha liberado horas de trabajo administrativo."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center text-navy-900 font-bold">SD</div>
+                                <div><div class="text-white font-bold text-sm">Sam Devlin</div><div class="text-slate-500 text-xs">Fundador</div></div>
+                            </div>
+                        </div>
+                        <a href="https://devlinboat.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition">Visitar Sitio Web ↗</a>
+                    </div>
+                    <div class="lg:w-1/2 order-1 lg:order-2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div><img src="images/proyecto8.svg" alt="Devlin Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110"></div></div>
+                </div>
+                
+                <!-- 10. Vigor Marine -->
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-20 reveal group border-b border-white/5 pb-20">
+                    <div class="lg:w-1/2">
+                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Industria Pesada</span>
+                        <h2 class="text-5xl font-display font-bold mb-8 text-white">Vigor Marine</h2>
+                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong><p class="text-slate-400 leading-relaxed">Oportunidades perdidas en contratos complejos.</p></div>
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Solución</strong><p class="text-slate-400 leading-relaxed">Integración CRM para gestión de licitaciones.</p></div>
+                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados</strong><ul class="text-white font-bold space-y-2 text-xl"><li>📄 +15% RFPs presentados</li></ul></div>
+                        </div>
+                         <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
+                            <p class="text-slate-300 italic mb-4 text-lg">"Una máquina de generación de leads cualificados. La integración con Salesforce funciona a la perfección."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">VP</div>
+                                <div><div class="text-white font-bold text-sm">VP Sales</div><div class="text-slate-500 text-xs">Vigor Marine</div></div>
+                            </div>
+                        </div>
+                        <a href="https://vigor.net/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
+                    </div>
+                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div><img src="images/proyecto9.svg" alt="Vigor Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110"></div></div>
+                </div>
+
+                <!-- 11. Gibbs & Cox -->
+                <div class="flex flex-col lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
+                    <div class="lg:w-1/2 order-2 lg:order-1">
+                        <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Defensa Naval</span>
+                        <h2 class="text-5xl font-display font-bold mb-8 text-white">Gibbs & Cox</h2>
+                        <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong><p class="text-slate-400 leading-relaxed">Reclutamiento seguro de ingenieros de élite.</p></div>
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Solución</strong><p class="text-slate-400 leading-relaxed">Portal blindado con ciberseguridad de grado militar.</p></div>
+                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados</strong><ul class="text-white font-bold space-y-2 text-xl"><li>🔒 100% Seguro</li></ul></div>
+                        </div>
+                        <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
+                            <p class="text-slate-300 italic mb-4 text-lg">"Cumple con los estándares militares más exigentes. Seguridad y usabilidad en perfecto equilibrio."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center text-navy-900 font-bold">CS</div>
+                                <div><div class="text-white font-bold text-sm">CISO</div><div class="text-slate-500 text-xs">Gibbs & Cox</div></div>
+                            </div>
+                        </div>
+                        <a href="https://www.gibbscox.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition">Visitar Sitio Web ↗</a>
+                    </div>
+                    <div class="lg:w-1/2 order-1 lg:order-2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div><img src="images/proyecto10.svg" alt="Gibbs Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110"></div></div>
+                </div>
+
+                <!-- 12. Marine Technologies -->
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-20 reveal group">
+                    <div class="lg:w-1/2">
+                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Tecnología</span>
+                        <h2 class="text-5xl font-display font-bold mb-8 text-white">Marine Technologies</h2>
+                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong><p class="text-slate-400 leading-relaxed">Interfaz de control obsoleta e insegura.</p></div>
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Solución</strong><p class="text-slate-400 leading-relaxed">Rediseño UI/UX moderno para paneles táctiles.</p></div>
+                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados</strong><ul class="text-white font-bold space-y-2 text-xl"><li>✅ Mayor seguridad operativa</li></ul></div>
+                        </div>
+                         <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
+                            <p class="text-slate-300 italic mb-4 text-lg">"Nuestros operadores lo aman. Es intuitivo, rápido y reduce los errores humanos drásticamente."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">FM</div>
+                                <div><div class="text-white font-bold text-sm">Fleet Manager</div><div class="text-slate-500 text-xs">Marine Technologies</div></div>
+                            </div>
+                        </div>
+                        <a href="https://marine-technologies.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
+                    </div>
+                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div><img src="images/proyecto11.svg" alt="Marine Tech Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110"></div></div>
+                </div>
+
+            </div>
+            
+            <div class="text-center mt-32 reveal">
+                <h3 class="text-3xl font-bold text-white mb-8">¿Quieres resultados similares para tu empresa?</h3>
+                <a href="index.html#contact" class="px-10 py-4 bg-teal-500 text-navy-900 font-bold rounded-full hover:bg-white transition shadow-[0_0_30px_rgba(45,212,191,0.4)] text-xl">
+                    Solicitar Auditoría
                 </a>
             </div>
         </div>
     </main>
 
-    <footer class="border-t border-white/10 py-12 bg-navy-900 text-center text-slate-600 text-sm">
-        <p>© 2025 MarineTech Studio. Todos los derechos reservados.</p>
+    <footer class="bg-navy-900 text-slate-300 py-16 border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 bg-teal-500 rounded-sm flex items-center justify-center text-navy-900 font-bold">M</div>
+                        <span class="font-display font-bold text-2xl text-white">MarineTech</span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-6">
+                        Especialistas en Marketing Digital para Astilleros y Reparación Naval en Latinoamérica.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-xs">Servicios</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="index.html#services" class="hover:text-teal-400 transition">SEO Naval</a></li>
+                        <li><a href="index.html#services" class="hover:text-teal-400 transition">Diseño Web</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-xs">Compañía</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="index.html#contact" class="hover:text-teal-400 transition">Contacto</a></li>
+                        <li><a href="blog.html" class="hover:text-teal-400 transition">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-xs">Legal</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="privacy.html" class="hover:text-teal-400 transition">Privacidad</a></li>
+                        <li><a href="terms.html" class="hover:text-teal-400 transition">Términos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 text-center text-xs text-slate-500">
+                <p>&copy; 2025 MarineTech Studio. Todos los derechos reservados.</p>
+            </div>
+        </div>
     </footer>
 
     <script>
-        // Lógica de Filtros
-        const buttons = document.querySelectorAll('.filter-btn');
-        const cards = document.querySelectorAll('.project-card');
-
-        buttons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Estilos de botones
-                buttons.forEach(b => {
-                    b.classList.remove('bg-teal-500', 'text-navy-900', 'font-bold');
-                    b.classList.add('text-white', 'border-white/20');
-                });
-                btn.classList.add('bg-teal-500', 'text-navy-900', 'font-bold');
-                btn.classList.remove('text-white', 'border-white/20');
-
-                // Filtrado
-                const filter = btn.dataset.filter;
-                cards.forEach(card => {
-                    if (filter === 'all' || card.dataset.cat === filter) {
-                        card.style.display = 'block';
-                        setTimeout(() => card.style.opacity = '1', 50);
-                    } else {
-                        card.style.opacity = '0';
-                        setTimeout(() => card.style.display = 'none', 300);
-                    }
-                });
-            });
-        });
-
-        // Animaciones y Cursor
-        const cursor = document.getElementById('cursor');
-        const hoverTriggers = document.querySelectorAll('.hover-trigger');
-        document.addEventListener('mousemove', (e) => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
-        hoverTriggers.forEach(trigger => { trigger.addEventListener('mouseenter', () => cursor.classList.add('hovered')); trigger.addEventListener('mouseleave', () => cursor.classList.remove('hovered')); });
-        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
+        // Scroll Reveal
+        const observer = new IntersectionObserver((entries) => { 
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) entry.target.classList.add('active'); 
+            }); 
+        }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
