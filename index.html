@@ -27,9 +27,11 @@
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
+                        'marquee-fast': 'marquee 15s linear infinite', 
                     },
                     keyframes: {
-                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' } }
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' } },
+                        marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } }
                     }
                 }
             }
@@ -37,12 +39,14 @@
     </script>
 
     <style>
-        * { cursor: none !important; }
         body { background-color: #020c12; color: #e2e8f0; overflow-x: hidden; }
         
-        /* Neon Cursor */
-        .custom-cursor { width: 20px; height: 20px; border: 1px solid #00f0ff; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s, background 0.3s; mix-blend-mode: difference; }
-        .custom-cursor.hovered { width: 50px; height: 50px; background-color: rgba(0, 240, 255, 0.2); border-color: transparent; }
+        /* Cursor personalizado SOLO en Desktop */
+        @media (min-width: 768px) {
+            * { cursor: none !important; }
+            .custom-cursor { width: 20px; height: 20px; border: 1px solid #00f0ff; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s, background 0.3s; mix-blend-mode: difference; }
+            .custom-cursor.hovered { width: 50px; height: 50px; background-color: rgba(0, 240, 255, 0.2); border-color: transparent; }
+        }
 
         /* Animations */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
@@ -56,13 +60,11 @@
         
         /* Marquee */
         .marquee-container { mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
-        .animate-marquee { animation: marquee 40s linear infinite; }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* FAQ */
+        /* FAQ Details */
         details > summary { list-style: none; }
         details > summary::-webkit-details-marker { display: none; }
-        details[open] summary ~ * { animation: sweep .5s ease-in-out; }
+        details[open] summary ~ * { animation: sweep .3s ease-in-out; }
         @keyframes sweep { 0% {opacity: 0; transform: translateY(-10px)} 100% {opacity: 1; transform: translateY(0)} }
 
         /* FORMULARIO ALTO CONTRASTE */
@@ -82,48 +84,61 @@
     <div class="custom-cursor hidden md:block" id="cursor"></div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 top-0 transition-all duration-300 py-4" id="navbar">
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 py-4 bg-navy-900/90 backdrop-blur-md border-b border-white/5" id="navbar">
         <div class="container mx-auto px-6">
-            <div class="glass rounded-full px-6 py-3 flex justify-between items-center shadow-lg shadow-teal-900/10">
+            <div class="glass rounded-full px-6 py-3 flex justify-between items-center shadow-lg shadow-teal-900/10 relative">
                 <a href="/" class="flex items-center gap-2 group hover-trigger">
                     <div class="w-8 h-8 bg-gradient-to-br from-teal-400 to-blue-600 rounded flex items-center justify-center text-white font-display font-bold text-lg group-hover:rotate-12 transition-transform">M</div>
                     <span class="font-display font-bold text-lg tracking-wide">Marine<span class="text-teal-400">Tech</span></span>
                 </a>
+                
+                <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center gap-8">
                     <a href="#about" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Nosotros</a>
                     <a href="#process" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Proceso</a>
                     <a href="portfolio.html" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Casos de Éxito</a>
                     <a href="blog.html" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Blog Marino</a>
-                    <a href="#contact" class="px-6 py-2 rounded-full bg-gradient-to-r from-teal-500 to-teal-400 text-navy-900 text-sm font-bold hover:shadow-[0_0_20px_rgba(45,212,191,0.6)] transition hover:scale-105 duration-300 hover-trigger">Auditoría Gratuita</a>
+                    <a href="#contact" class="px-5 py-2 rounded-full border border-teal-500 text-teal-400 text-sm font-bold hover:bg-teal-500 hover:text-navy-900 transition hover-trigger">Auditoría Gratuita</a>
                 </div>
-                <button class="md:hidden text-white hover-trigger" id="mobile-menu-btn"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
+
+                <!-- Mobile Menu Button (z-index 50 y pointer-events-auto) -->
+                <button class="md:hidden text-white p-2 z-50 relative focus:outline-none pointer-events-auto touch-manipulation" id="mobile-menu-btn" aria-label="Abrir menú">
+                    <svg class="w-8 h-8 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
             </div>
         </div>
     </nav>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 z-40 bg-navy-900/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 flex items-center justify-center hidden">
-        <button id="close-menu" class="absolute top-8 right-8 text-white p-2 hover-trigger">✕</button>
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-navy-900/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 flex items-center justify-center hidden">
+        <button id="close-menu" class="absolute top-8 right-8 text-white p-4 focus:outline-none pointer-events-auto touch-manipulation" aria-label="Cerrar menú">
+            <svg class="w-8 h-8 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
         <div class="flex flex-col gap-8 text-center text-2xl font-display font-bold">
-            <a href="#about" class="hover:text-teal-400 transition hover-trigger" onclick="toggleMenu()">Nosotros</a>
-            <a href="#process" class="hover:text-teal-400 transition hover-trigger" onclick="toggleMenu()">Proceso</a>
-            <a href="portfolio.html" class="hover:text-teal-400 transition hover-trigger">Casos de Éxito</a>
-            <a href="blog.html" class="hover:text-teal-400 transition hover-trigger">Blog Marino</a>
-            <a href="#contact" class="text-teal-400 transition hover-trigger" onclick="toggleMenu()">Auditoría Gratuita</a>
+            <a href="#about" class="hover:text-teal-400 transition mobile-link text-white">Nosotros</a>
+            <a href="#process" class="hover:text-teal-400 transition mobile-link text-white">Proceso</a>
+            <a href="portfolio.html" class="hover:text-teal-400 transition mobile-link text-teal-400">Casos de Éxito</a>
+            <a href="blog.html" class="hover:text-teal-400 transition mobile-link text-white">Blog Marino</a>
+            <a href="#contact" class="text-teal-400 transition mobile-link">Auditoría Gratuita</a>
         </div>
     </div>
 
     <!-- Hero Section -->
-    <header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-grid-pattern">
+    <header class="relative min-h-screen flex items-center justify-center pt-28 overflow-hidden bg-grid-pattern">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-radial from-teal-500/10 to-transparent opacity-50 blur-[100px] -z-10 animate-pulse"></div>
         <div class="container mx-auto px-6 text-center z-10">
-            <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/10 mb-8 reveal backdrop-blur-sm">
+            <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/10 mb-10 reveal backdrop-blur-sm">
                 <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse shadow-[0_0_10px_#2dd4bf]"></span>
                 <span class="text-xs font-bold tracking-widest uppercase text-teal-100">Especialistas en Sector Naval</span>
             </div>
-            <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-8 leading-tight reveal" style="transition-delay: 100ms;">
-                <span class="text-gradient">Consigue 10-15 Clientes</span><br>
-                Nuevos para tu <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 italic">Astillero desde Google</span>
+            
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-8 leading-tight reveal py-2" style="transition-delay: 100ms;">
+                <span class="text-gradient inline-block px-1">Consigue 10-15 Clientes</span><br>
+                Nuevos para tu <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 italic inline-block pr-2">Astillero desde Google</span>
             </h1>
             <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-8 font-light reveal leading-relaxed" style="transition-delay: 200ms;">
                 La mayoría de astilleros y talleres de reparación no aparecen en Google cuando clientes potenciales buscan sus servicios. Pierden miles de dólares al mes en clientes que van a la competencia.
@@ -135,7 +150,7 @@
         </div>
     </header>
 
-    <!-- SOBRE NOSOTROS (Imagen SVG Grande) -->
+    <!-- SOBRE NOSOTROS -->
     <section id="about" class="py-24 relative border-y border-white/5 bg-navy-800/20">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-16 items-center">
@@ -163,58 +178,52 @@
                 </div>
                 <div class="relative reveal delay-200">
                     <div class="absolute inset-0 bg-teal-500/20 blur-[80px] rounded-full -z-10"></div>
-                    <!-- IMAGEN SVG -->
-                    <img src="images/proyecto12.svg" alt="Ingeniería Naval Heesen" class="w-full h-auto object-contain drop-shadow-2xl transform hover:scale-105 transition duration-700 max-h-[500px]">
+                    <!-- Usando proyecto1.webp como placeholder seguro si proyecto12.webp no existe aún -->
+                    <img src="images/proyecto1.webp" alt="Ingeniería Naval Heesen" class="w-full h-auto object-contain drop-shadow-2xl transform hover:scale-105 transition duration-700 max-h-[500px]" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PROCESO PASO A PASO -->
-    <section id="process" class="py-32 relative bg-navy-800/30">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-20 reveal">
-                <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Tu Ruta al <span class="text-teal-400">Éxito</span></h2>
-                <p class="text-slate-400 text-lg max-w-2xl mx-auto">De ser invisible a dominar el mercado local en 4 pasos claros.</p>
-            </div>
+    <!-- PROCESO (Scroll Horizontal) -->
+    <!-- Altura ajustada a 200vh -->
+    <section id="process-container" class="relative md:h-[200vh] bg-navy-800/30">
+        <div class="md:sticky md:top-0 md:h-screen md:overflow-hidden flex items-center w-full">
             
-            <div class="relative grid md:grid-cols-4 gap-8">
-                <!-- Línea conectora -->
-                <div class="hidden md:block absolute top-8 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-teal-500/20 to-transparent"></div>
-
-                <!-- Paso 1 -->
-                <div class="text-center reveal hover-trigger group relative z-10">
-                    <div class="w-16 h-16 mx-auto bg-navy-900 border-2 border-teal-500 rounded-full flex items-center justify-center text-2xl font-bold text-teal-400 mb-6 group-hover:bg-teal-500 group-hover:text-navy-900 transition-colors duration-300 shadow-[0_0_20px_rgba(45,212,191,0.2)]">1</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Auditoría Gratuita</h3>
-                    <p class="text-slate-400 text-sm">Analizamos tu presencia actual y oportunidades perdidas.</p>
+            <div class="container mx-auto px-6 relative h-full flex flex-col justify-center">
+                <div class="text-center mb-12 md:mb-0 md:absolute md:top-20 md:left-0 md:right-0 z-20 reveal">
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-4">Tu Ruta al <span class="text-teal-400">Éxito</span></h2>
+                    <p class="text-slate-400 text-lg max-w-2xl mx-auto">De ser invisible a dominar el mercado local en 4 pasos claros.</p>
                 </div>
 
-                <!-- Paso 2 -->
-                <div class="text-center reveal hover-trigger group relative z-10" style="transition-delay: 100ms;">
-                    <div class="w-16 h-16 mx-auto bg-navy-900 border-2 border-teal-500/50 rounded-full flex items-center justify-center text-2xl font-bold text-teal-400 mb-6 group-hover:bg-teal-500 group-hover:text-navy-900 group-hover:border-teal-500 transition-colors duration-300">2</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Estrategia Naval</h3>
-                    <p class="text-slate-400 text-sm">Diseñamos un plan específico para tu astillero.</p>
-                </div>
+                <div id="process-track" class="flex flex-col md:flex-row gap-8 md:absolute md:left-0 md:px-[20vw] md:items-center">
+                    <div class="hidden md:block absolute top-1/2 left-0 w-[200%] h-0.5 bg-gradient-to-r from-transparent via-teal-500/20 to-transparent -z-10"></div>
 
-                <!-- Paso 3 -->
-                <div class="text-center reveal hover-trigger group relative z-10" style="transition-delay: 200ms;">
-                    <div class="w-16 h-16 mx-auto bg-navy-900 border-2 border-teal-500/50 rounded-full flex items-center justify-center text-2xl font-bold text-teal-400 mb-6 group-hover:bg-teal-500 group-hover:text-navy-900 group-hover:border-teal-500 transition-colors duration-300">3</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Ejecución Técnica</h3>
-                    <p class="text-slate-400 text-sm">Desarrollamos tu web y optimizamos tu SEO local.</p>
-                </div>
+                    <!-- Pasos -->
+                    <div class="text-center reveal hover-trigger group relative z-10 md:w-[300px] shrink-0 p-6 glass rounded-2xl md:bg-transparent md:border-none md:shadow-none md:glass-none">
+                        <div class="w-16 h-16 mx-auto bg-navy-900 border-2 border-teal-500 rounded-full flex items-center justify-center text-2xl font-bold text-teal-400 mb-6 group-hover:bg-teal-500 group-hover:text-navy-900 transition-colors duration-300 shadow-[0_0_20px_rgba(45,212,191,0.2)]">1</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Auditoría Gratuita</h3>
+                        <p class="text-slate-400 text-sm">Analizamos tu presencia actual y oportunidades perdidas.</p>
+                    </div>
 
-                <!-- Paso 4 -->
-                <div class="text-center reveal hover-trigger group relative z-10" style="transition-delay: 300ms;">
-                    <div class="w-16 h-16 mx-auto bg-navy-900 border-2 border-teal-500/50 rounded-full flex items-center justify-center text-2xl font-bold text-teal-400 mb-6 group-hover:bg-teal-500 group-hover:text-navy-900 group-hover:border-teal-500 transition-colors duration-300">4</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Resultados</h3>
-                    <p class="text-slate-400 text-sm">Recibes llamadas y cierras nuevos contratos.</p>
-                </div>
-            </div>
+                    <div class="text-center reveal hover-trigger group relative z-10 md:w-[300px] shrink-0 p-6 glass rounded-2xl md:bg-transparent md:border-none md:shadow-none md:glass-none">
+                        <div class="w-16 h-16 mx-auto bg-navy-900 border-2 border-teal-500/50 rounded-full flex items-center justify-center text-2xl font-bold text-teal-400 mb-6 group-hover:bg-teal-500 group-hover:text-navy-900 group-hover:border-teal-500 transition-colors duration-300">2</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Estrategia Naval</h3>
+                        <p class="text-slate-400 text-sm">Diseñamos un plan específico para tu astillero.</p>
+                    </div>
 
-            <div class="text-center mt-20 reveal">
-                <a href="#contact" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b border-teal-500 pb-1 hover:text-white transition hover-trigger">
-                    Empieza con tu Auditoría Gratuita →
-                </a>
+                    <div class="text-center reveal hover-trigger group relative z-10 md:w-[300px] shrink-0 p-6 glass rounded-2xl md:bg-transparent md:border-none md:shadow-none md:glass-none">
+                        <div class="w-16 h-16 mx-auto bg-navy-900 border-2 border-teal-500/50 rounded-full flex items-center justify-center text-2xl font-bold text-teal-400 mb-6 group-hover:bg-teal-500 group-hover:text-navy-900 group-hover:border-teal-500 transition-colors duration-300">3</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Ejecución Técnica</h3>
+                        <p class="text-slate-400 text-sm">Desarrollamos tu web y optimizamos tu SEO local.</p>
+                    </div>
+
+                    <div class="text-center reveal hover-trigger group relative z-10 md:w-[300px] shrink-0 p-6 glass rounded-2xl md:bg-transparent md:border-none md:shadow-none md:glass-none">
+                        <div class="w-16 h-16 mx-auto bg-navy-900 border-2 border-teal-500/50 rounded-full flex items-center justify-center text-2xl font-bold text-teal-400 mb-6 group-hover:bg-teal-500 group-hover:text-navy-900 group-hover:border-teal-500 transition-colors duration-300">4</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Resultados</h3>
+                        <p class="text-slate-400 text-sm">Recibes llamadas y cierras nuevos contratos.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -226,50 +235,60 @@
             <p class="text-slate-400 mt-4">Lo que dicen los líderes de la industria.</p>
         </div>
         <div class="relative w-full marquee-container">
-            <div class="flex w-max gap-8 animate-marquee">
-                <!-- Reviews Cards -->
-                <div class="w-[450px] glass-card p-10 rounded-3xl border border-white/10 shrink-0">
-                    <div class="flex text-teal-400 mb-6 text-lg">★★★★★</div>
-                    <p class="text-slate-300 italic mb-8 text-lg">"Finalmente una agencia que entiende la diferencia entre un casco de desplazamiento y uno de planeo."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-teal-500 flex items-center justify-center text-navy-900 font-bold">JW</div>
+            <div class="flex w-max gap-6 animate-marquee-fast">
+                <!-- Review 1 -->
+                <div class="w-[500px] glass-card p-6 rounded-2xl border border-white/10 shrink-0 flex items-center gap-6 hover-trigger">
+                    <div class="flex-1">
+                        <div class="flex text-teal-400 mb-2 text-xs">★★★★★</div>
+                        <p class="text-slate-300 italic text-sm leading-relaxed">"MarineTech captó nuestra terminología técnica al instante. No tuvimos que explicar qué es un varadero."</p>
+                    </div>
+                    <div class="flex items-center gap-3 border-l border-white/10 pl-4">
+                        <div class="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-navy-900 font-bold text-xs shrink-0">JW</div>
                         <div>
-                            <h4 class="font-bold text-white">James Willis</h4>
-                            <span class="text-xs text-slate-500 uppercase">CEO, Willis Custom Yachts</span>
+                            <h4 class="font-bold text-white text-sm">J. Willis</h4>
+                            <span class="text-[10px] text-slate-500 uppercase block">CEO, Willis</span>
                         </div>
                     </div>
                 </div>
-                 <div class="w-[450px] glass-card p-10 rounded-3xl border border-white/10 shrink-0">
-                    <div class="flex text-teal-400 mb-6 text-lg">★★★★★</div>
-                    <p class="text-slate-300 italic mb-8 text-lg">"Nuestras reservas de charter aumentaron un 40% al instante. El sistema de reservas es impecable."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold">SJ</div>
+                <!-- Review 2 -->
+                <div class="w-[500px] glass-card p-6 rounded-2xl border border-white/10 shrink-0 flex items-center gap-6 hover-trigger">
+                    <div class="flex-1">
+                        <div class="flex text-teal-400 mb-2 text-xs">★★★★★</div>
+                        <p class="text-slate-300 italic text-sm leading-relaxed">"Las reservas de reparación aumentaron un 30% en Colombia gracias al SEO local que implementaron."</p>
+                    </div>
+                    <div class="flex items-center gap-3 border-l border-white/10 pl-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-xs shrink-0">CR</div>
                         <div>
-                            <h4 class="font-bold text-white">Sarah Jenkins</h4>
-                            <span class="text-xs text-slate-500 uppercase">Director, TechDiving</span>
+                            <h4 class="font-bold text-white text-sm">C. Rodriguez</h4>
+                            <span class="text-[10px] text-slate-500 uppercase block">Ops, Cartagena</span>
                         </div>
                     </div>
                 </div>
-                 <div class="w-[450px] glass-card p-10 rounded-3xl border border-white/10 shrink-0">
-                    <div class="flex text-teal-400 mb-6 text-lg">★★★★★</div>
-                    <p class="text-slate-300 italic mb-8 text-lg">"Manejaron nuestro portafolio de fabricación pesada con la seriedad corporativa que merece."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-teal-500 flex items-center justify-center text-navy-900 font-bold">MT</div>
+                <!-- Review 3 -->
+                <div class="w-[500px] glass-card p-6 rounded-2xl border border-white/10 shrink-0 flex items-center gap-6 hover-trigger">
+                    <div class="flex-1">
+                        <div class="flex text-teal-400 mb-2 text-xs">★★★★★</div>
+                        <p class="text-slate-300 italic text-sm leading-relaxed">"El portafolio de proyectos industriales ahora transmite la confianza necesaria para licitaciones grandes."</p>
+                    </div>
+                    <div class="flex items-center gap-3 border-l border-white/10 pl-4">
+                        <div class="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-navy-900 font-bold text-xs shrink-0">MT</div>
                         <div>
-                            <h4 class="font-bold text-white">Michael T.</h4>
-                            <span class="text-xs text-slate-500 uppercase">Ops Manager, TBailey</span>
+                            <h4 class="font-bold text-white text-sm">Michael T.</h4>
+                            <span class="text-[10px] text-slate-500 uppercase block">Mgr, TBailey</span>
                         </div>
                     </div>
                 </div>
-                <!-- Repetición para loop -->
-                 <div class="w-[450px] glass-card p-10 rounded-3xl border border-white/10 shrink-0">
-                    <div class="flex text-teal-400 mb-6 text-lg">★★★★★</div>
-                    <p class="text-slate-300 italic mb-8 text-lg">"Finalmente una agencia que entiende la diferencia entre un casco de desplazamiento y uno de planeo."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-teal-500 flex items-center justify-center text-navy-900 font-bold">JW</div>
+                <!-- Loop -->
+                <div class="w-[500px] glass-card p-6 rounded-2xl border border-white/10 shrink-0 flex items-center gap-6 hover-trigger">
+                    <div class="flex-1">
+                        <div class="flex text-teal-400 mb-2 text-xs">★★★★★</div>
+                        <p class="text-slate-300 italic text-sm leading-relaxed">"MarineTech captó nuestra terminología técnica al instante. No tuvimos que explicar qué es un varadero."</p>
+                    </div>
+                    <div class="flex items-center gap-3 border-l border-white/10 pl-4">
+                        <div class="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-navy-900 font-bold text-xs shrink-0">JW</div>
                         <div>
-                            <h4 class="font-bold text-white">James Willis</h4>
-                            <span class="text-xs text-slate-500 uppercase">CEO, Willis Custom Yachts</span>
+                            <h4 class="font-bold text-white text-sm">J. Willis</h4>
+                            <span class="text-[10px] text-slate-500 uppercase block">CEO, Willis</span>
                         </div>
                     </div>
                 </div>
@@ -277,7 +296,139 @@
         </div>
     </section>
 
-    <!-- FORMULARIO DE CONTACTO (Alto Contraste) -->
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-24 bg-navy-900 relative">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-16 reveal">
+                <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Dudas Frecuentes</span>
+                <h2 class="text-4xl font-display font-bold text-white">Domina el Mar Digital en <span class="text-teal-400">Latinoamérica</span></h2>
+                <p class="text-slate-400 mt-4">Respuestas claras sobre por qué tu astillero necesita esto ahora.</p>
+            </div>
+
+            <div class="space-y-4 reveal">
+                <details class="group glass rounded-2xl border border-white/5 open:bg-white/5 transition-all duration-300">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer text-lg font-bold text-white hover:text-teal-400 transition hover-trigger">
+                        ¿Realmente funciona el SEO para astilleros en LatAm?
+                        <span class="text-teal-400 transition-transform group-open:rotate-180">▼</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 leading-relaxed text-sm">
+                        Absolutamente. En Latinoamérica, la competencia digital en el sector naval es baja, pero la demanda internacional es alta. Capitanes y armadores buscan en Google antes de zarpar.
+                    </div>
+                </details>
+                <details class="group glass rounded-2xl border border-white/5 open:bg-white/5 transition-all duration-300">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer text-lg font-bold text-white hover:text-teal-400 transition hover-trigger">
+                        Mis clientes llegan por "boca a boca", ¿para qué necesito una web?
+                        <span class="text-teal-400 transition-transform group-open:rotate-180">▼</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 leading-relaxed text-sm">
+                        El boca a boca es excelente, pero limitado. Una web profesional captura a los clientes que no te conocen y valida tu reputación ante los que sí.
+                    </div>
+                </details>
+                <details class="group glass rounded-2xl border border-white/5 open:bg-white/5 transition-all duration-300">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer text-lg font-bold text-white hover:text-teal-400 transition hover-trigger">
+                        ¿Debo tener mi contenido en inglés o español?
+                        <span class="text-teal-400 transition-transform group-open:rotate-180">▼</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 leading-relaxed text-sm">
+                        Para maximizar el ROI, recomendamos ambos. Español para el mercado local/regional e inglés para flotas internacionales.
+                    </div>
+                </details>
+                <details class="group glass rounded-2xl border border-white/5 open:bg-white/5 transition-all duration-300">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer text-lg font-bold text-white hover:text-teal-400 transition hover-trigger">
+                        ¿Qué resultados puedo esperar en los primeros meses?
+                        <span class="text-teal-400 transition-transform group-open:rotate-180">▼</span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 leading-relaxed text-sm">
+                        El SEO es a mediano plazo, pero solemos ver aumento en llamadas cualificadas a partir del mes 3, especialmente en búsquedas de alta intención.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG PREVIEW SECTION -->
+    <section id="blog-preview" class="py-24 bg-navy-800/30 border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+                <div>
+                    <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Navegación Digital</span>
+                    <h2 class="text-4xl font-display font-bold text-white">Últimas Noticias del Sector</h2>
+                </div>
+                <a href="blog.html" class="hidden md:inline-block text-white font-bold border-b border-teal-500 pb-1 hover:text-teal-400 transition hover-trigger">Ver todo el Blog →</a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 reveal">
+                <!-- Blog Card 1 (Enlace Corregido y WebP) -->
+                <a href="blog/tendencias-ingenieria-naval-2025/" class="group block hover-trigger">
+                    <div class="h-64 overflow-hidden rounded-2xl mb-6 relative bg-navy-900">
+                        <div class="absolute inset-0 bg-navy-900/50 group-hover:bg-transparent transition z-10"></div>
+                        <img 
+                            src="images/blog1.webp" 
+                            alt="Tendencias Ingeniería Naval 2025" 
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700"
+                            width="400" 
+                            height="300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="flex gap-3 text-xs font-bold uppercase tracking-wider mb-3">
+                        <span class="text-teal-400">Tendencias</span>
+                        <span class="text-slate-500">Nov 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-teal-400 transition">Tendencias de Ingeniería Naval que Marcarán 2025</h3>
+                    <p class="text-slate-400 text-sm line-clamp-2">Descubre las 7 claves tecnológicas que definirán los astilleros modernos en Latinoamérica.</p>
+                </a>
+
+                <!-- Blog Card 2 (Enlace Corregido y WebP) -->
+                <a href="blog/cartagena-hub-naval-caribe-2025/" class="group block hover-trigger">
+                    <div class="h-64 overflow-hidden rounded-2xl mb-6 relative bg-navy-900">
+                        <div class="absolute inset-0 bg-navy-900/50 group-hover:bg-transparent transition z-10"></div>
+                        <img 
+                            src="images/blog2.webp" 
+                            alt="Cartagena Hub Naval" 
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700"
+                            width="400" 
+                            height="300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="flex gap-3 text-xs font-bold uppercase tracking-wider mb-3">
+                        <span class="text-teal-400">Mercado</span>
+                        <span class="text-slate-500">Nov 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-teal-400 transition">Cartagena: El Nuevo Hub Naval del Caribe</h3>
+                    <p class="text-slate-400 text-sm line-clamp-2">Datos reales del crecimiento portuario y qué significa para los talleres locales.</p>
+                </a>
+
+                <!-- Blog Card 3 (Placeholder o futuro artículo) -->
+                <a href="blog.html" class="group block hover-trigger">
+                    <div class="h-64 overflow-hidden rounded-2xl mb-6 relative bg-navy-900">
+                        <div class="absolute inset-0 bg-navy-900/50 group-hover:bg-transparent transition z-10"></div>
+                        <img 
+                            src="images/proyecto1.webp" 
+                            alt="Marketing B2B Naval" 
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700"
+                            width="400" 
+                            height="300"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="flex gap-3 text-xs font-bold uppercase tracking-wider mb-3">
+                        <span class="text-teal-400">Marketing</span>
+                        <span class="text-slate-500">Oct 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-teal-400 transition">Marketing B2B para Reparación Naval</h3>
+                    <p class="text-slate-400 text-sm line-clamp-2">Estrategias específicas para llegar a los Fleet Managers que toman las decisiones.</p>
+                </a>
+            </div>
+            
+            <div class="mt-8 text-center md:hidden">
+                 <a href="blog.html" class="text-white font-bold border-b border-teal-500 pb-1">Ver todo el Blog →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE CONTACTO -->
     <section id="contact" class="py-32">
         <div class="container mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -289,12 +440,11 @@
                      <div class="space-y-4 mb-8">
                         <div class="flex items-center gap-4 text-lg text-white">
                            <div class="w-10 h-10 rounded-full border border-teal-500/30 flex items-center justify-center text-teal-400">✉</div>
-                           info@marinetechstudio.com
+                           <a href="mailto:info@marinetechstudio.com" class="hover:text-teal-400 transition cursor-pointer">info@marinetechstudio.com</a>
                        </div>
                     </div>
                 </div>
                 
-                <!-- Formulario Mejorado -->
                 <form action="https://formspree.io/f/YOUR_ID_HERE" method="POST" class="bg-navy-800 p-8 md:p-10 rounded-3xl space-y-6 reveal border border-white/10 shadow-2xl">
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
@@ -307,10 +457,9 @@
                         </div>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-teal-500 mb-2">Email Corporativo</label>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-teal-500 mb-2">Email</label>
                         <input type="email" name="email" required class="w-full input-high-contrast rounded-lg p-4 focus:outline-none transition">
                     </div>
-                    
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-teal-500 mb-2">Tipo de Negocio</label>
                         <div class="relative">
@@ -323,13 +472,10 @@
                             <div class="absolute right-4 top-1/2 -translate-y-1/2 text-teal-400 pointer-events-none">▼</div>
                         </div>
                     </div>
-                    
-                    <!-- Text Area for Details -->
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-teal-500 mb-2">Detalles del Proyecto</label>
                         <textarea name="details" rows="4" required class="w-full input-high-contrast rounded-lg p-4 focus:outline-none transition" placeholder="¿Qué problemas estás enfrentando?"></textarea>
                     </div>
-
                     <button type="submit" class="w-full bg-teal-500 text-navy-900 font-bold py-5 rounded-lg hover:bg-white hover:scale-[1.02] transition hover:shadow-[0_0_30px_rgba(45,212,191,0.4)] uppercase tracking-wide text-lg">
                         ENVIAR SOLICITUD
                     </button>
@@ -350,7 +496,10 @@
                     <p class="text-sm leading-relaxed mb-6">
                         Especialistas en Marketing Digital para Astilleros y Reparación Naval en Latinoamérica.
                     </p>
-                    <div class="flex gap-4">
+                    <p class="mt-4">
+                        <a href="mailto:info@marinetechstudio.com" class="text-teal-400 hover:text-white transition font-bold">info@marinetechstudio.com</a>
+                    </p>
+                    <div class="flex gap-4 mt-4">
                         <a href="#" class="opacity-70 hover:opacity-100 hover:text-teal-400 transition hover-trigger">LinkedIn</a>
                         <a href="#" class="opacity-70 hover:opacity-100 hover:text-teal-400 transition hover-trigger">Instagram</a>
                     </div>
@@ -389,28 +538,109 @@
     </footer>
 
     <script>
-        let toggleMenu; 
+        // Lógica Global del Menú (Simple y Robusta)
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!mobileMenu) return; // Safety check
+            
+            isMenuOpen = !isMenuOpen;
+            
+            if (isMenuOpen) {
+                // Mostrar: quitar hidden y mover
+                mobileMenu.classList.remove('hidden', 'translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+            } else {
+                // Ocultar: mover y luego delay hidden
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (!isMenuOpen) mobileMenu.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        // Eventos DOM
         document.addEventListener('DOMContentLoaded', () => {
             const menuBtn = document.getElementById('mobile-menu-btn');
             const closeMenu = document.getElementById('close-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
             const mobileMenu = document.getElementById('mobile-menu');
-            if (menuBtn && closeMenu && mobileMenu) {
-                toggleMenu = function() { mobileMenu.classList.toggle('hidden'); };
-                menuBtn.addEventListener('click', toggleMenu);
-                closeMenu.addEventListener('click', toggleMenu);
-            }
 
-            const cursor = document.getElementById('cursor');
-            document.addEventListener('mousemove', (e) => { 
-                if(cursor) {
-                    cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; 
+            // Asegurar estado inicial correcto
+            if (mobileMenu) mobileMenu.classList.add('hidden', 'translate-x-full');
+
+            if (menuBtn) {
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Evitar propagación a elementos traseros
+                    toggleMenu();
+                });
+            }
+            
+            if (closeMenu) closeMenu.addEventListener('click', toggleMenu);
+            mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+            // Scroll Logic (PC) - Optimizado
+            window.addEventListener('scroll', () => {
+                const nav = document.getElementById('navbar');
+                if (nav) window.scrollY > 50 ? nav.classList.add('py-2') : nav.classList.remove('py-4');
+
+                // Horizontal Scroll
+                const container = document.getElementById('process-container');
+                const track = document.getElementById('process-track');
+                
+                if (window.innerWidth >= 768 && container && track) {
+                    const rect = container.getBoundingClientRect();
+                    const containerTop = rect.top;
+                    const containerHeight = rect.height;
+                    const windowHeight = window.innerHeight;
+                    
+                    let progress = 0;
+                    if (containerTop <= 0) {
+                        const scrolled = Math.abs(containerTop);
+                        const scrollableDistance = containerHeight - windowHeight;
+                        if (scrollableDistance > 0) progress = scrolled / scrollableDistance;
+                    }
+                    progress = Math.max(0, Math.min(progress, 1));
+                    
+                    const trackWidth = track.scrollWidth;
+                    const viewportWidth = window.innerWidth;
+                    const scrollAmount = trackWidth - viewportWidth;
+                    
+                    if (scrollAmount > 0) {
+                        track.style.transform = `translateX(-${progress * (scrollAmount + 100)}px)`; 
+                    }
+                } else if (track) {
+                    track.style.transform = 'translateX(0)';
                 }
             });
-            
-            const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
+
+            // Cursor Logic (Solo PC)
+            if (window.matchMedia("(min-width: 768px)").matches) {
+                const cursor = document.getElementById('cursor');
+                const hoverTriggers = document.querySelectorAll('.hover-trigger');
+                
+                document.addEventListener('mousemove', (e) => { 
+                    if(cursor) {
+                        cursor.style.left = e.clientX + 'px'; 
+                        cursor.style.top = e.clientY + 'px'; 
+                    }
+                });
+                
+                hoverTriggers.forEach(trigger => { 
+                    trigger.addEventListener('mouseenter', () => cursor.classList.add('hovered')); 
+                    trigger.addEventListener('mouseleave', () => cursor.classList.remove('hovered')); 
+                });
+            }
+
+            // Scroll Reveal
+            const observer = new IntersectionObserver((entries) => { 
+                entries.forEach(entry => { 
+                    if (entry.isIntersecting) entry.target.classList.add('active'); 
+                }); 
+            }, { threshold: 0.1 });
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-            
-            window.addEventListener('scroll', () => { const nav = document.getElementById('navbar'); if(nav) window.scrollY > 50 ? nav.classList.add('py-2') : nav.classList.remove('py-2'); });
         });
     </script>
 </body>

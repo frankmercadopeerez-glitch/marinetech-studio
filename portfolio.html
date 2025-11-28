@@ -15,7 +15,7 @@
             theme: {
                 extend: {
                     fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] },
-                    colors: { navy: { 900: '#020c12', 800: '#051d29' }, teal: { 400: '#2dd4bf', 500: '#14b8a6' } },
+                    colors: { navy: { 900: '#020c12', 800: '#051d29', 700: '#0d2b3a' }, teal: { 400: '#2dd4bf', 500: '#14b8a6', accent: '#00f0ff' } },
                     backgroundImage: { 'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2314b8a6' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E\")" },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
@@ -29,27 +29,64 @@
     </script>
     <style>
         body { background-color: #020c12; color: #e2e8f0; }
+        
+        /* Cursor personalizado SOLO en Desktop */
+        @media (min-width: 768px) {
+            body, a, button { cursor: none; }
+            .custom-cursor { width: 20px; height: 20px; border: 1px solid #00f0ff; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s, background 0.3s; mix-blend-mode: difference; }
+            .custom-cursor.hovered { width: 50px; height: 50px; background-color: rgba(0, 240, 255, 0.2); border-color: transparent; }
+        }
+
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="selection:bg-teal-500 selection:text-white">
 
+    <!-- Cursor Element -->
+    <div class="custom-cursor hidden md:block" id="cursor"></div>
+
     <!-- Navegación -->
-    <nav class="fixed w-full z-50 top-0 py-6 bg-navy-900/90 backdrop-blur-md border-b border-white/5">
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 py-4 bg-navy-900/90 backdrop-blur-md border-b border-white/5" id="navbar">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2 group">
-                <div class="w-8 h-8 bg-gradient-to-br from-teal-400 to-blue-600 rounded flex items-center justify-center text-white font-display font-bold text-lg">M</div>
-                <span class="font-display font-bold text-lg text-white">Marine<span class="text-teal-400">Tech</span></span>
+            <a href="index.html" class="flex items-center gap-2 group hover-trigger">
+                <div class="w-8 h-8 bg-gradient-to-br from-teal-400 to-blue-600 rounded flex items-center justify-center text-white font-display font-bold text-lg group-hover:rotate-12 transition-transform">M</div>
+                <span class="font-display font-bold text-lg tracking-wide text-white">Marine<span class="text-teal-400">Tech</span></span>
             </a>
+            
+            <!-- Desktop Menu -->
             <div class="hidden md:flex items-center gap-8">
-                <a href="index.html" class="text-sm font-medium text-slate-300 hover:text-white transition">Inicio</a>
-                <a href="index.html#process" class="text-sm font-medium text-slate-300 hover:text-white transition">Proceso</a>
-                <a href="blog.html" class="text-sm font-medium text-slate-300 hover:text-white transition">Blog Marino</a>
-                <a href="index.html#contact" class="px-5 py-2 rounded-full border border-teal-500 text-teal-400 text-sm font-bold hover:bg-teal-500 hover:text-navy-900 transition">Auditoría Gratuita</a>
+                <a href="index.html#about" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Nosotros</a>
+                <a href="index.html#process" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Proceso</a>
+                <a href="portfolio.html" class="text-sm font-medium text-teal-400 transition hover-trigger">Casos de Éxito</a>
+                <a href="blog.html" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Blog Marino</a>
+                <a href="index.html#contact" class="px-5 py-2 rounded-full border border-teal-500 text-teal-400 text-sm font-bold hover:bg-teal-500 hover:text-navy-900 transition hover-trigger">Auditoría Gratuita</a>
             </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white p-2 z-50 relative focus:outline-none touch-manipulation" id="mobile-menu-btn" aria-label="Abrir menú">
+                <svg class="w-8 h-8 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-navy-900/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 flex items-center justify-center hidden">
+        <button id="close-menu" class="absolute top-8 right-8 text-white p-4 focus:outline-none" aria-label="Cerrar menú">
+            <svg class="w-8 h-8 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <div class="flex flex-col gap-8 text-center text-2xl font-display font-bold">
+            <a href="index.html#about" class="hover:text-teal-400 transition mobile-link text-white">Nosotros</a>
+            <a href="index.html#process" class="hover:text-teal-400 transition mobile-link text-white">Proceso</a>
+            <a href="portfolio.html" class="hover:text-teal-400 transition mobile-link text-teal-400">Casos de Éxito</a>
+            <a href="blog.html" class="hover:text-teal-400 transition mobile-link text-white">Blog Marino</a>
+            <a href="index.html#contact" class="text-teal-400 transition mobile-link">Auditoría Gratuita</a>
+        </div>
+    </div>
 
     <main class="pt-40 pb-20">
         <div class="container mx-auto px-6">
@@ -58,14 +95,13 @@
                 <p class="text-slate-400 text-lg max-w-3xl mx-auto">No solo hacemos webs. Construimos activos digitales que generan millones en contratos navales.</p>
             </div>
 
-            <div class="space-y-64"> <!-- Espacio amplio entre proyectos -->
+            <div class="space-y-64"> 
                 
-                <!-- 1. Eastern Shipbuilding -->
-                <div class="flex flex-col lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
-                    <div class="lg:w-1/2 order-2 lg:order-1">
+                <!-- 1. Eastern Shipbuilding (Gov) -->
+                <div class="flex flex-col-reverse lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
+                    <div class="lg:w-1/2">
                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-2 block">Astilleros Gubernamentales</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Eastern Shipbuilding</h2>
-                        
                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
                             <div>
                                 <strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong>
@@ -84,7 +120,6 @@
                                 </ul>
                             </div>
                         </div>
-
                         <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
                             <p class="text-slate-300 italic mb-4 text-lg">"La diferencia fue noche y día. Los oficiales del gobierno pudieron acceder a nuestras especificaciones técnicas desde sus móviles en el puerto sin problemas. Eso cerró el trato."</p>
                             <div class="flex items-center gap-3">
@@ -95,24 +130,21 @@
                                 </div>
                             </div>
                         </div>
-
                         <a href="https://www.easternshipbuilding.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
                     </div>
-                    
-                    <div class="lg:w-1/2 order-1 lg:order-2 relative">
-                         <div class="relative animate-float">
-                            <div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div>
-                            <img src="images/proyecto1.svg" alt="Eastern Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110">
-                        </div>
+                    <div class="lg:w-1/2 relative">
+                         <div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div>
+                         <!-- Imagen WEBP -->
+                         <img src="images/proyecto1.webp" alt="Eastern Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                         </div>
                     </div>
                 </div>
 
-                <!-- 2. Seaward Services -->
-                <div class="flex flex-col lg:flex-row-reverse items-center gap-20 reveal group border-b border-white/5 pb-20">
+                <!-- 2. Seaward Services (Global) -->
+                <div class="flex flex-col-reverse lg:flex-row-reverse items-center gap-20 reveal group border-b border-white/5 pb-20">
                     <div class="lg:w-1/2">
                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-2 block">Servicios Globales</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Seaward Services</h2>
-                        
                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
                             <div>
                                 <strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong>
@@ -130,7 +162,6 @@
                                 </ul>
                             </div>
                         </div>
-
                          <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
                             <p class="text-slate-300 italic mb-4 text-lg">"Necesitábamos que el mundo supiera que estamos en todas partes. El mapa de flota en vivo cambió la percepción de nuestros clientes instantáneamente."</p>
                             <div class="flex items-center gap-3">
@@ -141,24 +172,21 @@
                                 </div>
                             </div>
                         </div>
-
                         <a href="https://www.seawardservices.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
                     </div>
-                    
                     <div class="lg:w-1/2 relative">
-                         <div class="relative animate-float">
-                            <div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div>
-                            <img src="images/proyecto2.svg" alt="Seaward Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110">
-                        </div>
+                         <div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div>
+                         <!-- Imagen WEBP -->
+                         <img src="images/proyecto2.webp" alt="Seaward Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                         </div>
                     </div>
                 </div>
 
                  <!-- 3. Heesen Yachts -->
-                 <div class="flex flex-col lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
-                    <div class="lg:w-1/2 order-2 lg:order-1">
+                 <div class="flex flex-col-reverse lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
+                    <div class="lg:w-1/2">
                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-2 block">Superyates de Lujo</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Heesen Yachts</h2>
-                        
                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
                             <div>
                                 <strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong>
@@ -176,7 +204,6 @@
                                 </ul>
                             </div>
                         </div>
-
                         <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
                             <p class="text-slate-300 italic mb-4 text-lg">"Herramienta indispensable. Cerramos tratos en medio del océano sin preocuparnos por el WiFi."</p>
                             <div class="flex items-center gap-3">
@@ -187,19 +214,18 @@
                                 </div>
                             </div>
                         </div>
-
                         <a href="https://www.heesenyachts.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
                     </div>
-                    <div class="lg:w-1/2 order-1 lg:order-2 relative">
-                         <div class="relative animate-float">
-                            <div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div>
-                            <img src="images/proyecto12.svg" alt="Heesen Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110">
-                        </div>
+                    <div class="lg:w-1/2 relative">
+                         <div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div>
+                         <!-- Imagen WEBP -->
+                         <img src="images/proyecto12.webp" alt="Heesen Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                         </div>
                     </div>
                 </div>
                 
                 <!-- 4. Global Logistiks -->
-                <div class="flex flex-col lg:flex-row-reverse items-center gap-20 reveal group border-b border-white/5 pb-20">
+                <div class="flex flex-col-reverse lg:flex-row-reverse items-center gap-20 reveal group border-b border-white/5 pb-20">
                     <div class="lg:w-1/2">
                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Logística Portuaria</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Global Logistiks</h2>
@@ -217,12 +243,15 @@
                         </div>
                         <a href="#" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
                     </div>
-                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div><img src="images/proyecto3.svg" alt="Global Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110"></div></div>
+                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div>
+                    <!-- Imagen WEBP -->
+                    <img src="images/proyecto3.webp" alt="Global Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                    </div></div>
                 </div>
 
                 <!-- 5. Astilleros Escamilla -->
-                <div class="flex flex-col lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
-                    <div class="lg:w-1/2 order-2 lg:order-1">
+                <div class="flex flex-col-reverse lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
+                    <div class="lg:w-1/2">
                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Reparación Naval</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Astilleros Escamilla</h2>
                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
@@ -239,11 +268,14 @@
                         </div>
                         <a href="https://astillerosescamilla.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
                     </div>
-                    <div class="lg:w-1/2 order-1 lg:order-2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div><img src="images/proyecto4.svg" alt="Escamilla Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110"></div></div>
+                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div>
+                    <!-- Imagen WEBP -->
+                    <img src="images/proyecto4.webp" alt="Escamilla Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                    </div></div>
                 </div>
 
                 <!-- 6. Shoreline Sightseeing -->
-                <div class="flex flex-col lg:flex-row-reverse items-center gap-20 reveal group border-b border-white/5 pb-20">
+                <div class="flex flex-col-reverse lg:flex-row-reverse items-center gap-20 reveal group border-b border-white/5 pb-20">
                     <div class="lg:w-1/2">
                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Turismo</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Shoreline Sightseeing</h2>
@@ -261,12 +293,15 @@
                         </div>
                         <a href="https://shorelinesightseeing.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
                     </div>
-                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div><img src="images/proyecto5.svg" alt="Shoreline Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110"></div></div>
+                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div>
+                    <!-- Imagen WEBP -->
+                    <img src="images/proyecto5.webp" alt="Shoreline Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                    </div></div>
                 </div>
 
                 <!-- 7. Willis Custom Yachts -->
-                <div class="flex flex-col lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
-                    <div class="lg:w-1/2 order-2 lg:order-1">
+                <div class="flex flex-col-reverse lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
+                    <div class="lg:w-1/2">
                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Yates Deportivos</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Willis Custom Yachts</h2>
                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
@@ -283,11 +318,14 @@
                         </div>
                         <a href="https://williscustomyachts.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition">Visitar Sitio Web ↗</a>
                     </div>
-                    <div class="lg:w-1/2 order-1 lg:order-2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div><img src="images/proyecto6.svg" alt="Willis Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110"></div></div>
+                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div>
+                    <!-- Imagen WEBP -->
+                    <img src="images/proyecto6.webp" alt="Willis Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                    </div></div>
                 </div>
 
                 <!-- 8. Scarano Boat -->
-                <div class="flex flex-col lg:flex-row-reverse items-center gap-20 reveal group border-b border-white/5 pb-20">
+                <div class="flex flex-col-reverse lg:flex-row-reverse items-center gap-20 reveal group border-b border-white/5 pb-20">
                     <div class="lg:w-1/2">
                          <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Astilleros Históricos</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Scarano Boat Building</h2>
@@ -305,12 +343,15 @@
                         </div>
                         <a href="https://www.scaranoboat.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
                     </div>
-                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div><img src="images/proyecto7.svg" alt="Scarano Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110"></div></div>
+                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div>
+                    <!-- Imagen WEBP -->
+                    <img src="images/proyecto7.webp" alt="Scarano Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                    </div></div>
                 </div>
 
                  <!-- 9. Devlin Designing -->
-                <div class="flex flex-col lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
-                    <div class="lg:w-1/2 order-2 lg:order-1">
+                <div class="flex flex-col-reverse lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
+                    <div class="lg:w-1/2">
                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Planos Navales</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Devlin Designing</h2>
                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
@@ -327,11 +368,14 @@
                         </div>
                         <a href="https://devlinboat.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition">Visitar Sitio Web ↗</a>
                     </div>
-                    <div class="lg:w-1/2 order-1 lg:order-2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div><img src="images/proyecto8.svg" alt="Devlin Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110"></div></div>
+                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div>
+                    <!-- Imagen WEBP -->
+                    <img src="images/proyecto8.webp" alt="Devlin Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                    </div></div>
                 </div>
                 
                 <!-- 10. Vigor Marine -->
-                <div class="flex flex-col lg:flex-row-reverse items-center gap-20 reveal group border-b border-white/5 pb-20">
+                <div class="flex flex-col-reverse lg:flex-row-reverse items-center gap-20 reveal group border-b border-white/5 pb-20">
                     <div class="lg:w-1/2">
                          <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Industria Pesada</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Vigor Marine</h2>
@@ -349,12 +393,15 @@
                         </div>
                         <a href="https://vigor.net/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
                     </div>
-                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div><img src="images/proyecto9.svg" alt="Vigor Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110"></div></div>
+                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div>
+                    <!-- Imagen WEBP -->
+                    <img src="images/proyecto9.webp" alt="Vigor Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                    </div></div>
                 </div>
 
                 <!-- 11. Gibbs & Cox -->
-                <div class="flex flex-col lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
-                    <div class="lg:w-1/2 order-2 lg:order-1">
+                <div class="flex flex-col-reverse lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
+                    <div class="lg:w-1/2">
                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Defensa Naval</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Gibbs & Cox</h2>
                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
@@ -371,11 +418,14 @@
                         </div>
                         <a href="https://www.gibbscox.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition">Visitar Sitio Web ↗</a>
                     </div>
-                    <div class="lg:w-1/2 order-1 lg:order-2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div><img src="images/proyecto10.svg" alt="Gibbs Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110"></div></div>
+                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div>
+                    <!-- Imagen WEBP -->
+                    <img src="images/proyecto10.webp" alt="Gibbs Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                    </div></div>
                 </div>
 
                 <!-- 12. Marine Technologies -->
-                <div class="flex flex-col lg:flex-row-reverse items-center gap-20 reveal group">
+                <div class="flex flex-col-reverse lg:flex-row-reverse items-center gap-20 reveal group">
                     <div class="lg:w-1/2">
                          <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Tecnología</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Marine Technologies</h2>
@@ -393,7 +443,10 @@
                         </div>
                         <a href="https://marine-technologies.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
                     </div>
-                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div><img src="images/proyecto11.svg" alt="Marine Tech Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110"></div></div>
+                    <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div>
+                    <!-- Imagen WEBP -->
+                    <img src="images/proyecto11.webp" alt="Marine Tech Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                    </div></div>
                 </div>
 
             </div>
@@ -422,22 +475,22 @@
                 <div>
                     <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-xs">Servicios</h4>
                     <ul class="space-y-4 text-sm">
-                        <li><a href="index.html#services" class="hover:text-teal-400 transition">SEO Naval</a></li>
-                        <li><a href="index.html#services" class="hover:text-teal-400 transition">Diseño Web</a></li>
+                        <li><a href="index.html#services" class="hover:text-teal-400 transition hover-trigger">SEO Naval</a></li>
+                        <li><a href="index.html#services" class="hover:text-teal-400 transition hover-trigger">Diseño Web</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-xs">Compañía</h4>
                     <ul class="space-y-4 text-sm">
-                        <li><a href="index.html#contact" class="hover:text-teal-400 transition">Contacto</a></li>
-                        <li><a href="blog.html" class="hover:text-teal-400 transition">Blog</a></li>
+                        <li><a href="index.html#contact" class="hover:text-teal-400 transition hover-trigger">Contacto</a></li>
+                        <li><a href="blog.html" class="hover:text-teal-400 transition hover-trigger">Blog</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-xs">Legal</h4>
                     <ul class="space-y-4 text-sm">
-                        <li><a href="privacy.html" class="hover:text-teal-400 transition">Privacidad</a></li>
-                        <li><a href="terms.html" class="hover:text-teal-400 transition">Términos</a></li>
+                        <li><a href="privacy.html" class="hover:text-teal-400 transition hover-trigger">Privacidad</a></li>
+                        <li><a href="terms.html" class="hover:text-teal-400 transition hover-trigger">Términos</a></li>
                     </ul>
                 </div>
             </div>
@@ -448,13 +501,67 @@
     </footer>
 
     <script>
-        // Scroll Reveal
-        const observer = new IntersectionObserver((entries) => { 
-            entries.forEach(entry => { 
-                if (entry.isIntersecting) entry.target.classList.add('active'); 
-            }); 
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        // Menu Mobile (Reutilizando la lógica sólida del Index)
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!mobileMenu) return;
+            
+            isMenuOpen = !isMenuOpen;
+            
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden', 'translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+            } else {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (!isMenuOpen) mobileMenu.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const closeMenu = document.getElementById('close-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            if (menuBtn) {
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleMenu();
+                });
+            }
+            if (closeMenu) closeMenu.addEventListener('click', toggleMenu);
+            mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+            // Cursor Logic
+            if (window.matchMedia("(min-width: 768px)").matches) {
+                const cursor = document.getElementById('cursor');
+                const hoverTriggers = document.querySelectorAll('.hover-trigger');
+                
+                document.addEventListener('mousemove', (e) => { 
+                    if(cursor) {
+                        cursor.style.left = e.clientX + 'px'; 
+                        cursor.style.top = e.clientY + 'px'; 
+                    }
+                });
+                
+                hoverTriggers.forEach(trigger => { 
+                    trigger.addEventListener('mouseenter', () => cursor.classList.add('hovered')); 
+                    trigger.addEventListener('mouseleave', () => cursor.classList.remove('hovered')); 
+                });
+            }
+
+            // Scroll Reveal
+            const observer = new IntersectionObserver((entries) => { 
+                entries.forEach(entry => { 
+                    if (entry.isIntersecting) entry.target.classList.add('active'); 
+                }); 
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
     </script>
 </body>
 </html>
