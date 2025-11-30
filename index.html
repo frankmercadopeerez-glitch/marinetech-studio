@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Script para limpiar URL (Remueve index.html visualmente) -->
+    <script>
+      // Si la URL termina en /index.html, lo elimina sin recargar la página
+      if (window.location.pathname.endsWith('/index.html')) {
+        const newPath = window.location.pathname.replace(/\/index\.html$/, '/');
+        window.history.replaceState(null, '', newPath + window.location.search + window.location.hash);
+      }
+    </script>
+
     <!-- SEO & Metadata AVANZADO -->
     <title>
       Agencia de Marketing para Astilleros y Servicios Navales | MarineTech
@@ -1463,4 +1472,5 @@
       });
     </script>
   </body>
+</html></body>
 </html>
