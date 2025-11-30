@@ -4,9 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Script para limpiar URL (Remueve index.html visualmente) -->
+    <!-- ================================================================= -->
+    <!-- ZONA DE INTEGRACIÓN CON GOOGLE (Pega tus códigos aquí)            -->
+    <!-- ================================================================= -->
+
+    <!-- 1. VERIFICACIÓN DE GOOGLE SEARCH CONSOLE -->
+    <meta name="google-site-verification" content="j51uAnFC48GTSTYkF6dDNhCq4_HkwR2UwErU83j7_MY" />
+
+    <!-- 2. GOOGLE ANALYTICS 4 (GA4) -->
+    <!-- Pega aquí el script completo que te da Google Analytics (G-XXXXXXXX) -->
+    <!-- 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TU_ID_AQUI"></script>
     <script>
-      // Si la URL termina en /index.html, lo elimina sin recargar la página
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TU_ID_AQUI');
+    </script> 
+    -->
+    
+    <!-- ================================================================= -->
+
+    <!-- Script para limpiar URL (UX Profesional) -->
+    <script>
       if (window.location.pathname.endsWith('/index.html')) {
         const newPath = window.location.pathname.replace(/\/index\.html$/, '/');
         window.history.replaceState(null, '', newPath + window.location.search + window.location.hash);
@@ -852,7 +872,7 @@
       </div>
     </section>
 
-    <!-- FAQ SECTION (OPTIMIZADA) -->
+    <!-- FAQ SECTION -->
     <section id="faq" class="py-24 bg-navy-900 relative">
       <div class="container mx-auto px-6 max-w-4xl">
         <div class="text-center mb-16 reveal">
@@ -1472,5 +1492,4 @@
       });
     </script>
   </body>
-</html></body>
 </html>
