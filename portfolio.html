@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casos de Éxito | MarineTech Studio</title>
-    <meta name="description" content="Resultados reales: Problema, Solución y ROI en la industria naval.">
+    <!-- TITULO OPTIMIZADO PARA SEO -->
+    <title>Portafolio de Marketing Naval y Diseño Web | MarineTech Studio</title>
+    <meta name="description" content="Casos de éxito reales en marketing naval: Cómo ayudamos a astilleros y marinas a conseguir contratos internacionales con diseño web y SEO.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚓</text></svg>">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -39,6 +40,13 @@
 
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        /* Estilos Glass Idénticos al Index */
+        .glass {
+            background: rgba(5, 29, 41, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
     </style>
 </head>
 <body class="selection:bg-teal-500 selection:text-white">
@@ -47,44 +55,44 @@
     <div class="custom-cursor hidden md:block" id="cursor"></div>
 
     <!-- Navegación -->
-    <nav class="fixed w-full z-50 top-0 transition-all duration-300 py-4 bg-navy-900/90 backdrop-blur-md border-b border-white/5" id="navbar">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2 group hover-trigger">
-                <div class="w-8 h-8 bg-gradient-to-br from-teal-400 to-blue-600 rounded flex items-center justify-center text-white font-display font-bold text-lg group-hover:rotate-12 transition-transform">M</div>
-                <span class="font-display font-bold text-lg tracking-wide text-white">Marine<span class="text-teal-400">Tech</span></span>
-            </a>
-            
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center gap-8">
-                <a href="index.html#about" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Nosotros</a>
-                <a href="index.html#process" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Proceso</a>
-                <a href="portfolio.html" class="text-sm font-medium text-teal-400 transition hover-trigger">Casos de Éxito</a>
-                <a href="blog.html" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Blog Marino</a>
-                <a href="index.html#contact" class="px-5 py-2 rounded-full border border-teal-500 text-teal-400 text-sm font-bold hover:bg-teal-500 hover:text-navy-900 transition hover-trigger">Auditoría Gratuita</a>
-            </div>
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 py-4" id="navbar">
+        <div class="container mx-auto px-6">
+            <div class="glass rounded-full px-6 py-3 flex justify-between items-center shadow-lg shadow-teal-900/10 relative">
+                <a href="index.html" class="flex items-center gap-2 group hover-trigger">
+                    <div class="w-8 h-8 bg-gradient-to-br from-teal-400 to-blue-600 rounded flex items-center justify-center text-white font-display font-bold text-lg group-hover:rotate-12 transition-transform">M</div>
+                    <span class="font-display font-bold text-lg tracking-wide text-white">Marine<span class="text-teal-400">Tech</span></span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html#about" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Nosotros</a>
+                    <a href="#" class="text-sm font-bold text-teal-400 hover:text-white transition hover-trigger">Casos de Éxito</a>
+                    <a href="blog/index.html" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Blog Marino</a>
+                    <a href="index.html#contact" class="px-5 py-2 rounded-full border border-teal-500 text-teal-400 text-sm font-bold hover:bg-teal-500 hover:text-navy-900 transition hover-trigger">Auditoría Gratuita</a>
+                </div>
 
-            <!-- Mobile Menu Button -->
-            <button class="md:hidden text-white p-2 z-50 relative focus:outline-none touch-manipulation" id="mobile-menu-btn" aria-label="Abrir menú">
-                <svg class="w-8 h-8 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white p-2 z-50 relative focus:outline-none pointer-events-auto" id="mobile-menu-btn" aria-label="Abrir menú" onclick="toggleMenu()">
+                    <svg class="w-8 h-8 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
     </nav>
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 z-[60] bg-navy-900/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 flex items-center justify-center hidden">
-        <button id="close-menu" class="absolute top-8 right-8 text-white p-4 focus:outline-none" aria-label="Cerrar menú">
+        <button id="close-menu" class="absolute top-8 right-8 text-white p-4 focus:outline-none pointer-events-auto" aria-label="Cerrar menú" onclick="toggleMenu()">
             <svg class="w-8 h-8 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
         </button>
         <div class="flex flex-col gap-8 text-center text-2xl font-display font-bold">
-            <a href="index.html#about" class="hover:text-teal-400 transition mobile-link text-white">Nosotros</a>
-            <a href="index.html#process" class="hover:text-teal-400 transition mobile-link text-white">Proceso</a>
-            <a href="portfolio.html" class="hover:text-teal-400 transition mobile-link text-teal-400">Casos de Éxito</a>
-            <a href="blog.html" class="hover:text-teal-400 transition mobile-link text-white">Blog Marino</a>
-            <a href="index.html#contact" class="text-teal-400 transition mobile-link">Auditoría Gratuita</a>
+            <a href="index.html#about" class="hover:text-teal-400 transition mobile-link text-white" onclick="toggleMenu()">Nosotros</a>
+            <a href="#" class="hover:text-teal-400 transition mobile-link text-teal-400">Casos de Éxito</a>
+            <a href="blog/index.html" class="hover:text-teal-400 transition mobile-link text-white">Blog Marino</a>
+            <a href="index.html#contact" class="text-teal-400 transition mobile-link" onclick="toggleMenu()">Auditoría Gratuita</a>
         </div>
     </div>
 
@@ -134,8 +142,8 @@
                     </div>
                     <div class="lg:w-1/2 relative">
                          <div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div>
-                         <!-- Imagen WEBP -->
-                         <img src="images/proyecto1.webp" alt="Eastern Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                         <!-- ALT TEXT OPTIMIZADO -->
+                         <img src="images/estern.webp" alt="Diseño web corporativo para astillero Eastern Shipbuilding" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
                          </div>
                     </div>
                 </div>
@@ -176,8 +184,8 @@
                     </div>
                     <div class="lg:w-1/2 relative">
                          <div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div>
-                         <!-- Imagen WEBP -->
-                         <img src="images/proyecto2.webp" alt="Seaward Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                         <!-- ALT TEXT OPTIMIZADO -->
+                         <img src="images/seaward.webp" alt="Página web de servicios marítimos globales Seaward" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
                          </div>
                     </div>
                 </div>
@@ -218,8 +226,8 @@
                     </div>
                     <div class="lg:w-1/2 relative">
                          <div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div>
-                         <!-- Imagen WEBP -->
-                         <img src="images/proyecto12.webp" alt="Heesen Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                         <!-- ALT TEXT OPTIMIZADO -->
+                         <img src="images/heesen.webp" alt="Diseño web de lujo para Heesen Yachts" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
                          </div>
                     </div>
                 </div>
@@ -244,8 +252,8 @@
                         <a href="#" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
                     </div>
                     <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div>
-                    <!-- Imagen WEBP -->
-                    <img src="images/proyecto3.webp" alt="Global Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                    <!-- ALT TEXT OPTIMIZADO -->
+                    <img src="images/global.webp" alt="Plataforma de logística portuaria Global Logistiks" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
                     </div></div>
                 </div>
 
@@ -269,8 +277,8 @@
                         <a href="https://astillerosescamilla.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
                     </div>
                     <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div>
-                    <!-- Imagen WEBP -->
-                    <img src="images/proyecto4.webp" alt="Escamilla Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                    <!-- ALT TEXT OPTIMIZADO -->
+                    <img src="images/escamilla.webp" alt="Sitio web de Astilleros Escamilla optimizado para móviles" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
                     </div></div>
                 </div>
 
@@ -294,8 +302,8 @@
                         <a href="https://shorelinesightseeing.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
                     </div>
                     <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div>
-                    <!-- Imagen WEBP -->
-                    <img src="images/proyecto5.webp" alt="Shoreline Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                    <!-- ALT TEXT OPTIMIZADO -->
+                    <img src="images/shoreline.webp" alt="Sistema de reservas online para Shoreline Sightseeing" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
                     </div></div>
                 </div>
 
@@ -319,8 +327,8 @@
                         <a href="https://williscustomyachts.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition">Visitar Sitio Web ↗</a>
                     </div>
                     <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div>
-                    <!-- Imagen WEBP -->
-                    <img src="images/proyecto6.webp" alt="Willis Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                    <!-- ALT TEXT OPTIMIZADO -->
+                    <img src="images/willis.webp" alt="Sitio web de alta velocidad para Willis Custom Yachts" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
                     </div></div>
                 </div>
 
@@ -344,8 +352,8 @@
                         <a href="https://www.scaranoboat.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
                     </div>
                     <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div>
-                    <!-- Imagen WEBP -->
-                    <img src="images/proyecto7.webp" alt="Scarano Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                    <!-- ALT TEXT OPTIMIZADO -->
+                    <img src="images/scarano.webp" alt="Narrativa visual web para Scarano Boat Building" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
                     </div></div>
                 </div>
 
@@ -369,8 +377,8 @@
                         <a href="https://devlinboat.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition">Visitar Sitio Web ↗</a>
                     </div>
                     <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div>
-                    <!-- Imagen WEBP -->
-                    <img src="images/proyecto8.webp" alt="Devlin Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                    <!-- ALT TEXT OPTIMIZADO -->
+                    <img src="images/devlin.webp" alt="Ecommerce de planos navales Devlin Designing" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
                     </div></div>
                 </div>
                 
@@ -394,12 +402,12 @@
                         <a href="https://vigor.net/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
                     </div>
                     <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div>
-                    <!-- Imagen WEBP -->
-                    <img src="images/proyecto9.webp" alt="Vigor Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                    <!-- ALT TEXT OPTIMIZADO -->
+                    <img src="images/vigor.webp" alt="Integración CRM para Vigor Marine Group" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
                     </div></div>
                 </div>
 
-                <!-- 11. Gibbs & Cox -->
+                <!-- 11. Gibbs & Cox (Leidos) -->
                 <div class="flex flex-col-reverse lg:flex-row items-center gap-20 reveal group border-b border-white/5 pb-20">
                     <div class="lg:w-1/2">
                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Defensa Naval</span>
@@ -419,8 +427,8 @@
                         <a href="https://www.gibbscox.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition">Visitar Sitio Web ↗</a>
                     </div>
                     <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-teal-500/20 blur-[100px] rounded-full -z-10"></div>
-                    <!-- Imagen WEBP -->
-                    <img src="images/proyecto10.webp" alt="Gibbs Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                    <!-- ALT TEXT OPTIMIZADO -->
+                    <img src="images/leidos.webp" alt="Portal seguro de ingeniería naval Gibbs & Cox" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
                     </div></div>
                 </div>
 
@@ -444,8 +452,8 @@
                         <a href="https://marine-technologies.com/" target="_blank" class="inline-flex items-center gap-2 text-teal-400 font-bold border-b-2 border-teal-500 pb-1 hover:text-white transition text-lg">Visitar Sitio Web ↗</a>
                     </div>
                     <div class="lg:w-1/2 relative"><div class="relative animate-float"><div class="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full -z-10"></div>
-                    <!-- Imagen WEBP -->
-                    <img src="images/proyecto11.webp" alt="Marine Tech Website Mockup" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
+                    <!-- ALT TEXT OPTIMIZADO -->
+                    <img src="images/marine.webp" alt="Interfaz UI/UX para Marine Technologies" class="w-full h-auto object-contain drop-shadow-2xl transform scale-110" loading="lazy">
                     </div></div>
                 </div>
 

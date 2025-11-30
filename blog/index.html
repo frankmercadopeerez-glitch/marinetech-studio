@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Insights | MarineTech Studio</title>
+    <meta name="description" content="Artículos sobre marketing digital marítimo, SEO para astilleros y tendencias tecnológicas en la industria naval.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚓</text></svg>">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] },
+                    colors: { navy: { 900: '#020c12', 800: '#051d29', 700: '#0d2b3a' }, teal: { 400: '#2dd4bf', 500: '#14b8a6' } },
+                    backgroundImage: { 'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2314b8a6' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E\")" }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #020c12; color: #e2e8f0; }
+        
+        /* Cursor personalizado SOLO en Desktop */
+        @media (min-width: 768px) {
+            body, a, button { cursor: none; }
+            .custom-cursor { width: 20px; height: 20px; border: 1px solid #00f0ff; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s, background 0.3s; mix-blend-mode: difference; }
+            .custom-cursor.hovered { width: 50px; height: 50px; background-color: rgba(0, 240, 255, 0.2); border-color: transparent; }
+        }
+        
+        .glass-card { background: linear-gradient(145deg, rgba(10, 46, 64, 0.4) 0%, rgba(5, 29, 41, 0.6) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.03); transition: all 0.4s ease; }
+        .glass-card:hover { border-color: rgba(0, 240, 255, 0.3); transform: translateY(-5px); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        /* Estilos Glass Unificados */
+        .glass { 
+            background: rgba(5, 29, 41, 0.7); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+        }
+    </style>
+</head>
+<body class="selection:bg-teal-500 selection:text-white">
+
+    <div class="custom-cursor hidden md:block" id="cursor"></div>
+
+    <!-- Navegación Unificada (Rutas relativas: ../) -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 py-4" id="navbar">
+        <div class="container mx-auto px-6">
+            <div class="glass rounded-full px-6 py-3 flex justify-between items-center shadow-lg shadow-teal-900/10 relative">
+                <a href="../index.html" class="flex items-center gap-2 group hover-trigger">
+                    <div class="w-8 h-8 bg-gradient-to-br from-teal-400 to-blue-600 rounded flex items-center justify-center text-white font-display font-bold text-lg group-hover:rotate-12 transition-transform">M</div>
+                    <span class="font-display font-bold text-lg tracking-wide text-white">Marine<span class="text-teal-400">Tech</span></span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="../index.html#about" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Nosotros</a>
+                    <a href="../portfolio.html" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Casos de Éxito</a>
+                    <a href="#" class="text-sm font-bold text-teal-400 hover:text-white transition hover-trigger">Blog Marino</a>
+                    <a href="../index.html#contact" class="px-5 py-2 rounded-full border border-teal-500 text-teal-400 text-sm font-bold hover:bg-teal-500 hover:text-navy-900 transition hover-trigger">Auditoría Gratuita</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white p-2 z-50 relative focus:outline-none pointer-events-auto" id="mobile-menu-btn" aria-label="Abrir menú" onclick="toggleMenu()">
+                    <svg class="w-8 h-8 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-navy-900/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 flex items-center justify-center hidden">
+        <button id="close-menu" class="absolute top-8 right-8 text-white p-4 focus:outline-none pointer-events-auto" aria-label="Cerrar menú" onclick="toggleMenu()">
+            <svg class="w-8 h-8 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <div class="flex flex-col gap-8 text-center text-2xl font-display font-bold">
+            <a href="../index.html#about" class="hover:text-teal-400 transition mobile-link text-white">Nosotros</a>
+            <a href="../portfolio.html" class="hover:text-teal-400 transition mobile-link text-white">Casos de Éxito</a>
+            <a href="#" class="hover:text-teal-400 transition mobile-link text-teal-400">Blog Marino</a>
+            <a href="../index.html#contact" class="text-teal-400 transition mobile-link">Auditoría Gratuita</a>
+        </div>
+    </div>
+
+    <main class="pt-40 pb-20">
+        <div class="container mx-auto px-6 max-w-7xl">
+            
+            <!-- Header Blog -->
+            <div class="text-center mb-24 reveal">
+                <span class="text-teal-400 text-sm font-bold tracking-widest uppercase mb-4 block">Insights & Estrategia</span>
+                <h1 class="text-5xl md:text-7xl font-display font-bold mb-6">Bitácora <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">Digital</span></h1>
+                <p class="text-slate-400 text-lg max-w-2xl mx-auto">Análisis profundo sobre tecnología, SEO y transformación digital para la industria marítima en Latinoamérica.</p>
+                
+                <!-- Categorías -->
+                <div class="flex flex-wrap justify-center gap-4 mt-8">
+                    <button class="px-6 py-2 rounded-full bg-white/5 hover:bg-teal-500 hover:text-navy-900 transition text-sm font-bold border border-white/10 hover-trigger">Todos</button>
+                    <button class="px-6 py-2 rounded-full bg-white/5 hover:bg-teal-500 hover:text-navy-900 transition text-sm font-bold border border-white/10 hover-trigger">SEO Naval</button>
+                    <button class="px-6 py-2 rounded-full bg-white/5 hover:bg-teal-500 hover:text-navy-900 transition text-sm font-bold border border-white/10 hover-trigger">Tecnología</button>
+                    <button class="px-6 py-2 rounded-full bg-white/5 hover:bg-teal-500 hover:text-navy-900 transition text-sm font-bold border border-white/10 hover-trigger">Casos de Éxito</button>
+                </div>
+            </div>
+
+            <!-- Featured Post (Artículo 1) -->
+            <article class="glass-card rounded-3xl overflow-hidden mb-16 grid md:grid-cols-2 reveal hover-trigger group border border-white/10 shadow-2xl">
+                <div class="h-80 md:h-auto overflow-hidden relative bg-navy-900">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 to-transparent z-10 md:hidden"></div>
+                    <img src="../images/blog1.webp" alt="Remolcador y Buque de Carga" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 group-hover:grayscale-0 grayscale" width="800" height="600" fetchpriority="high">
+                </div>
+                <div class="p-10 md:p-14 flex flex-col justify-center relative">
+                    <div class="flex items-center gap-4 mb-6 text-xs font-bold uppercase tracking-wider">
+                        <span class="text-teal-400 bg-teal-500/10 px-3 py-1 rounded-full">Tendencias</span>
+                        <span class="text-slate-400">Nov 2025</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-6 group-hover:text-teal-400 transition leading-tight">Tendencias de Ingeniería Naval que Van a Marcar 2025</h2>
+                    <p class="text-slate-400 mb-8 leading-relaxed text-lg">El marketing B2B marítimo ha cambiado. Los armadores buscan eficiencia. Descubre cómo las especificaciones técnicas interactivas cierran contratos más rápido.</p>
+                    <a href="tendencias-ingenieria-naval-2025/" class="inline-flex items-center gap-2 text-white font-bold border-b-2 border-teal-500 pb-1 self-start hover:text-teal-400 transition">Leer Artículo Completo ↗</a>
+                </div>
+            </article>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Artículo 2 -->
+                <article class="glass-card rounded-2xl overflow-hidden reveal hover-trigger group flex flex-col h-full" style="transition-delay: 100ms;">
+                    <div class="h-60 overflow-hidden relative bg-navy-900">
+                        <div class="absolute inset-0 bg-navy-900/50 group-hover:bg-transparent transition z-10"></div>
+                        <img src="../images/blog2.webp" alt="Cartagena Hub Naval" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" loading="lazy">
+                    </div>
+                    <div class="p-8 flex flex-col flex-1">
+                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-3">Mercado</span>
+                        <h3 class="text-xl font-display font-bold text-white mb-4 group-hover:text-teal-400 transition">Cartagena: El Nuevo Hub Naval del Caribe</h3>
+                        <p class="text-slate-400 text-sm mb-6 flex-1 leading-relaxed">Datos reales del crecimiento portuario y qué significa para los talleres locales.</p>
+                        <a href="cartagena-hub-naval-caribe-2025/" class="text-sm text-white font-bold hover:text-teal-400 transition flex items-center gap-2">Leer más →</a>
+                    </div>
+                </article>
+
+                <!-- Artículo 3 -->
+                <article class="glass-card rounded-2xl overflow-hidden reveal hover-trigger group flex flex-col h-full" style="transition-delay: 200ms;">
+                    <div class="h-60 overflow-hidden relative bg-navy-900">
+                        <div class="absolute inset-0 bg-navy-900/50 group-hover:bg-transparent transition z-10"></div>
+                        <img src="../images/blog3.webp" alt="Sostenibilidad Marina Caribe" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" loading="lazy">
+                    </div>
+                    <div class="p-8 flex flex-col flex-1">
+                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-3">Sostenibilidad</span>
+                        <h3 class="text-xl font-display font-bold text-white mb-4 group-hover:text-teal-400 transition">Sostenibilidad Marina: Negocio Rentable</h3>
+                        <p class="text-slate-400 text-sm mb-6 flex-1 leading-relaxed">La descarbonización y las normas OMI están creando un mercado nuevo en el Caribe.</p>
+                        <a href="sostenibilidad-marina-caribe-negocio-rentable/" class="text-sm text-white font-bold hover:text-teal-400 transition flex items-center gap-2">Leer más →</a>
+                    </div>
+                </article>
+
+                <!-- Placeholder (o futuro artículo 4) -->
+                <article class="glass-card rounded-2xl overflow-hidden reveal hover-trigger group flex flex-col h-full" style="transition-delay: 300ms;">
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="../images/proyecto1.webp" alt="Analytics" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="p-8 flex flex-col flex-1">
+                        <span class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-3">Estrategia</span>
+                        <h3 class="text-xl font-display font-bold text-white mb-4 group-hover:text-teal-400 transition">Marketing B2B para Reparación Naval</h3>
+                        <p class="text-slate-400 text-sm mb-6 flex-1 leading-relaxed">Cómo llegar a los gerentes de flota internacionales con campañas digitales precisas.</p>
+                        <a href="#" class="text-sm text-white font-bold hover:text-teal-400 transition flex items-center gap-2">Próximamente →</a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-white/10 py-12 bg-navy-900 text-center text-slate-600 text-sm">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center items-center gap-2 mb-4 opacity-50">
+                <div class="w-6 h-6 bg-teal-500 rounded-sm flex items-center justify-center text-navy-900 font-bold text-xs">M</div>
+                <span class="font-bold text-white">MarineTech</span>
+            </div>
+            <p>© 2025 MarineTech Studio. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        let isMenuOpen = false;
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!mobileMenu) return;
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) { mobileMenu.classList.remove('hidden', 'translate-x-full'); mobileMenu.classList.add('translate-x-0'); } 
+            else { mobileMenu.classList.remove('translate-x-0'); mobileMenu.classList.add('translate-x-full'); setTimeout(() => { if (!isMenuOpen) mobileMenu.classList.add('hidden'); }, 300); }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const closeMenu = document.getElementById('close-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu) mobileMenu.classList.add('hidden', 'translate-x-full');
+
+            if (menuBtn) { menuBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(); }); }
+            if (closeMenu) closeMenu.addEventListener('click', toggleMenu);
+            mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+            if (window.matchMedia("(min-width: 768px)").matches) {
+                const cursor = document.getElementById('cursor');
+                const hoverTriggers = document.querySelectorAll('.hover-trigger');
+                document.addEventListener('mousemove', (e) => { if(cursor) { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; } });
+                hoverTriggers.forEach(trigger => { trigger.addEventListener('mouseenter', () => cursor.classList.add('hovered')); trigger.addEventListener('mouseleave', () => cursor.classList.remove('hovered')); });
+            }
+
+            const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
