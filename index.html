@@ -9,26 +9,23 @@
     <!-- ================================================================= -->
 
     <!-- 1. VERIFICACIÓN DE GOOGLE SEARCH CONSOLE -->
-    <meta name="google-site-verification" content="j51uAnFC48GTSTYkF6dDNhCq4_HkwR2UwErU83j7_MY" />
+    <meta
+      name="google-site-verification"
+      content="j51uAnFC48GTSTYkF6dDNhCq4_HkwR2UwErU83j7_MY"
+    />
 
     <!-- 2. GOOGLE ANALYTICS 4 (GA4) -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5DKJ51T2N9"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-5DKJ51T2N9');
-    </script>
-    
-    <!-- ================================================================= -->
+    <!-- Pega aquí el script G-XXXXXXXX -->
 
     <!-- Script para limpiar URL (UX Profesional) -->
     <script>
-      if (window.location.pathname.endsWith('/index.html')) {
-        const newPath = window.location.pathname.replace(/\/index\.html$/, '/');
-        window.history.replaceState(null, '', newPath + window.location.search + window.location.hash);
+      if (window.location.pathname.endsWith("/index.html")) {
+        const newPath = window.location.pathname.replace(/\/index\.html$/, "/");
+        window.history.replaceState(
+          null,
+          "",
+          newPath + window.location.search + window.location.hash
+        );
       }
     </script>
 
@@ -48,45 +45,39 @@
 
     <!-- DATOS ESTRUCTURADOS (JSON-LD) PARA SEO LOCAL -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "MarineTech Studio",
-      "image": "https://www.marinetechstudio.com/images/logo-facebook.png",
-      "@id": "https://www.marinetechstudio.com/#website",
-      "url": "https://www.marinetechstudio.com/",
-      "telephone": "+573000000000",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Bocagrande",
-        "addressLocality": "Cartagena",
-        "addressRegion": "Bolívar",
-        "postalCode": "130001",
-        "addressCountry": "CO"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 10.391049,
-        "longitude": -75.479426
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "MarineTech Studio",
+        "image": "https://www.marinetechstudio.com/images/logo-facebook.png",
+        "@id": "https://www.marinetechstudio.com/#website",
+        "url": "https://www.marinetechstudio.com/",
+        "telephone": "+573000000000",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Bocagrande",
+          "addressLocality": "Cartagena",
+          "addressRegion": "Bolívar",
+          "postalCode": "130001",
+          "addressCountry": "CO"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 10.391049,
+          "longitude": -75.479426
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        "sameAs": [
+          "https://www.instagram.com/marinetechstudio",
+          "https://www.linkedin.com/company/marinetechstudio"
         ],
-        "opens": "08:00",
-        "closes": "18:00"
-      },
-      "sameAs": [
-        "https://www.instagram.com/marinetechstudio",
-        "https://www.linkedin.com/company/marinetechstudio"
-      ],
-      "priceRange": "$$"
-    }
+        "priceRange": "$$"
+      }
     </script>
 
     <!-- Favicon -->
@@ -95,12 +86,10 @@
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚓</text></svg>"
     />
 
-    <!-- Tailwind CSS (Restaurado para diseño original) -->
+    <!-- Tailwind & Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Fuentes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -392,7 +381,7 @@
       ></div>
       <div class="container mx-auto px-6 text-center z-10">
         <div
-          class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/5 mb-10 reveal backdrop-blur-sm"
+          class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/10 mb-10 reveal backdrop-blur-sm"
         >
           <span
             class="w-2 h-2 rounded-full bg-teal-400 animate-pulse shadow-[0_0_10px_#2dd4bf]"
@@ -416,16 +405,23 @@
             >Astillero o Taller Naval</span
           >
         </h1>
-        
+
         <!-- PUNTOS DE DOLOR & ESTADÍSTICAS REALES -->
-        <div class="max-w-3xl mx-auto mb-10 reveal" style="transition-delay: 200ms">
-            <p class="text-lg md:text-xl text-slate-300 font-light leading-relaxed mb-4">
-              <strong>El 89% de los compradores B2B</strong> investigan en internet antes de contactar a un proveedor. 
-            </p>
-            <p class="text-slate-400 text-base">
-              Si un armador busca "reparación naval urgente" en Google y tu astillero no aparece, 
-              ese contrato millonario se va directo a tu competencia. No pierdas más cuota de mercado por ser invisible.
-            </p>
+        <div
+          class="max-w-3xl mx-auto mb-10 reveal"
+          style="transition-delay: 200ms"
+        >
+          <p
+            class="text-lg md:text-xl text-slate-300 font-light leading-relaxed mb-4"
+          >
+            <strong>El 89% de los compradores B2B</strong> investigan en
+            internet antes de contactar a un proveedor.
+          </p>
+          <p class="text-slate-400 text-base">
+            Si un armador busca "reparación naval urgente" en Google y tu
+            astillero no aparece, ese contrato millonario se va directo a tu
+            competencia. No pierdas más cuota de mercado por ser invisible.
+          </p>
         </div>
 
         <div
@@ -620,7 +616,7 @@
       </div>
       <div class="relative w-full marquee-container">
         <div class="flex w-max gap-6 animate-marquee-fast">
-          <!-- Review 1 -->
+          <!-- Review 1 (Corrección: h4 a div font-bold) -->
           <div
             class="w-[500px] glass-card p-6 rounded-2xl border border-white/10 shrink-0 flex items-center gap-6 hover-trigger"
           >
@@ -877,7 +873,7 @@
       </div>
     </section>
 
-    <!-- FAQ SECTION -->
+    <!-- FAQ SECTION (OPTIMIZADA) -->
     <section id="faq" class="py-24 bg-navy-900 relative">
       <div class="container mx-auto px-6 max-w-4xl">
         <div class="text-center mb-16 reveal">
@@ -890,7 +886,8 @@
             <span class="text-teal-400">Latinoamérica</span>
           </h2>
           <p class="text-slate-400 mt-4">
-            Respuestas estratégicas sobre por qué tu astillero necesita esto ahora.
+            Respuestas estratégicas sobre por qué tu astillero necesita esto
+            ahora.
           </p>
         </div>
 
@@ -902,15 +899,26 @@
             <summary
               class="flex justify-between items-center p-6 cursor-pointer text-lg font-bold text-white hover:text-teal-400 transition hover-trigger"
             >
-              ¿Vale la pena invertir en una web si ya asisto a ferias como Colombiamar?
+              ¿Vale la pena invertir en una web si ya asisto a ferias como
+              Colombiamar?
               <span
                 class="text-teal-400 transition-transform group-open:rotate-180"
                 >▼</span
               >
             </summary>
             <div class="px-6 pb-6 text-slate-400 leading-relaxed text-sm">
-              <p>Las ferias son vitales, pero duran 3 días. Su sitio web trabaja 24/7 los 365 días del año.</p>
-              <p class="mt-2">Cuando un gerente de flota en Europa o EE.UU. tiene una emergencia mecánica en el Caribe, no busca el folleto que le diste hace 6 meses; <strong>busca en Google "ship repair Colombia"</strong>. Si no estás ahí en ese momento crítico, el contrato se lo lleva quien sí esté.</p>
+              <p>
+                Las ferias son vitales, pero duran 3 días. Su sitio web trabaja
+                24/7 los 365 días del año.
+              </p>
+              <p class="mt-2">
+                Cuando un gerente de flota en Europa o EE.UU. tiene una
+                emergencia mecánica en el Caribe, no busca el folleto que le
+                diste hace 6 meses;
+                <strong>busca en Google "ship repair Colombia"</strong>. Si no
+                estás ahí en ese momento crítico, el contrato se lo lleva quien
+                sí esté.
+              </p>
             </div>
           </details>
 
@@ -921,15 +929,26 @@
             <summary
               class="flex justify-between items-center p-6 cursor-pointer text-lg font-bold text-white hover:text-teal-400 transition hover-trigger"
             >
-              ¿Por qué es importante tener una web en inglés si estoy en Cartagena?
+              ¿Por qué es importante tener una web en inglés si estoy en
+              Cartagena?
               <span
                 class="text-teal-400 transition-transform group-open:rotate-180"
                 >▼</span
               >
             </summary>
             <div class="px-6 pb-6 text-slate-400 leading-relaxed text-sm">
-              <p>El idioma del mar es el inglés. Gran parte del tráfico que pasa por el Caribe son armadores internacionales, capitanes de superyates y navieras globales.</p>
-              <p class="mt-2">Una web bilingüe no solo te permite comunicarte con ellos, sino que <strong>automáticamente eleva tu estatus</strong>. Te posiciona como un astillero de clase mundial capaz de manejar estándares internacionales, abriendo la puerta a contratos en dólares o euros.</p>
+              <p>
+                El idioma del mar es el inglés. Gran parte del tráfico que pasa
+                por el Caribe son armadores internacionales, capitanes de
+                superyates y navieras globales.
+              </p>
+              <p class="mt-2">
+                Una web bilingüe no solo te permite comunicarte con ellos, sino
+                que <strong>automáticamente eleva tu estatus</strong>. Te
+                posiciona como un astillero de clase mundial capaz de manejar
+                estándares internacionales, abriendo la puerta a contratos en
+                dólares o euros.
+              </p>
             </div>
           </details>
 
@@ -940,15 +959,26 @@
             <summary
               class="flex justify-between items-center p-6 cursor-pointer text-lg font-bold text-white hover:text-teal-400 transition hover-trigger"
             >
-              Mi astillero ya tiene clientes "boca a boca", ¿para qué necesito Google?
+              Mi astillero ya tiene clientes "boca a boca", ¿para qué necesito
+              Google?
               <span
                 class="text-teal-400 transition-transform group-open:rotate-180"
                 >▼</span
               >
             </summary>
             <div class="px-6 pb-6 text-slate-400 leading-relaxed text-sm">
-              <p>El boca a boca es excelente, pero es limitado y lento. El posicionamiento digital es escalable.</p>
-              <p class="mt-2">Además, en el sector naval, <strong>la validación digital es el nuevo boca a boca</strong>. Antes de firmar un contrato grande, el comité de compras te investigará online. Si encuentran una web moderna, con casos de éxito y certificaciones visibles, la desconfianza desaparece y el ciclo de venta se acelera.</p>
+              <p>
+                El boca a boca es excelente, pero es limitado y lento. El
+                posicionamiento digital es escalable.
+              </p>
+              <p class="mt-2">
+                Además, en el sector naval,
+                <strong>la validación digital es el nuevo boca a boca</strong>.
+                Antes de firmar un contrato grande, el comité de compras te
+                investigará online. Si encuentran una web moderna, con casos de
+                éxito y certificaciones visibles, la desconfianza desaparece y
+                el ciclo de venta se acelera.
+              </p>
             </div>
           </details>
 
@@ -966,8 +996,17 @@
               >
             </summary>
             <div class="px-6 pb-6 text-slate-400 leading-relaxed text-sm">
-              <p>Creamos "activos digitales" específicos para ingeniería. No solo hacemos webs bonitas; implementamos áreas seguras para compartir planos CAD, galerías de proyectos anteriores detallados y especificaciones técnicas claras.</p>
-              <p class="mt-2">Esto demuestra capacidad técnica inmediata. Cuando un ingeniero naval evalúa tu capacidad, tu web le da todas las respuestas técnicas antes de que siquiera levante el teléfono.</p>
+              <p>
+                Creamos "activos digitales" específicos para ingeniería. No solo
+                hacemos webs bonitas; implementamos áreas seguras para compartir
+                planos CAD, galerías de proyectos anteriores detallados y
+                especificaciones técnicas claras.
+              </p>
+              <p class="mt-2">
+                Esto demuestra capacidad técnica inmediata. Cuando un ingeniero
+                naval evalúa tu capacidad, tu web le da todas las respuestas
+                técnicas antes de que siquiera levante el teléfono.
+              </p>
             </div>
           </details>
         </div>
@@ -1019,7 +1058,6 @@
                 width="400"
                 height="300"
                 loading="lazy"
-                fetchpriority="high"
               />
             </div>
             <div
@@ -1124,7 +1162,7 @@
       </div>
     </section>
 
-    <!-- FORMULARIO DE CONTACTO -->
+    <!-- FORMULARIO DE CONTACTO (Accesible) -->
     <section id="contact" class="py-32">
       <div class="container mx-auto px-6">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -1161,7 +1199,8 @@
           >
             <div class="grid md:grid-cols-2 gap-6">
               <div>
-                <label for="name"
+                <label
+                  for="name"
                   class="block text-xs font-bold uppercase tracking-wider text-teal-500 mb-2"
                   >Nombre</label
                 >
@@ -1174,7 +1213,8 @@
                 />
               </div>
               <div>
-                <label for="phone"
+                <label
+                  for="phone"
                   class="block text-xs font-bold uppercase tracking-wider text-teal-500 mb-2"
                   >Teléfono</label
                 >
@@ -1188,7 +1228,8 @@
               </div>
             </div>
             <div>
-              <label for="email"
+              <label
+                for="email"
                 class="block text-xs font-bold uppercase tracking-wider text-teal-500 mb-2"
                 >Email</label
               >
@@ -1201,7 +1242,8 @@
               />
             </div>
             <div>
-              <label for="business_type"
+              <label
+                for="business_type"
                 class="block text-xs font-bold uppercase tracking-wider text-teal-500 mb-2"
                 >Tipo de Negocio</label
               >
@@ -1226,7 +1268,8 @@
               </div>
             </div>
             <div>
-              <label for="details"
+              <label
+                for="details"
                 class="block text-xs font-bold uppercase tracking-wider text-teal-500 mb-2"
                 >Detalles del Proyecto</label
               >
@@ -1250,7 +1293,7 @@
       </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer (Contrastado) -->
     <footer class="bg-navy-900 text-slate-300 py-16 border-t border-white/5">
       <div class="container mx-auto px-6">
         <div class="grid md:grid-cols-4 gap-12 mb-16">
@@ -1379,84 +1422,66 @@
     </footer>
 
     <script>
-      // Lógica Global del Menú (Simple y Robusta)
-      let isMenuOpen = false;
-
-      function toggleMenu() {
+      // Menú móvil robusto y eficiente
+      var isMenuOpen = false;
+      function toggleMenu(force) {
         const mobileMenu = document.getElementById("mobile-menu");
-        if (!mobileMenu) return; // Safety check
-
-        isMenuOpen = !isMenuOpen;
-
+        if (!mobileMenu) return;
+        if (typeof force === "boolean") isMenuOpen = force;
+        else isMenuOpen = !isMenuOpen;
         if (isMenuOpen) {
-          // Mostrar: quitar hidden y mover
           mobileMenu.classList.remove("hidden", "translate-x-full");
           mobileMenu.classList.add("translate-x-0");
+          document.body.style.overflow = "hidden";
         } else {
-          // Ocultar: mover y luego delay hidden
           mobileMenu.classList.remove("translate-x-0");
           mobileMenu.classList.add("translate-x-full");
+          document.body.style.overflow = "";
           setTimeout(() => {
             if (!isMenuOpen) mobileMenu.classList.add("hidden");
           }, 300);
         }
       }
 
-      // Eventos DOM
       document.addEventListener("DOMContentLoaded", () => {
         const menuBtn = document.getElementById("mobile-menu-btn");
         const closeMenu = document.getElementById("close-menu");
-        const mobileLinks = document.querySelectorAll(".mobile-link");
         const mobileMenu = document.getElementById("mobile-menu");
-
-        // Asegurar estado inicial correcto
         if (mobileMenu) mobileMenu.classList.add("hidden", "translate-x-full");
-
-        if (menuBtn) {
-          menuBtn.addEventListener("click", (e) => {
-            e.stopPropagation(); // Evitar propagación a elementos traseros
-            toggleMenu();
+        if (menuBtn) menuBtn.addEventListener("click", () => toggleMenu(true));
+        if (closeMenu)
+          closeMenu.addEventListener("click", () => toggleMenu(false));
+        if (mobileMenu) {
+          mobileMenu.addEventListener("click", (e) => {
+            if (e.target.closest("a")) toggleMenu(false);
           });
         }
+        document.addEventListener("keydown", (e) => {
+          if (isMenuOpen && e.key === "Escape") toggleMenu(false);
+        });
 
-        if (closeMenu) closeMenu.addEventListener("click", toggleMenu);
-        mobileLinks.forEach((link) =>
-          link.addEventListener("click", toggleMenu)
-        );
-
-        // Scroll Logic (PC) - Optimizado
+        // Scroll horizontal del proceso (desktop)
+        const container = document.getElementById("process-container");
+        const track = document.getElementById("process-track");
         window.addEventListener("scroll", () => {
-          const nav = document.getElementById("navbar");
-          if (nav)
-            window.scrollY > 50
-              ? nav.classList.add("py-2")
-              : nav.classList.remove("py-4");
-
-          // Horizontal Scroll
-          const container = document.getElementById("process-container");
-          const track = document.getElementById("process-track");
-
           if (window.innerWidth >= 768 && container && track) {
             const rect = container.getBoundingClientRect();
             const containerTop = rect.top;
             const containerHeight = rect.height;
             const windowHeight = window.innerHeight;
-
             let progress = 0;
             if (containerTop <= 0) {
               const scrolled = Math.abs(containerTop);
               const scrollableDistance = containerHeight - windowHeight;
-              if (scrollableDistance > 0)
+              if (scrollableDistance > 0) {
                 progress = scrolled / scrollableDistance;
+              }
             }
             progress = Math.max(0, Math.min(progress, 1));
-
             const trackWidth = track.scrollWidth;
             const viewportWidth = window.innerWidth;
             const scrollAmount = trackWidth - viewportWidth;
-
             if (scrollAmount > 0) {
-              // Ajuste fino: eliminamos +100 para que termine exacto
               track.style.transform = `translateX(-${
                 progress * scrollAmount
               }px)`;
@@ -1466,18 +1491,16 @@
           }
         });
 
-        // Cursor Logic (Solo PC)
+        // Cursor personalizado solo en desktop
         if (window.matchMedia("(min-width: 768px)").matches) {
           const cursor = document.getElementById("cursor");
           const hoverTriggers = document.querySelectorAll(".hover-trigger");
-
           document.addEventListener("mousemove", (e) => {
             if (cursor) {
               cursor.style.left = e.clientX + "px";
               cursor.style.top = e.clientY + "px";
             }
           });
-
           hoverTriggers.forEach((trigger) => {
             trigger.addEventListener("mouseenter", () =>
               cursor.classList.add("hovered")
@@ -1488,7 +1511,7 @@
           });
         }
 
-        // Scroll Reveal
+        // Scroll reveal animación
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
