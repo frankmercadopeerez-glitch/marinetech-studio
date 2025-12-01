@@ -11,17 +11,19 @@
     <!-- 1. VERIFICACIÓN DE GOOGLE SEARCH CONSOLE -->
     <meta name="google-site-verification" content="j51uAnFC48GTSTYkF6dDNhCq4_HkwR2UwErU83j7_MY" />
 
-    <!-- 2. GOOGLE ANALYTICS 4 (GA4) -->
-    <!-- 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TU_ID_AQUI"></script>
+    <!-- 2. GOOGLE ANALYTICS 4 (GA4) - ACTIVADO -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5DKJ51T2N9"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-TU_ID_AQUI');
-    </script> 
-    -->
+
+      gtag('config', 'G-5DKJ51T2N9');
+    </script>
     
+    <!-- ================================================================= -->
+
     <!-- Script para limpiar URL (UX Profesional) -->
     <script>
       if (window.location.pathname.endsWith('/index.html')) {
@@ -616,7 +618,7 @@
       </div>
       <div class="relative w-full marquee-container">
         <div class="flex w-max gap-6 animate-marquee-fast">
-          <!-- Review 1 -->
+          <!-- Review 1 (Corrección: h4 a div font-bold) -->
           <div
             class="w-[500px] glass-card p-6 rounded-2xl border border-white/10 shrink-0 flex items-center gap-6 hover-trigger"
           >
@@ -634,7 +636,7 @@
                 JW
               </div>
               <div>
-                <h4 class="font-bold text-white text-sm">J. Willis</h4>
+                <div class="font-bold text-white text-sm">J. Willis</div>
                 <span class="text-[10px] text-slate-500 uppercase block"
                   >CEO, Willis</span
                 >
@@ -660,7 +662,7 @@
                 CR
               </div>
               <div>
-                <h4 class="font-bold text-white text-sm">C. Rodriguez</h4>
+                <div class="font-bold text-white text-sm">C. Rodriguez</div>
                 <span class="text-[10px] text-slate-500 uppercase block"
                   >Ops, Cartagena</span
                 >
@@ -686,7 +688,7 @@
                 MT
               </div>
               <div>
-                <h4 class="font-bold text-white text-sm">Michael T.</h4>
+                <div class="font-bold text-white text-sm">Michael T.</div>
                 <span class="text-[10px] text-slate-500 uppercase block"
                   >Mgr, TBailey</span
                 >
@@ -712,7 +714,7 @@
                 AS
               </div>
               <div>
-                <h4 class="font-bold text-white text-sm">A. Sánchez</h4>
+                <div class="font-bold text-white text-sm">A. Sánchez</div>
                 <span class="text-[10px] text-slate-500 uppercase block"
                   >Jefe Mto, Naviera</span
                 >
@@ -738,7 +740,7 @@
                 LG
               </div>
               <div>
-                <h4 class="font-bold text-white text-sm">L. Gomez</h4>
+                <div class="font-bold text-white text-sm">L. Gomez</div>
                 <span class="text-[10px] text-slate-500 uppercase block"
                   >Dir. Comercial</span
                 >
@@ -764,7 +766,7 @@
                 DK
               </div>
               <div>
-                <h4 class="font-bold text-white text-sm">D. Klein</h4>
+                <div class="font-bold text-white text-sm">D. Klein</div>
                 <span class="text-[10px] text-slate-500 uppercase block"
                   >Fleet Mgr</span
                 >
@@ -790,7 +792,7 @@
                 JW
               </div>
               <div>
-                <h4 class="font-bold text-white text-sm">J. Willis</h4>
+                <div class="font-bold text-white text-sm">J. Willis</div>
                 <span class="text-[10px] text-slate-500 uppercase block"
                   >CEO, Willis</span
                 >
@@ -814,7 +816,7 @@
                 CR
               </div>
               <div>
-                <h4 class="font-bold text-white text-sm">C. Rodriguez</h4>
+                <div class="font-bold text-white text-sm">C. Rodriguez</div>
                 <span class="text-[10px] text-slate-500 uppercase block"
                   >Ops, Cartagena</span
                 >
@@ -838,7 +840,7 @@
                 MT
               </div>
               <div>
-                <h4 class="font-bold text-white text-sm">Michael T.</h4>
+                <div class="font-bold text-white text-sm">Michael T.</div>
                 <span class="text-[10px] text-slate-500 uppercase block"
                   >Mgr, TBailey</span
                 >
@@ -862,7 +864,7 @@
                 AS
               </div>
               <div>
-                <h4 class="font-bold text-white text-sm">A. Sánchez</h4>
+                <div class="font-bold text-white text-sm">A. Sánchez</div>
                 <span class="text-[10px] text-slate-500 uppercase block"
                   >Jefe Mto, Naviera</span
                 >
@@ -873,7 +875,7 @@
       </div>
     </section>
 
-    <!-- FAQ SECTION -->
+    <!-- FAQ SECTION (OPTIMIZADA) -->
     <section id="faq" class="py-24 bg-navy-900 relative">
       <div class="container mx-auto px-6 max-w-4xl">
         <div class="text-center mb-16 reveal">
@@ -1119,7 +1121,7 @@
       </div>
     </section>
 
-    <!-- FORMULARIO DE CONTACTO -->
+    <!-- FORMULARIO DE CONTACTO (Accesible) -->
     <section id="contact" class="py-32">
       <div class="container mx-auto px-6">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -1156,11 +1158,12 @@
           >
             <div class="grid md:grid-cols-2 gap-6">
               <div>
-                <label
+                <label for="name"
                   class="block text-xs font-bold uppercase tracking-wider text-teal-500 mb-2"
                   >Nombre</label
                 >
                 <input
+                  id="name"
                   type="text"
                   name="name"
                   required
@@ -1168,11 +1171,12 @@
                 />
               </div>
               <div>
-                <label
+                <label for="phone"
                   class="block text-xs font-bold uppercase tracking-wider text-teal-500 mb-2"
                   >Teléfono</label
                 >
                 <input
+                  id="phone"
                   type="tel"
                   name="phone"
                   required
@@ -1181,11 +1185,12 @@
               </div>
             </div>
             <div>
-              <label
+              <label for="email"
                 class="block text-xs font-bold uppercase tracking-wider text-teal-500 mb-2"
                 >Email</label
               >
               <input
+                id="email"
                 type="email"
                 name="email"
                 required
@@ -1193,12 +1198,13 @@
               />
             </div>
             <div>
-              <label
+              <label for="business_type"
                 class="block text-xs font-bold uppercase tracking-wider text-teal-500 mb-2"
                 >Tipo de Negocio</label
               >
               <div class="relative">
                 <select
+                  id="business_type"
                   name="business_type"
                   class="w-full input-high-contrast rounded-lg p-4 focus:outline-none appearance-none"
                 >
@@ -1217,11 +1223,12 @@
               </div>
             </div>
             <div>
-              <label
+              <label for="details"
                 class="block text-xs font-bold uppercase tracking-wider text-teal-500 mb-2"
                 >Detalles del Proyecto</label
               >
               <textarea
+                id="details"
                 name="details"
                 rows="4"
                 required
@@ -1240,7 +1247,7 @@
       </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer (Contrastado) -->
     <footer class="bg-navy-900 text-slate-300 py-16 border-t border-white/5">
       <div class="container mx-auto px-6">
         <div class="grid md:grid-cols-4 gap-12 mb-16">
@@ -1255,7 +1262,7 @@
                 >MarineTech</span
               >
             </div>
-            <p class="text-sm leading-relaxed mb-6">
+            <p class="text-sm leading-relaxed mb-6 text-slate-300">
               Especialistas en Marketing Digital para Astilleros y Reparación
               Naval en Latinoamérica.
             </p>
@@ -1361,7 +1368,7 @@
         </div>
 
         <div
-          class="border-t border-white/5 pt-8 text-center text-xs text-slate-500"
+          class="border-t border-white/5 pt-8 text-center text-xs text-slate-400"
         >
           <p>&copy; 2025 MarineTech Studio. Todos los derechos reservados.</p>
         </div>
