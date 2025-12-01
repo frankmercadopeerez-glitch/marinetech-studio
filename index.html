@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- ================================================================= -->
-    <!-- ZONA DE INTEGRACIÓN CON GOOGLE (Pega tus códigos aquí)            -->
+    <!-- ZONA DE INTEGRACIÓN CON GOOGLE                                    -->
     <!-- ================================================================= -->
 
     <!-- 1. VERIFICACIÓN DE GOOGLE SEARCH CONSOLE -->
     <meta name="google-site-verification" content="j51uAnFC48GTSTYkF6dDNhCq4_HkwR2UwErU83j7_MY" />
 
     <!-- 2. GOOGLE ANALYTICS 4 (GA4) -->
-    <!-- Pega aquí el script completo que te da Google Analytics (G-XXXXXXXX) -->
     <!-- 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TU_ID_AQUI"></script>
     <script>
@@ -23,8 +22,6 @@
     </script> 
     -->
     
-    <!-- ================================================================= -->
-
     <!-- Script para limpiar URL (UX Profesional) -->
     <script>
       if (window.location.pathname.endsWith('/index.html')) {
@@ -98,6 +95,8 @@
 
     <!-- Tailwind & Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -500,6 +499,8 @@
               alt="Ingeniería Naval Heesen"
               class="w-full h-auto object-contain drop-shadow-2xl transform hover:scale-105 transition duration-700 max-h-[500px]"
               loading="lazy"
+              width="600"
+              height="400"
             />
           </div>
         </div>
@@ -1006,14 +1007,14 @@
               <div
                 class="absolute inset-0 bg-navy-900/50 group-hover:bg-transparent transition z-10"
               ></div>
-              <!-- IMAGEN OPTIMIZADA: WebP + Lazy Loading -->
+              <!-- IMAGEN OPTIMIZADA: WebP + Lazy Loading + fetchpriority -->
               <img
                 src="images/blog1.webp"
                 alt="Tendencias Ingeniería Naval 2025"
                 class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700"
                 width="400"
                 height="300"
-                loading="lazy"
+                fetchpriority="high"
               />
             </div>
             <div
