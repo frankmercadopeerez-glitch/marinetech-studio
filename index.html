@@ -11,7 +11,7 @@
     <!-- 1. VERIFICACIÓN DE GOOGLE SEARCH CONSOLE -->
     <meta name="google-site-verification" content="j51uAnFC48GTSTYkF6dDNhCq4_HkwR2UwErU83j7_MY" />
 
-    <!-- 2. GOOGLE ANALYTICS 4 (GA4) - ACTIVADO -->
+    <!-- 2. GOOGLE ANALYTICS 4 (GA4) -->
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5DKJ51T2N9"></script>
     <script>
@@ -95,8 +95,10 @@
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚓</text></svg>"
     />
 
-    <!-- Tailwind & Fonts -->
+    <!-- Tailwind CSS (Restaurado para diseño original) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -390,7 +392,7 @@
       ></div>
       <div class="container mx-auto px-6 text-center z-10">
         <div
-          class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/10 mb-10 reveal backdrop-blur-sm"
+          class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/5 mb-10 reveal backdrop-blur-sm"
         >
           <span
             class="w-2 h-2 rounded-full bg-teal-400 animate-pulse shadow-[0_0_10px_#2dd4bf]"
@@ -618,7 +620,7 @@
       </div>
       <div class="relative w-full marquee-container">
         <div class="flex w-max gap-6 animate-marquee-fast">
-          <!-- Review 1 (Corrección: h4 a div font-bold) -->
+          <!-- Review 1 -->
           <div
             class="w-[500px] glass-card p-6 rounded-2xl border border-white/10 shrink-0 flex items-center gap-6 hover-trigger"
           >
@@ -875,7 +877,7 @@
       </div>
     </section>
 
-    <!-- FAQ SECTION (OPTIMIZADA) -->
+    <!-- FAQ SECTION -->
     <section id="faq" class="py-24 bg-navy-900 relative">
       <div class="container mx-auto px-6 max-w-4xl">
         <div class="text-center mb-16 reveal">
@@ -1009,13 +1011,14 @@
               <div
                 class="absolute inset-0 bg-navy-900/50 group-hover:bg-transparent transition z-10"
               ></div>
-              <!-- IMAGEN OPTIMIZADA: WebP + Lazy Loading + fetchpriority -->
+              <!-- IMAGEN OPTIMIZADA: WebP + Lazy Loading -->
               <img
                 src="images/blog1.webp"
                 alt="Tendencias Ingeniería Naval 2025"
                 class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700"
                 width="400"
                 height="300"
+                loading="lazy"
                 fetchpriority="high"
               />
             </div>
@@ -1121,7 +1124,7 @@
       </div>
     </section>
 
-    <!-- FORMULARIO DE CONTACTO (Accesible) -->
+    <!-- FORMULARIO DE CONTACTO -->
     <section id="contact" class="py-32">
       <div class="container mx-auto px-6">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -1247,7 +1250,7 @@
       </div>
     </section>
 
-    <!-- Footer (Contrastado) -->
+    <!-- Footer -->
     <footer class="bg-navy-900 text-slate-300 py-16 border-t border-white/5">
       <div class="container mx-auto px-6">
         <div class="grid md:grid-cols-4 gap-12 mb-16">
