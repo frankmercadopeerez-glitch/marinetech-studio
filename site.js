@@ -17,23 +17,24 @@ menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () 
 document.querySelectorAll('[data-year]').forEach((node) => { node.textContent = new Date().getFullYear(); });
 const form = document.querySelector('[data-contact-form]');
 const status = document.querySelector('[data-form-status]');
+const isEnglish = document.documentElement.lang === 'en';
 form?.addEventListener('submit', async (event) => {
   event.preventDefault();
   const button = form.querySelector('button[type="submit"]');
   const label = button.querySelector('span');
   const original = label.textContent;
   button.disabled = true;
-  label.textContent = 'Enviando…';
+  label.textContent = isEnglish ? 'Sending…' : 'Enviando…';
   status.textContent = '';
   status.className = 'form-status';
   try {
     const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
     if (!response.ok) throw new Error('Form submission failed');
     form.reset();
-    status.textContent = 'Solicitud enviada. Te responderemos personalmente.';
+    status.textContent = isEnglish ? 'Request sent. We will reply personally.' : 'Solicitud enviada. Te responderemos personalmente.';
     status.classList.add('success');
   } catch {
-    status.textContent = 'No pudimos enviar la solicitud. Escríbenos a info@marinetechstudio.com.';
+    status.textContent = isEnglish ? 'We could not send the request. Email us at info@marinetechstudio.com.' : 'No pudimos enviar la solicitud. Escríbenos a info@marinetechstudio.com.';
     status.classList.add('error');
   } finally {
     button.disabled = false;
