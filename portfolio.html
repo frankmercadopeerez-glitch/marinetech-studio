@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- TITULO OPTIMIZADO PARA SEO -->
-    <title>Portafolio de Marketing Naval y Diseño Web | MarineTech Studio</title>
+    <title>Proyectos de Demostración para el Sector Marítimo | MarineTech Studio</title>
     <meta name="description" content="Casos de éxito reales en marketing naval: Cómo ayudamos a astilleros y marinas a conseguir contratos internacionales con diseño web y SEO.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚓</text></svg>">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Script para limpiar URL (UX Profesional) -->
@@ -17,24 +15,6 @@
         const newPath = window.location.pathname.replace(/\/portfolio\.html$/, '/portfolio');
         window.history.replaceState(null, '', newPath + window.location.search + window.location.hash);
       }
-    </script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] },
-                    colors: { navy: { 900: '#020c12', 800: '#051d29', 700: '#0d2b3a' }, teal: { 400: '#2dd4bf', 500: '#14b8a6', accent: '#00f0ff' } },
-                    backgroundImage: { 'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2314b8a6' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E\")" },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' } }
-                    }
-                }
-            }
-        }
     </script>
     <style>
         body { background-color: #020c12; color: #e2e8f0; }
@@ -56,6 +36,8 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
     </style>
+
+    <link rel="stylesheet" href="legacy.css">
 </head>
 <body class="selection:bg-teal-500 selection:text-white">
 
@@ -73,11 +55,11 @@
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center gap-8">
-                    <a href="index.html#about" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Nosotros</a>
+                    <a href="index.html#sectores" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Nosotros</a>
                     <!-- Enlace activo resaltado en Teal -->
-                    <a href="#" class="text-sm font-bold text-teal-400 hover:text-white transition hover-trigger">Casos de Éxito</a>
+            <a href="#" class="text-sm font-bold text-teal-400 hover:text-white transition hover-trigger">Proyectos de Demostración</a>
                     <a href="blog/index.html" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Blog Marino</a>
-                    <a href="index.html#contact" class="px-5 py-2 rounded-full border border-teal-500 text-teal-400 text-sm font-bold hover:bg-teal-500 hover:text-navy-900 transition hover-trigger">Auditoría Gratuita</a>
+                    <a href="index.html#contacto" class="px-5 py-2 rounded-full border border-teal-500 text-teal-400 text-sm font-bold hover:bg-teal-500 hover:text-navy-900 transition hover-trigger">Auditoría Gratuita</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -98,18 +80,22 @@
             </svg>
         </button>
         <div class="flex flex-col gap-8 text-center text-2xl font-display font-bold">
-            <a href="index.html#about" class="hover:text-teal-400 transition mobile-link text-white" onclick="toggleMenu()">Nosotros</a>
-            <a href="#" class="hover:text-teal-400 transition mobile-link text-teal-400">Casos de Éxito</a>
+            <a href="index.html#sectores" class="hover:text-teal-400 transition mobile-link text-white" onclick="toggleMenu()">Nosotros</a>
+            <a href="#" class="hover:text-teal-400 transition mobile-link text-teal-400">Proyectos de Demostración</a>
             <a href="blog/index.html" class="hover:text-teal-400 transition mobile-link text-white">Blog Marino</a>
-            <a href="index.html#contact" class="text-teal-400 transition mobile-link" onclick="toggleMenu()">Auditoría Gratuita</a>
+            <a href="index.html#contacto" class="text-teal-400 transition mobile-link" onclick="toggleMenu()">Auditoría Gratuita</a>
         </div>
     </div>
 
     <main class="pt-40 pb-20">
         <div class="container mx-auto px-6">
             <div class="text-center mb-32 reveal">
-                <h1 class="text-5xl md:text-7xl font-display font-bold mb-6">Ingeniería de <span class="text-teal-400">Resultados</span></h1>
-                <p class="text-slate-400 text-lg max-w-3xl mx-auto">No solo hacemos webs. Construimos activos digitales que generan millones en contratos navales.</p>
+                <span class="inline-block text-xs uppercase tracking-[0.24em] text-teal-400 mb-5">Laboratorio conceptual</span>
+                <h1 class="text-5xl md:text-7xl font-display font-bold mb-6">Proyectos de <span class="text-teal-400">Demostración</span></h1>
+                <p class="text-slate-400 text-lg max-w-3xl mx-auto">Ejercicios de rediseño y estrategia creados para mostrar cómo MarineTech abordaría distintos retos del sector marítimo.</p>
+                <div class="max-w-3xl mx-auto mt-8 border border-teal-500/30 bg-teal-500/5 px-6 py-5 text-sm text-slate-300 text-left">
+                    <strong class="text-white">Nota de transparencia:</strong> estas piezas son demostraciones independientes. Las marcas mostradas no son clientes ni patrocinadores de MarineTech Studio; los escenarios, testimonios y métricas son ilustrativos.
+                </div>
             </div>
 
             <div class="space-y-64"> 
@@ -121,15 +107,15 @@
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Eastern Shipbuilding</h2>
                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
                             <div>
-                                <strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong>
+                                <strong class="text-white block text-sm uppercase tracking-widest mb-2">Escenario</strong>
                                 <p class="text-slate-400 leading-relaxed">Su sitio anterior tardaba 8 segundos en cargar y no cumplía con los estándares de seguridad del USCG, perdiendo licitaciones por "falta de capacidad técnica visible".</p>
                             </div>
                             <div>
-                                <strong class="text-white block text-sm uppercase tracking-widest mb-2">La Solución Técnica</strong>
+                                <strong class="text-white block text-sm uppercase tracking-widest mb-2">Propuesta Técnica</strong>
                                 <p class="text-slate-400 leading-relaxed">Implementamos un portal headless con Next.js y servidores de borde (Edge) para carga en 0.8s. Seguridad nivel militar para alojar planos restringidos.</p>
                             </div>
                             <div>
-                                <strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados (ROI)</strong>
+                                <strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Impacto Proyectado</strong>
                                 <ul class="text-white font-bold space-y-2 text-xl">
                                     <li>🚀 Adjudicación de contrato por $15M USD</li>
                                     <li>⚡ Carga 900% más rápida</li>
@@ -164,11 +150,11 @@
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Seaward Services</h2>
                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
                             <div>
-                                <strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong>
+                                <strong class="text-white block text-sm uppercase tracking-widest mb-2">Escenario</strong>
                                 <p class="text-slate-400 leading-relaxed">Operaciones en 3 continentes desconectadas. Clientes en Asia no sabían que ofrecían mantenimiento en América.</p>
                             </div>
                             <div>
-                                <strong class="text-white block text-sm uppercase tracking-widest mb-2">La Solución Técnica</strong>
+                                <strong class="text-white block text-sm uppercase tracking-widest mb-2">Propuesta Técnica</strong>
                                 <p class="text-slate-400 leading-relaxed">Arquitectura de información unificada con un mapa interactivo de flota en tiempo real usando API de MarineTraffic.</p>
                             </div>
                             <div>
@@ -206,11 +192,11 @@
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Heesen Yachts</h2>
                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
                             <div>
-                                <strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong>
+                                <strong class="text-white block text-sm uppercase tracking-widest mb-2">Escenario</strong>
                                 <p class="text-slate-400 leading-relaxed">Los brokers no podían mostrar los yates en alta mar debido a la mala conexión a internet.</p>
                             </div>
                             <div>
-                                <strong class="text-white block text-sm uppercase tracking-widest mb-2">La Solución Técnica</strong>
+                                <strong class="text-white block text-sm uppercase tracking-widest mb-2">Propuesta Técnica</strong>
                                 <p class="text-slate-400 leading-relaxed">Aplicación Web Progresiva (PWA) con modo offline robusto que almacena tours virtuales 3D en el iPad del broker.</p>
                             </div>
                             <div>
@@ -247,9 +233,9 @@
                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Logística Portuaria</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Global Logistiks</h2>
                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
-                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong><p class="text-slate-400 leading-relaxed">Reclutamiento manual lento y propenso a errores para operaciones críticas.</p></div>
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Escenario</strong><p class="text-slate-400 leading-relaxed">Reclutamiento manual lento y propenso a errores para operaciones críticas.</p></div>
                             <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Solución</strong><p class="text-slate-400 leading-relaxed">Portal automatizado de empleo con filtros de certificación marítima.</p></div>
-                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados</strong><ul class="text-white font-bold space-y-2 text-xl"><li>⏱️ -70% Tiempo de contratación</li></ul></div>
+                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Impacto Proyectado</strong><ul class="text-white font-bold space-y-2 text-xl"><li>⏱️ -70% Tiempo de contratación</li></ul></div>
                         </div>
                          <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
                             <p class="text-slate-300 italic mb-4 text-lg">"Automatizó nuestro proceso de RRHH. Ahora filtramos candidatos certificados en minutos."</p>
@@ -272,9 +258,9 @@
                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Reparación Naval</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Astilleros Escamilla</h2>
                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
-                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong><p class="text-slate-400 leading-relaxed">Baja visibilidad local para reparaciones urgentes.</p></div>
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Escenario</strong><p class="text-slate-400 leading-relaxed">Baja visibilidad local para reparaciones urgentes.</p></div>
                             <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Solución</strong><p class="text-slate-400 leading-relaxed">SEO Local agresivo y rediseño móvil "Click-to-Call".</p></div>
-                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados</strong><ul class="text-white font-bold space-y-2 text-xl"><li>📍 #1 en Google Maps</li></ul></div>
+                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Impacto Proyectado</strong><ul class="text-white font-bold space-y-2 text-xl"><li>📍 #1 en Google Maps</li></ul></div>
                         </div>
                         <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
                             <p class="text-slate-300 italic mb-4 text-lg">"El teléfono no para de sonar. Antes dependíamos del boca a boca, ahora Google nos trae clientes."</p>
@@ -297,9 +283,9 @@
                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Turismo</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Shoreline Sightseeing</h2>
                          <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
-                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong><p class="text-slate-400 leading-relaxed">Sistema de tickets confuso, alta tasa de abandono en el carrito.</p></div>
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Escenario</strong><p class="text-slate-400 leading-relaxed">Sistema de tickets confuso, alta tasa de abandono en el carrito.</p></div>
                             <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Solución</strong><p class="text-slate-400 leading-relaxed">UX optimizado para compra en 3 pasos simples.</p></div>
-                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados</strong><ul class="text-white font-bold space-y-2 text-xl"><li>🎟️ Doble de ventas online</li></ul></div>
+                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Impacto Proyectado</strong><ul class="text-white font-bold space-y-2 text-xl"><li>🎟️ Doble de ventas online</li></ul></div>
                         </div>
                         <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
                             <p class="text-slate-300 italic mb-4 text-lg">"La mejor inversión del año. Simplificar la compra duplicó nuestras reservas directas."</p>
@@ -322,9 +308,9 @@
                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Yates Deportivos</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Willis Custom Yachts</h2>
                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
-                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong><p class="text-slate-400 leading-relaxed">Web lenta que no reflejaba la velocidad y lujo de sus yates.</p></div>
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Escenario</strong><p class="text-slate-400 leading-relaxed">Web lenta que no reflejaba la velocidad y lujo de sus yates.</p></div>
                             <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Solución</strong><p class="text-slate-400 leading-relaxed">Sitio de alto rendimiento con video inmersivo.</p></div>
-                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados</strong><ul class="text-white font-bold space-y-2 text-xl"><li>⚡ Carga instantánea</li></ul></div>
+                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Impacto Proyectado</strong><ul class="text-white font-bold space-y-2 text-xl"><li>⚡ Carga instantánea</li></ul></div>
                         </div>
                         <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
                             <p class="text-slate-300 italic mb-4 text-lg">"Tan rápido como nuestros yates. El video de fondo carga al instante y vende el estilo de vida."</p>
@@ -347,9 +333,9 @@
                          <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Astilleros Históricos</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Scarano Boat Building</h2>
                          <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
-                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong><p class="text-slate-400 leading-relaxed">Dificultad para comunicar herencia histórica junto a tecnología moderna.</p></div>
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Escenario</strong><p class="text-slate-400 leading-relaxed">Dificultad para comunicar herencia histórica junto a tecnología moderna.</p></div>
                             <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Solución</strong><p class="text-slate-400 leading-relaxed">Narrativa visual que une tradición e innovación.</p></div>
-                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados</strong><ul class="text-white font-bold space-y-2 text-xl"><li>🤝 Mayor confianza nicho</li></ul></div>
+                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Impacto Proyectado</strong><ul class="text-white font-bold space-y-2 text-xl"><li>🤝 Mayor confianza nicho</li></ul></div>
                         </div>
                         <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
                             <p class="text-slate-300 italic mb-4 text-lg">"Capturaron nuestra esencia. Los clientes ahora entienden que somos historia con tecnología."</p>
@@ -372,9 +358,9 @@
                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Planos Navales</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Devlin Designing</h2>
                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
-                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong><p class="text-slate-400 leading-relaxed">Venta manual y lenta de planos, proceso ineficiente.</p></div>
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Escenario</strong><p class="text-slate-400 leading-relaxed">Venta manual y lenta de planos, proceso ineficiente.</p></div>
                             <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Solución</strong><p class="text-slate-400 leading-relaxed">E-commerce automatizado con entrega digital segura.</p></div>
-                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados</strong><ul class="text-white font-bold space-y-2 text-xl"><li>💸 Ingresos pasivos 24/7</li></ul></div>
+                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Impacto Proyectado</strong><ul class="text-white font-bold space-y-2 text-xl"><li>💸 Ingresos pasivos 24/7</li></ul></div>
                         </div>
                         <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
                             <p class="text-slate-300 italic mb-4 text-lg">"Ahora vendo mientras duermo. El sistema automatizado me ha liberado horas de trabajo administrativo."</p>
@@ -397,9 +383,9 @@
                          <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Industria Pesada</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Vigor Marine</h2>
                          <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
-                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong><p class="text-slate-400 leading-relaxed">Oportunidades perdidas en contratos complejos.</p></div>
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Escenario</strong><p class="text-slate-400 leading-relaxed">Oportunidades perdidas en contratos complejos.</p></div>
                             <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Solución</strong><p class="text-slate-400 leading-relaxed">Integración CRM para gestión de licitaciones.</p></div>
-                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados</strong><ul class="text-white font-bold space-y-2 text-xl"><li>📄 +15% RFPs presentados</li></ul></div>
+                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Impacto Proyectado</strong><ul class="text-white font-bold space-y-2 text-xl"><li>📄 +15% RFPs presentados</li></ul></div>
                         </div>
                          <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
                             <p class="text-slate-300 italic mb-4 text-lg">"Una máquina de generación de leads cualificados. La integración con Salesforce funciona a la perfección."</p>
@@ -422,9 +408,9 @@
                         <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Defensa Naval</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Gibbs & Cox</h2>
                         <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
-                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong><p class="text-slate-400 leading-relaxed">Reclutamiento seguro de ingenieros de élite.</p></div>
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Escenario</strong><p class="text-slate-400 leading-relaxed">Reclutamiento seguro de ingenieros de élite.</p></div>
                             <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Solución</strong><p class="text-slate-400 leading-relaxed">Portal blindado con ciberseguridad de grado militar.</p></div>
-                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados</strong><ul class="text-white font-bold space-y-2 text-xl"><li>🔒 100% Seguro</li></ul></div>
+                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Impacto Proyectado</strong><ul class="text-white font-bold space-y-2 text-xl"><li>🔒 100% Seguro</li></ul></div>
                         </div>
                         <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
                             <p class="text-slate-300 italic mb-4 text-lg">"Cumple con los estándares militares más exigentes. Seguridad y usabilidad en perfecto equilibrio."</p>
@@ -447,9 +433,9 @@
                          <span class="text-teal-400 font-bold tracking-widest text-sm uppercase mb-4 block">Tecnología</span>
                         <h2 class="text-5xl font-display font-bold mb-8 text-white">Marine Technologies</h2>
                          <div class="space-y-8 text-lg pl-6 border-l-2 border-teal-500/30 mb-10">
-                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">El Problema</strong><p class="text-slate-400 leading-relaxed">Interfaz de control obsoleta e insegura.</p></div>
+                            <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Escenario</strong><p class="text-slate-400 leading-relaxed">Interfaz de control obsoleta e insegura.</p></div>
                             <div><strong class="text-white block text-sm uppercase tracking-widest mb-2">Solución</strong><p class="text-slate-400 leading-relaxed">Rediseño UI/UX moderno para paneles táctiles.</p></div>
-                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Resultados</strong><ul class="text-white font-bold space-y-2 text-xl"><li>✅ Mayor seguridad operativa</li></ul></div>
+                            <div><strong class="text-teal-400 block text-sm uppercase tracking-widest mb-2">Impacto Proyectado</strong><ul class="text-white font-bold space-y-2 text-xl"><li>✅ Mayor seguridad operativa</li></ul></div>
                         </div>
                          <div class="bg-navy-800 p-8 rounded-2xl border border-white/10 mb-8 relative">
                             <p class="text-slate-300 italic mb-4 text-lg">"Nuestros operadores lo aman. Es intuitivo, rápido y reduce los errores humanos drásticamente."</p>
@@ -470,7 +456,7 @@
             
             <div class="text-center mt-32 reveal">
                 <h3 class="text-3xl font-bold text-white mb-8">¿Quieres resultados similares para tu empresa?</h3>
-                <a href="index.html#contact" class="px-10 py-4 bg-teal-500 text-navy-900 font-bold rounded-full hover:bg-white transition shadow-[0_0_30px_rgba(45,212,191,0.4)] text-xl">
+                <a href="index.html#contacto" class="px-10 py-4 bg-teal-500 text-navy-900 font-bold rounded-full hover:bg-white transition shadow-[0_0_30px_rgba(45,212,191,0.4)] text-xl">
                     Solicitar Auditoría
                 </a>
             </div>
@@ -500,8 +486,8 @@
                 <div>
                     <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-xs">Compañía</h4>
                     <ul class="space-y-4 text-sm">
-                        <li><a href="index.html#contact" class="hover:text-teal-400 transition hover-trigger">Contacto</a></li>
-                        <li><a href="blog.html" class="hover:text-teal-400 transition hover-trigger">Blog</a></li>
+                        <li><a href="index.html#contacto" class="hover:text-teal-400 transition hover-trigger">Contacto</a></li>
+                        <li><a href="blog/" class="hover:text-teal-400 transition hover-trigger">Blog</a></li>
                     </ul>
                 </div>
                 <div>
@@ -513,7 +499,7 @@
                 </div>
             </div>
             <div class="border-t border-white/5 pt-8 text-center text-xs text-slate-400">
-                <p>&copy; 2025 MarineTech Studio. Todos los derechos reservados.</p>
+                <p>&copy; 2026 MarineTech Studio. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>

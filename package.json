@@ -1,0 +1,11 @@
+{
+  "name": "marinetech-studio",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./tailwind-input.css -o ./legacy.css --minify",
+    "validate": "node ./scripts/validate-site.mjs"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}

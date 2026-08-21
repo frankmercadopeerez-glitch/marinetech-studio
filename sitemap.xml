@@ -3,73 +3,73 @@
   <!-- Página Principal -->
   <url>
     <loc>https://www.marinetechstudio.com/</loc>
-    <lastmod>2025-12-10T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-21T00:00:00-05:00</lastmod>
     <priority>1.00</priority>
   </url>
 
   <!-- Páginas Principales -->
   <url>
     <loc>https://www.marinetechstudio.com/portfolio.html</loc>
-    <lastmod>2025-11-30T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-21T00:00:00-05:00</lastmod>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://www.marinetechstudio.com/blog/</loc>
-    <lastmod>2025-12-10T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-21T00:00:00-05:00</lastmod>
     <priority>0.95</priority>
   </url>
 
   <!-- Artículos del Blog -->
   <url>
     <loc>https://www.marinetechstudio.com/blog/vision-maritima-2026/</loc>
-    <lastmod>2025-12-10T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-21T00:00:00-05:00</lastmod>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.marinetechstudio.com/blog/marketing-digital-b2b-astilleros/</loc>
-    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-21T00:00:00-05:00</lastmod>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://www.marinetechstudio.com/blog/web-ingles-astilleros/</loc>
-    <lastmod>2025-11-20T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-21T00:00:00-05:00</lastmod>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.marinetechstudio.com/blog/seo-local-reparacion-naval/</loc>
-    <lastmod>2025-11-02T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-21T00:00:00-05:00</lastmod>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.marinetechstudio.com/blog/gemelos-digitales-astilleros/</loc>
-    <lastmod>2025-10-15T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-21T00:00:00-05:00</lastmod>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.marinetechstudio.com/blog/tendencias-ingenieria-naval-2025/</loc>
-    <lastmod>2025-11-27T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-21T00:00:00-05:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.marinetechstudio.com/blog/cartagena-hub-naval-caribe-2025/</loc>
-    <lastmod>2025-11-25T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-21T00:00:00-05:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.marinetechstudio.com/blog/sostenibilidad-marina-caribe-negocio-rentable/</loc>
-    <lastmod>2025-11-23T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-21T00:00:00-05:00</lastmod>
     <priority>0.80</priority>
   </url>
 
   <!-- Páginas Legales -->
   <url>
     <loc>https://www.marinetechstudio.com/privacy.html</loc>
-    <lastmod>2025-11-30T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-21T00:00:00-05:00</lastmod>
     <priority>0.40</priority>
   </url>
   <url>
     <loc>https://www.marinetechstudio.com/terms.html</loc>
-    <lastmod>2025-11-30T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-21T00:00:00-05:00</lastmod>
     <priority>0.40</priority>
   </url>
 </urlset>

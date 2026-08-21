@@ -22,19 +22,7 @@
     </script>
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚓</text></svg>">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] },
-                    colors: { navy: { 900: '#020c12', 800: '#051d29', 700: '#0d2b3a' }, teal: { 400: '#2dd4bf', 500: '#14b8a6', accent: '#00f0ff' } }
-                }
-            }
-        }
-    </script>
     <style>
         body { background-color: #020c12; color: #e2e8f0; }
         .prose p { margin-bottom: 1.5rem; line-height: 1.8; color: #94a3b8; font-size: 1.125rem; text-align: left; }
@@ -50,6 +38,8 @@
             .custom-cursor.hovered { width: 50px; height: 50px; background-color: rgba(0, 240, 255, 0.2); border-color: transparent; }
         }
     </style>
+
+    <link rel="stylesheet" href="../../legacy.css">
 </head>
 <body class="selection:bg-teal-500 selection:text-white">
 
@@ -64,10 +54,10 @@
                 </a>
                 
                 <div class="hidden md:flex items-center gap-8">
-                    <a href="../../index.html#about" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Nosotros</a>
-                    <a href="../../portfolio.html" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Casos de Éxito</a>
+                    <a href="../../index.html#sectores" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Nosotros</a>
+                    <a href="../../portfolio.html" class="text-sm font-medium text-slate-300 hover:text-white transition hover-trigger">Proyectos de Demostración</a>
                     <a href="../../blog/index.html" class="text-sm font-bold text-teal-400 hover:text-white transition hover-trigger">Blog Marino</a>
-                    <a href="../../index.html#contact" class="px-5 py-2 rounded-full border border-teal-500 text-teal-400 text-sm font-bold hover:bg-teal-500 hover:text-navy-900 transition hover-trigger">Auditoría Gratuita</a>
+                    <a href="../../index.html#contacto" class="px-5 py-2 rounded-full border border-teal-500 text-teal-400 text-sm font-bold hover:bg-teal-500 hover:text-navy-900 transition hover-trigger">Auditoría Gratuita</a>
                 </div>
 
                 <button class="md:hidden text-white p-2 z-50 relative focus:outline-none pointer-events-auto" id="mobile-menu-btn" aria-label="Abrir menú" onclick="toggleMenu()">
@@ -85,10 +75,10 @@
             <svg class="w-8 h-8 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
         <div class="flex flex-col gap-8 text-center text-2xl font-display font-bold">
-            <a href="../../index.html#about" class="hover:text-teal-400 transition mobile-link text-white">Nosotros</a>
-            <a href="../../portfolio.html" class="hover:text-teal-400 transition mobile-link text-white">Casos de Éxito</a>
+            <a href="../../index.html#sectores" class="hover:text-teal-400 transition mobile-link text-white">Nosotros</a>
+            <a href="../../portfolio.html" class="hover:text-teal-400 transition mobile-link text-white">Proyectos de Demostración</a>
             <a href="../../blog/index.html" class="hover:text-teal-400 transition mobile-link text-teal-400">Blog Marino</a>
-            <a href="../../index.html#contact" class="text-teal-400 transition mobile-link">Auditoría Gratuita</a>
+            <a href="../../index.html#contacto" class="text-teal-400 transition mobile-link">Auditoría Gratuita</a>
         </div>
     </div>
 
@@ -149,7 +139,7 @@
             <div class="mt-20 p-10 bg-gradient-to-br from-navy-800 to-navy-900 rounded-3xl border border-white/10 text-center reveal">
                 <h3 class="text-3xl font-display font-bold text-white mb-4">Abre tu Astillero al Mundo</h3>
                 <p class="text-slate-400 mb-8 max-w-2xl mx-auto">Deja de perder contratos por barreras de idioma. Convierte tu web en tu mejor agente de ventas internacional.</p>
-                <a href="../../index.html#contact" class="inline-block px-8 py-4 bg-teal-500 text-navy-900 font-bold rounded-full hover:bg-white transition shadow-[0_0_20px_rgba(45,212,191,0.3)] hover-trigger">Internacionalizar mi Web Ahora</a>
+                <a href="../../index.html#contacto" class="inline-block px-8 py-4 bg-teal-500 text-navy-900 font-bold rounded-full hover:bg-white transition shadow-[0_0_20px_rgba(45,212,191,0.3)] hover-trigger">Internacionalizar mi Web Ahora</a>
             </div>
             
             <div class="mt-12 pt-8 border-t border-white/5 text-xs text-slate-600">
@@ -182,7 +172,7 @@
                 <div>
                     <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-xs">Compañía</h4>
                     <ul class="space-y-4 text-sm">
-                        <li><a href="../../index.html#contact" class="hover:text-teal-400 transition hover-trigger">Contacto</a></li>
+                        <li><a href="../../index.html#contacto" class="hover:text-teal-400 transition hover-trigger">Contacto</a></li>
                         <li><a href="../../blog/index.html" class="hover:text-teal-400 transition hover-trigger">Blog</a></li>
                     </ul>
                 </div>
@@ -195,7 +185,7 @@
                 </div>
             </div>
             <div class="border-t border-white/5 pt-8 text-center text-xs text-slate-400">
-                <p>&copy; 2025 MarineTech Studio. Todos los derechos reservados.</p>
+                <p>&copy; 2026 MarineTech Studio. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
